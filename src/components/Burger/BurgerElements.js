@@ -22,24 +22,24 @@ export const StyledBurger = styled.button`
 	div {
 		width: 1.7rem;
 		height: 0.25rem;
-		background: black;
+		background: white;
 		border-radius: 10px;
 		transition: all 0.3s linear;
 		position: relative;
 		transform-origin: 1px;
 
 		:first-child {
-			transform: ${({ open }) => (open ? 'rotate(0deg)' : 'rotate(45deg)')};
+			transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0deg)')};
 		}
 
 		:nth-child(2) {
-			opacity: ${({ open }) => (open ? '1' : '0')};
+			opacity: ${({ open }) => (open ? '0' : '1')};
 			transform: ${({ open }) =>
-				open ? 'translateX(0px)' : 'translateX(20px)'};
+				open ? 'translateX(20px)' : 'translateX(0px)'};
 		}
 
 		:nth-child(3) {
-			transform: ${({ open }) => (open ? 'rotate(0deg)' : 'rotate(-45deg)')};
+			transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0deg)')};
 		}
 	}
 `;

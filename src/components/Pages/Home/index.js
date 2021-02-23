@@ -30,7 +30,13 @@ import {
 	Text,
 	Buttons,
 	InfoButton,
-	BookButton
+	BookButton,
+	Contact,
+	Form,
+	InputBox,
+	Label,
+	Input,
+	MessageInput
 } from './HomeElements';
 
 export const Home = () => {
@@ -94,6 +100,27 @@ export const Home = () => {
 						</Card>
 					</Carousel>
 				</Events>
+				<Contact>
+					<TitleH2>Contact Us</TitleH2>
+					<TextH3>
+						If you have any questions related to our activity, please don’t
+						hesitate, write us a message.
+					</TextH3>
+					<Form>
+						<InputBox>
+							<Label>Name</Label>
+							<Input></Input>
+						</InputBox>
+						<InputBox>
+							<Label>Subject</Label>
+							<Input></Input>
+						</InputBox>
+						<InputBox>
+							<Label>Message</Label>
+							<MessageInput></MessageInput>
+						</InputBox>
+					</Form>
+				</Contact>
 			</PageContainer>
 		</>
 	);

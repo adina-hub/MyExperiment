@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import backgroundImg from '../../../images/background.jpg';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { buttonColor } from '../../../globalStyles';
 
 export const PageContainer = styled.div``;
 
@@ -48,7 +49,7 @@ export const Button = styled.button`
 	height: 30px;
 	border-radius: 5px;
 	border: none;
-	background: #4d194d;
+	background: ${buttonColor};
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -168,3 +169,23 @@ export const BookButton = styled.button`
 	border: none;
 	color: white;
 `;
+
+export const Contact = styled.div`
+	height: auto;
+	background: #31304c;
+	text-align: center;
+	padding: 0px 20px;
+`;
+
+export const Form = styled.form`
+	display: flex;
+	flex-direction: column;
+	height: 60vh;
+`;
+export const InputBox = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+export const Label = styled.label``;
+export const Input = styled.input``;
+export const MessageInput = styled.input``;

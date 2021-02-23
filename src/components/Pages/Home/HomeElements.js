@@ -12,12 +12,10 @@ export const Hero = styled.div`
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-`;
-
-export const HeroSection = styled.div`
 	padding: 0px 20px;
 	text-align: center;
 `;
+
 export const TextH2 = styled.h2`
 	margin: 160px auto 0px auto;
 	font-size: 23px;

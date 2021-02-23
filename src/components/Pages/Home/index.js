@@ -7,7 +7,6 @@ import img from '../../../images/img.jpg';
 import {
 	PageContainer,
 	Hero,
-	HeroSection,
 	TextH2,
 	TextH3,
 	Experiments,
@@ -45,14 +44,12 @@ export const Home = () => {
 			<PageContainer>
 				<Navbar></Navbar>
 				<Hero>
-					<HeroSection>
-						<TextH2>Welcome to Scientify!</TextH2>
-						<TextH3>
-							A collection of experiments that demonstrate a wide range of
-							physical concepts and processes. Try out these experiments and
-							you’ll feel like a real scientist!
+					<TextH2>Welcome to Scientify!</TextH2>
+					<TextH3>
+						A collection of experiments that demonstrate a wide range of
+						physical concepts and processes. Try out these experiments and
+						you’ll feel like a real scientist!
 						</TextH3>
-					</HeroSection>
 				</Hero>
 				<Experiments>
 					<TitleH2>What is Scientify?</TitleH2>

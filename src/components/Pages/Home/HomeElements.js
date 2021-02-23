@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import backgroundImg from '../../images/background.jpg';
+import backgroundImg from '../../../images/background.jpg';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
 export const PageContainer = styled.div``;

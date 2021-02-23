@@ -1,8 +1,8 @@
 import React from 'react';
-import { Navbar } from '../Navbar/index';
-import place from '../../images/location.svg';
-import time from '../../images/time.svg';
-import img from '../../images/img.jpg';
+import { Navbar } from '../../Elements/Navbar/index';
+import place from '../../../images/location.svg';
+import time from '../../../images/time.svg';
+import img from '../../../images/img.jpg';
 
 import {
 	PageContainer,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../../images/logo.svg';
+import logo from '../../../images/logo.svg';
 import { Burger } from '../Burger/index';
 import { Menu } from '../Menu/index';
 import { Container, Logo, MenuContainer } from './NavbarElements';

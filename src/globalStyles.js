@@ -9,6 +9,5 @@ export const darkBg = '#272640';
 export const fontH2 = '23px';
 export const fontH3 = '16px';
 export const fontP = '14px';
+export const fontH5 = '12px';
 // CONTAINERS
-
-

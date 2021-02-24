@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import backgroundImg from '../../../images/background.jpg';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-import { buttonColor } from '../../../globalStyles';
+import { purple } from '../../../globalStyles';
 
-export const PageContainer = styled.div``;
+export const HomeContainer = styled.div``;
 
 export const Hero = styled.div`
 	background: url(${backgroundImg});
@@ -47,7 +47,7 @@ export const Button = styled.button`
 	height: 30px;
 	border-radius: 5px;
 	border: none;
-	background: ${buttonColor};
+	background: ${purple};
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;

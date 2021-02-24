@@ -15,10 +15,19 @@ const ExperimentContainer = styled.div`
     display: flex;
     background: ${turquoise};
     color: ${purple};
-    
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 20px;
     > img {
-        height: 250px;
-        width: 250px;
+        flex: 0.3;
+        height: 75px;
+        filter: grayscale(100%);
+        object-fit: cover;
+    }
+
+    > p {
+        flex: 0.7;
+        text-align: center;
     }
 `;
 

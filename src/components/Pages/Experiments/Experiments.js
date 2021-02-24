@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-	darkBg,
-	fontH2,
-	fontP,
-	lightBg,
-	turquoise
-} from '../../../globalStyles';
+import { darkBg, fontH2, fontP, lightBg, green } from '../../../globalStyles';
 import { Navbar } from '../../Elements/Navbar/index';
 import Experiment from './Experiment/Experiment';
+import Dropdown from '../../Elements/Dropdown/Dropdown';
 
 function Experiments() {
+
 	return (
 		<ExperimentsContainer>
 			<Navbar></Navbar>
@@ -23,6 +19,7 @@ function Experiments() {
 					having a video with explications from our teachers.
 				</p>
 				<hr />
+				<Dropdown />
 			</ExperimentsTop>
 			<ExperimentsBottom>
 				<h3>Category: All</h3>
@@ -31,9 +28,17 @@ function Experiments() {
 						src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 						text="How to make a sandwich"
 					></Experiment>
+					<Experiment
+						src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+						text="How to make a sandwich"
+					></Experiment>
+					<Experiment
+						src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+						text="How to make a sandwich"
+					></Experiment>
 				</ExperimentsList>
 			</ExperimentsBottom>
-		</ExperimentsContainer>
+		</ExperimentsContainer >
 	);
 }
 
@@ -53,7 +58,7 @@ const ExperimentsTop = styled.div`
 		margin: 80px auto 0px auto;
 		font-size: ${fontH2};
 		letter-spacing: 1px;
-		color: ${turquoise};
+		color: ${green};
 	}
 
 	> hr {
@@ -89,4 +94,5 @@ const ExperimentsBottom = styled.div`
 const ExperimentsList = styled.div`
 	display: flex;
 	flex-direction: column;
+	margin-top: 20px;
 `;

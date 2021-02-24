@@ -8,7 +8,7 @@ function Experiment({ src, text }) {
             <img src={src} alt="" />
             <p>{text}</p>
         </ExperimentContainer>
-    )
+    );
 }
 
 const ExperimentContainer = styled.div`
@@ -22,4 +22,4 @@ const ExperimentContainer = styled.div`
     }
 `;
 
-export default Experiment
+export default Experiment;

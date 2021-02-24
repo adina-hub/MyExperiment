@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { darkBg, fontSizeH2, fontSizeP, lightBg, turquoise } from '../../../globalStyles';
+import { darkBg, fontH2, fontP, lightBg, turquoise } from '../../../globalStyles';
 import { Navbar } from '../../Elements/Navbar/index';
 import Experiment from './Experiment/Experiment';
 
@@ -44,7 +44,7 @@ const ExperimentsTop = styled.div`
 
     > h2 {
         margin: 80px auto 0px auto;
-        font-size: ${fontSizeH2};
+        font-size: ${fontH2};
         letter-spacing: 1px;
         color: ${turquoise};
     }
@@ -58,7 +58,7 @@ const ExperimentsTop = styled.div`
 
     > p {
         color: white;
-        font-size: ${fontSizeP};
+        font-size: ${fontP};
         font-weight: normal;
         line-height: 25px;
     }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { purple, turqBg } from '../../../../globalStyles';
+import { purple, turquoise } from '../../../../globalStyles';
 
 function Experiment({ src, text }) {
     return (
@@ -13,7 +13,7 @@ function Experiment({ src, text }) {
 
 const ExperimentContainer = styled.div`
     display: flex;
-    background: ${turqBg};
+    background: ${turquoise};
     color: ${purple};
     
     > img {

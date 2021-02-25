@@ -9,7 +9,7 @@ import {
 	turquoise,
 	purple
 } from '../../../globalStyles';
-import { Navbar } from '../../Elements/Navbar/index';
+import Navbar from '../../Elements/Navbar/Navbar';
 import Experiment from './Experiment/Experiment';
 import Dropdown from '../../Elements/Dropdown/Dropdown';
 import { useParams } from 'react-router-dom';

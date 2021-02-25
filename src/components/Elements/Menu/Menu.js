@@ -1,6 +1,29 @@
+import React from 'react';
+import { bool } from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const StyledMenu = styled.nav`
+function Menu({ open }) {
+	return (
+		<>
+			<StyledMenu open={open}>
+				<Link to="/">Home</Link>
+				<Link to="/experiments">Experiments</Link>
+				<Link to="/">Events</Link>
+				<Link to="/">Contact</Link>
+				<Link to="/signin">Login</Link>
+			</StyledMenu>
+		</>
+	);
+}
+
+Menu.propTypes = {
+	open: bool.isRequired
+};
+
+export default Menu;
+
+const StyledMenu = styled.nav`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -21,10 +44,5 @@ export const StyledMenu = styled.nav`
 		color: white;
 		text-decoration: none;
 		transition: color 0.3s linear;
-
-		/* @media (max-width: ${({ theme }) => theme.mobile}) {
-			font-size: 1.5rem;
-			text-align: center;
-		} */
 	}
 `;

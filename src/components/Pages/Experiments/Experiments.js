@@ -1,18 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import { darkBg, fontH2, fontP, lightBg, green, turquoise, purple } from '../../../globalStyles';
+import {
+	darkBg,
+	fontH2,
+	fontP,
+	lightBg,
+	green,
+	turquoise,
+	purple
+} from '../../../globalStyles';
 import { Navbar } from '../../Elements/Navbar/index';
 import Experiment from './Experiment/Experiment';
 import Dropdown from '../../Elements/Dropdown/Dropdown';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 
 function Experiments() {
 	let { id } = useParams();
 	if (id) {
-		return (
-			<Experiment id={id} />
-		)
+		return <Experiment id={id} />;
 	} else {
 		return (
 			<ExperimentsContainer>
@@ -24,7 +29,7 @@ function Experiments() {
 					<p>
 						From mechanics to optics and fluids, all in one place, each of them
 						having a video with explications from our teachers.
-				</p>
+					</p>
 					<hr />
 					<Dropdown />
 				</ExperimentsTop>
@@ -32,24 +37,31 @@ function Experiments() {
 					<h3>Category: All</h3>
 					<ExperimentsList>
 						<ExperimentItem>
-							<img src='https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="" />
+							<img
+								src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+								alt=""
+							/>
 							<p>How to make a sandwich</p>
 						</ExperimentItem>
 						<ExperimentItem>
-							<img src='https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="" />
+							<img
+								src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+								alt=""
+							/>
 							<p>How to make a sandwich</p>
 						</ExperimentItem>
 						<ExperimentItem>
-							<img src='https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="" />
+							<img
+								src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+								alt=""
+							/>
 							<p>How to make a sandwich</p>
 						</ExperimentItem>
 					</ExperimentsList>
 				</ExperimentsBottom>
-
-			</ExperimentsContainer >
+			</ExperimentsContainer>
 		);
 	}
-
 }
 
 export default Experiments;
@@ -108,21 +120,21 @@ const ExperimentsList = styled.div`
 `;
 
 const ExperimentItem = styled.div`
-    display: flex;
-    background: ${turquoise};
-    color: ${purple};
-    align-items: center;
-    border-radius: 5px;
-    margin-top: 20px;
-    > img {
-        flex: 0.3;
-        height: 75px;
-        filter: grayscale(100%);
-        object-fit: cover;
-    }
+	display: flex;
+	background: ${turquoise};
+	color: ${purple};
+	align-items: center;
+	border-radius: 5px;
+	margin-top: 20px;
+	> img {
+		flex: 0.3;
+		height: 75px;
+		filter: grayscale(100%);
+		object-fit: cover;
+	}
 
-    > p {
-        flex: 0.7;
-        text-align: center;
-    }
+	> p {
+		flex: 0.7;
+		text-align: center;
+	}
 `;

@@ -54,10 +54,10 @@ const ExperimentContainer = styled.div`
 `;
 
 const ExperimentTitle = styled.h2`
-    font-size: ${fontH2};
-    color: #fff;
-    text-align: center;
-    margin-top: 80px;
+	font-size: ${fontH2};
+	color: #fff;
+	text-align: center;
+	margin-top: 80px;
 `;
 
 const ExperimentVideo = styled.iframe`

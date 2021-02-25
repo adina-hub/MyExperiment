@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { fontH2, fontH3, fontH5, fontP, green, lightBg, purple, turquoise } from '../../../../globalStyles';
 import { Navbar } from '../../../Elements/Navbar';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-
+import FavoriteIcon from '@material-ui/icons/Favorite';
 function Experiment({ id }) {
 
     const [experiment, setExperiment] = useState({
@@ -12,8 +12,10 @@ function Experiment({ id }) {
         topics: ['Mecanics', 'Optics'],
         materials: ['Bread', 'Ham', 'Butter', 'Tomatoes'],
         steps: ['Put the bread in the heated pan.', 'Put the bread in the heated pan.', 'Put the bread in the heated pan.', 'Put the bread in the heated pan.']
-
     })
+
+    const [clicked, setClicked] = useState(false)
+
     return (
         <ExperimentContainer>
             <Navbar></Navbar>
@@ -37,9 +39,9 @@ function Experiment({ id }) {
                     </ol>
                 </ExperimentDetails>
             </ExperimentInfo>
-            <ExperimentButton>
+            <ExperimentButton onClick={() => setClicked(!clicked)}>
                 <p>Add to favourites</p>
-                <FavoriteBorderIcon />
+                {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
             </ExperimentButton>
         </ExperimentContainer>
     );
@@ -128,6 +130,10 @@ const ExperimentButton = styled.button`
     border: 2px solid ${green};
     border-radius: 5px;
     padding: 15px 25px;
+
+    :focus {
+        outline: none;
+    }
 
     > p {
         color: #fff;

@@ -3,24 +3,24 @@ import { bool } from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-function Menu({ open }) {
+function AdminMenu({ open }) {
 	return (
 		<>
 			<StyledMenu open={open}>
-				<Link to="/">Home</Link>
-				<Link to="/experiments">Experiments</Link>
-				<Link to="/">Events</Link>
-				<Link to="/signin">Log In</Link>
+				<Link to="/admin">Home</Link>
+				<Link to="/experimentsList">Experiments</Link>
+				<Link to="/eventsList">Events</Link>
+				<Link to="/signin">Log Out</Link>
 			</StyledMenu>
 		</>
 	);
 }
 
-Menu.propTypes = {
+AdminMenu.propTypes = {
 	open: bool.isRequired
 };
 
-export default Menu;
+export default AdminMenu;
 
 const StyledMenu = styled.nav`
 	display: flex;

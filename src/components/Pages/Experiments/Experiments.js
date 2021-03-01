@@ -36,27 +36,27 @@ function Experiments() {
 				<ExperimentsBottom>
 					<h3>Category: All</h3>
 					<ExperimentsList>
-						<ExperimentItem>
+						<ExperimentsItem>
 							<img
 								src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 								alt=""
 							/>
 							<p>How to make a sandwich</p>
-						</ExperimentItem>
-						<ExperimentItem>
+						</ExperimentsItem>
+						<ExperimentsItem>
 							<img
 								src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 								alt=""
 							/>
 							<p>How to make a sandwich</p>
-						</ExperimentItem>
-						<ExperimentItem>
+						</ExperimentsItem>
+						<ExperimentsItem>
 							<img
 								src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9vZHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 								alt=""
 							/>
 							<p>How to make a sandwich</p>
-						</ExperimentItem>
+						</ExperimentsItem>
 					</ExperimentsList>
 				</ExperimentsBottom>
 			</ExperimentsContainer>
@@ -119,7 +119,7 @@ const ExperimentsList = styled.div`
 	margin-top: 20px;
 `;
 
-const ExperimentItem = styled.div`
+const ExperimentsItem = styled.div`
 	display: flex;
 	background: ${turquoise};
 	color: ${purple};

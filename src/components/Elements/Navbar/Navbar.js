@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../../images/logo.svg';
 import Burger from '../Burger/Burger';
-import Menu from '../Menu/Menu';
+import Menu from './Menu/Menu';
 import styled from 'styled-components';
 
 function Navbar() {

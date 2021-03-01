@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../../images/logo.svg';
 import Burger from '../Burger/Burger';
-import AdminMenu from '../AdminMenu/AdminMenu';
+import AdminMenu from './AdminMenu/AdminMenu';
 import styled from 'styled-components';
 
 function AdminNavbar() {

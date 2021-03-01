@@ -3,65 +3,48 @@ import styled from 'styled-components';
 import { fontH2, fontH3, green, lightBg } from '../../../../globalStyles';
 import Navbar from '../../../Elements/Navbar/Navbar';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-
+import FavoriteIcon from '@material-ui/icons/Favorite';
 function Experiment({ id }) {
-	const [experiment, setExperiment] = useState({
-		title: 'How to make a sandwich',
-		src: 'https://www.youtube.com/embed/S_1_ZSMxRfg',
-		topics: ['Mecanics', 'Optics'],
-		materials: ['Bread', 'Ham', 'Butter', 'Tomatoes'],
-		steps: [
-			'Put the bread in the heated pan.',
-			'Put the bread in the heated pan.',
-			'Put the bread in the heated pan.',
-			'Put the bread in the heated pan.'
-		]
-	});
-	return (
-		<ExperimentContainer>
-			<Navbar></Navbar>
-			<ExperimentTitle>{experiment.title}</ExperimentTitle>
-			<ExperimentVideo
-				src={experiment.src}
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen
-			/>
-			<ExperimentInfo>
-				<h2>Activity overview</h2>
-				<hr />
-				<ExperimentTopics>
-					<h3>Science Topics:</h3>
-					{experiment.topics.map((topic, i) => (
-						<p>
-							{topic}
-							{i !== experiment.topics.length - 1 ? ',' : null}
-						</p>
-					))}
-				</ExperimentTopics>
-				<ExperimentDetails>
-					<ul>
-						Materials needed:
-						{experiment.materials.map((material) => (
-							<li>{material}</li>
-						))}
-					</ul>
-				</ExperimentDetails>
-				<ExperimentDetails>
-					<ol>
-						Steps to follow:
-						{experiment.steps.map((step) => (
-							<li>{step}</li>
-						))}
-					</ol>
-				</ExperimentDetails>
-			</ExperimentInfo>
-			<ExperimentButton>
-				<p>Add to favourites</p>
-				<FavoriteBorderIcon />
-			</ExperimentButton>
-		</ExperimentContainer>
-	);
+
+    const [experiment, setExperiment] = useState({
+        title: 'How to make a sandwich',
+        src: 'https://www.youtube.com/embed/S_1_ZSMxRfg',
+        topics: ['Mecanics', 'Optics'],
+        materials: ['Bread', 'Ham', 'Butter', 'Tomatoes'],
+        steps: ['Put the bread in the heated pan.', 'Put the bread in the heated pan.', 'Put the bread in the heated pan.', 'Put the bread in the heated pan.']
+    })
+
+    const [clicked, setClicked] = useState(false)
+
+    return (
+        <ExperimentContainer>
+            <Navbar></Navbar>
+            <ExperimentTitle>{experiment.title}</ExperimentTitle>
+            <ExperimentVideo src={experiment.src} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+            <ExperimentInfo>
+                <h2>Activity overview</h2>
+                <hr />
+                <ExperimentTopics>
+                    <h3>Science Topics:</h3>
+                    {experiment.topics.map((topic, i) => (<p>{topic}{i !== experiment.topics.length - 1 ? "," : null}</p>))}
+                </ExperimentTopics>
+                <ExperimentDetails>
+                    <ul>Materials needed:
+                        {experiment.materials.map(material => (<li>{material}</li>))}
+                    </ul>
+                </ExperimentDetails>
+                <ExperimentDetails>
+                    <ol>Steps to follow:
+                        {experiment.steps.map(step => (<li>{step}</li>))}
+                    </ol>
+                </ExperimentDetails>
+            </ExperimentInfo>
+            <ExperimentButton onClick={() => setClicked(!clicked)}>
+                <p>Add to favourites</p>
+                {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            </ExperimentButton>
+        </ExperimentContainer>
+    );
 }
 
 const ExperimentContainer = styled.div`
@@ -136,25 +119,29 @@ const ExperimentDetails = styled.div`
 `;
 
 const ExperimentButton = styled.button`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background: transparent;
-	margin: 50px auto 0 auto;
-	border: 2px solid ${green};
-	border-radius: 5px;
-	padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    margin: 50px auto 0 auto;
+    border: 2px solid ${green};
+    border-radius: 5px;
+    padding: 15px 25px;
 
-	> p {
-		color: #fff;
-		margin-right: 10px;
-		font-size: ${fontH3};
-		letter-spacing: 1px;
-	}
+    :focus {
+        outline: none;
+    }
 
-	> .MuiSvgIcon-root {
-		fill: ${green};
-	}
+    > p {
+        color: #fff;
+        margin-right: 10px;
+        font-size: ${fontH3};
+        letter-spacing: 1px;
+    }
+
+    > .MuiSvgIcon-root {
+        fill: ${green};
+    }
 `;
 
 export default Experiment;

@@ -9,7 +9,7 @@ function Menu({ open }) {
 			<StyledMenu open={open}>
 				<Link to="/">Home</Link>
 				<Link to="/experiments">Experiments</Link>
-				<Link to="/">Events</Link>
+				<Link to="/events">Events</Link>
 				<Link to="/signin">Log In</Link>
 			</StyledMenu>
 		</>

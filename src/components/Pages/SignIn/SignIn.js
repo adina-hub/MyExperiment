@@ -53,7 +53,7 @@ function SignIn() {
 							<a href="/">Forgot password?</a>
 							<button type="submit">LOGIN</button>
 							<div className="text">
-								Need an account? <Link href="/signUp">Register</Link>
+								Need an account? <Link to="/signUp">Register</Link>
 							</div>
 						</SignInForm>
 					</Formik>

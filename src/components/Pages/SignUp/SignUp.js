@@ -73,9 +73,9 @@ function SignUp() {
 							</InputField>
 
 							<a href="/">Forgot password?</a>
-							<button type="submit">LOGIN</button>
+							<button type="submit">REGISTER</button>
 							<div class="text">
-								Already have an account? <Link href="/">Sign In</Link>
+								Already have an account? <Link to="/signin">Sign In</Link>
 							</div>
 						</SignUpForm>
 					</Formik>

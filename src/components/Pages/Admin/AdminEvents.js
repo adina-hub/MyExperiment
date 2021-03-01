@@ -9,12 +9,12 @@ import { Link } from 'react-router-dom';
 import { lightBg, fontH2, fontH3, turquoise } from '../../../globalStyles';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
-export default function AdminExperiments() {
+export default function AdminEvents() {
 	return (
 		<div>
 			<AdminNavbar />
 			<Container>
-				<h2>Experiments</h2>
+				<h2>Events</h2>
 				<hr />
 				<Button>
 					<button>Add</button>
@@ -22,9 +22,9 @@ export default function AdminExperiments() {
 				</Button>
 				<Elements>
 					<Element>
-						<h3>Experiment One</h3>
+						<h3>Event One</h3>
 						<Icons>
-							<Link to="/experiments/11">
+							<Link to="/admin">
 								<InfoIcon />
 							</Link>
 							<Link>
@@ -33,9 +33,9 @@ export default function AdminExperiments() {
 						</Icons>
 					</Element>
 					<Element>
-						<h3>Experiment Two</h3>
+						<h3>Event Two</h3>
 						<Icons>
-							<Link to="/experiments/11">
+							<Link to="/admin">
 								<InfoIcon />
 							</Link>
 							<Link>
@@ -44,9 +44,9 @@ export default function AdminExperiments() {
 						</Icons>
 					</Element>
 					<Element>
-						<h3>Experiment Three</h3>
+						<h3>Event Three</h3>
 						<Icons>
-							<Link to="/experiments/11">
+							<Link to="/admin">
 								<InfoIcon />
 							</Link>
 							<Link>
@@ -113,12 +113,6 @@ const Elements = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-top: 20px;
-
-	> button {
-		background: none;
-		outline: none;
-		border: none;
-	}
 `;
 
 const Element = styled.div`
@@ -143,14 +137,6 @@ const Icons = styled.div`
 	width: 50px;
 	display: flex;
 	justify-content: space-between;
-
-	> button {
-		outline: none;
-		background: none;
-		color: white;
-		border: none;
-		font-size: ${fontH3};
-	}
 `;
 
 const InfoIcon = styled(AiOutlineInfoCircle)`

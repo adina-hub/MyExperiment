@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import {
@@ -13,27 +14,27 @@ export default function AdminHome() {
 	return (
 		<div>
 			<AdminNavbar />
-			<Container>
+			<HomeContainer>
 				<h2>Welcome, admin</h2>
 				<hr />
-				<div className="field">
+				<Field>
 					<h4>Name:</h4>
 					<h3>Admin User</h3>
-				</div>
-				<div className="field">
+				</Field>
+				<Field>
 					<h4>Email:</h4>
 					<h3>adminUser@gmail.com</h3>
-				</div>
+				</Field>
 				<div className="buttons">
-					<Button>See experiments</Button>
-					<Button>See events</Button>
+					<Button to="/experimentsList">See experiments</Button>
+					<Button to="/eventsList">See events</Button>
 				</div>
-			</Container>
+			</HomeContainer>
 		</div>
 	);
 }
 
-const Container = styled.div`
+const HomeContainer = styled.div`
 	background: ${lightBg};
 	height: 100vh;
 	display: flex;
@@ -55,24 +56,6 @@ const Container = styled.div`
 		margin: 24px auto;
 	}
 
-	> .field {
-		padding: 0px 20px;
-		margin-top: 25px;
-		display: flex;
-		color: white;
-		align-items: center;
-
-		> h4 {
-			font-size: ${fontP};
-			margin-right: 10px;
-			font-weight: normal;
-		}
-
-		> h3 {
-			font-size: ${fontH3};
-		}
-	}
-
 	> .buttons {
 		display: flex;
 		flex-direction: column;
@@ -83,11 +66,30 @@ const Container = styled.div`
 	}
 `;
 
-const Button = styled.button`
+const Field = styled.div`
+	padding: 0px 20px;
+	margin-top: 25px;
+	display: flex;
+	color: white;
+	align-items: center;
+
+	> h4 {
+		font-size: ${fontP};
+		margin-right: 10px;
+		font-weight: normal;
+	}
+
+	> h3 {
+		font-size: ${fontH3};
+	}
+`;
+
+const Button = styled(Link)`
 	background: transparent;
 	border: 2px solid ${turquoise};
 	border-radius: 8px;
 	padding: 12px 20px;
 	width: 200px;
 	color: white;
+	text-decoration: none;
 `;

@@ -13,12 +13,12 @@ import { Form, Field, Formik } from 'formik';
 import { BsPerson, BsLock } from 'react-icons/bs';
 import { Link as LinkR } from 'react-router-dom';
 
-function SignUp() {
+export default function SignUp() {
 	return (
 		<>
-			<Container>
+			<PageContainer>
 				<img src={logo} alt="" />
-				<div className="formContainer">
+				<FormContainer>
 					<h3>Register</h3>
 					<Formik
 						initialValues={{ email: '', name: '', password: '', password2: '' }}
@@ -74,20 +74,18 @@ function SignUp() {
 
 							<a href="/">Forgot password?</a>
 							<button type="submit">REGISTER</button>
-							<div class="text">
+							<Text>
 								Already have an account? <Link to="/signin">Sign In</Link>
-							</div>
+							</Text>
 						</SignUpForm>
 					</Formik>
-				</div>
-			</Container>
+				</FormContainer>
+			</PageContainer>
 		</>
 	);
 }
 
-export default SignUp;
-
-const Container = styled.div`
+const PageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
@@ -110,50 +108,50 @@ const Container = styled.div`
 			margin-left: 30px;
 		}
 	}
+`;
 
-	> .formContainer {
-		display: flex;
-		flex-direction: column;
-		margin: 35px auto;
-		height: 66vh;
-		width: 85vw;
-		border-radius: 8px;
-		padding: 22px;
-		background: ${turquoise};
+const FormContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin: 35px auto;
+	height: 66vh;
+	width: 85vw;
+	border-radius: 8px;
+	padding: 22px;
+	background: ${turquoise};
 
-		@media screen and (min-width: 375px) {
-			width: 75vw;
-		}
+	@media screen and (min-width: 375px) {
+		width: 75vw;
+	}
 
-		@media screen and (min-width: 768px) {
-			width: 45vw;
-			height: 70vh;
-			margin: 20px auto;
-			padding: 18px;
-		}
+	@media screen and (min-width: 768px) {
+		width: 45vw;
+		height: 70vh;
+		margin: 20px auto;
+		padding: 18px;
+	}
 
-		@media screen and (min-width: 1024px) {
-			width: 35vw;
-			height: 71vh;
-			margin: 10px auto;
-		}
+	@media screen and (min-width: 1024px) {
+		width: 35vw;
+		height: 71vh;
+		margin: 10px auto;
+	}
+
+	@media screen and (min-width: 1200px) {
+		width: 27vw;
+		height: 72vh;
+		margin: 5px auto;
+		padding: 23px;
+	}
+
+	> h3 {
+		font-size: ${fontH3};
+		color: ${lightBg};
+		font-weight: 700;
+		text-align: center;
 
 		@media screen and (min-width: 1200px) {
-			width: 27vw;
-			height: 72vh;
-			margin: 5px auto;
-			padding: 23px;
-		}
-
-		> h3 {
-			font-size: ${fontH3};
-			color: ${lightBg};
-			font-weight: 700;
-			text-align: center;
-
-			@media screen and (min-width: 1200px) {
-				font-size: ${fontH2};
-			}
+			font-size: ${fontH2};
 		}
 	}
 `;
@@ -208,18 +206,6 @@ const SignUpForm = styled(Form)`
 		text-decoration: none;
 		text-align: center;
 	}
-
-	> .text {
-		display: flex;
-		font-size: ${fontH5};
-		margin-top: 10px;
-		justify-content: center;
-
-		@media screen and (min-width: 768px) {
-			margin-top: 10px;
-			font-size: ${fontP};
-		}
-	}
 `;
 
 const InputField = styled.div`
@@ -263,6 +249,18 @@ const Input = styled(Field)`
 const PassIcon = styled(BsLock)`
 	color: white;
 	margin-right: 10px;
+`;
+
+const Text = styled.div`
+	display: flex;
+	font-size: ${fontH5};
+	margin-top: 10px;
+	justify-content: center;
+
+	@media screen and (min-width: 768px) {
+		margin-top: 10px;
+		font-size: ${fontP};
+	}
 `;
 
 const Link = styled(LinkR)`

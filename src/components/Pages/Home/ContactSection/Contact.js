@@ -26,7 +26,8 @@ function Contact() {
 					<ContactField name="subject" type="text" />
 
 					<label>Message</label>
-					<MessageField name="message" type="text" />
+					<MessageField name="message" type="text" component="textarea" />
+
 					<button type="submit">Submit</button>
 				</ContactForm>
 			</Formik>
@@ -87,6 +88,7 @@ const ContactField = styled(Field)`
 	border: 1px solid ${turquoise};
 	border-radius: 5px;
 	height: 30px;
+	color: white;
 `;
 
 const MessageField = styled(Field)`
@@ -95,4 +97,5 @@ const MessageField = styled(Field)`
 	border: 1px solid ${turquoise};
 	border-radius: 5px;
 	height: 140px;
+	color: white;
 `;

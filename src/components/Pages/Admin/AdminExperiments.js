@@ -1,27 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-	AiOutlinePlus,
-	AiOutlineInfoCircle,
-	AiOutlineDelete
-} from 'react-icons/ai';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
-import { lightBg, fontH2, fontH3, turquoise } from '../../../globalStyles';
+import {
+	lightBg,
+	fontH2,
+	fontH3,
+	turquoise,
+	fontP
+} from '../../../globalStyles';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
 export default function AdminExperiments() {
 	return (
 		<div>
 			<AdminNavbar />
-			<Container>
+			<ExperimentsContainer>
 				<h2>Experiments</h2>
 				<hr />
-				<Button>
-					<button>Add</button>
+				<ExperimentsAddButton to="/newExperiment">
+					<p>Add</p>
 					<Icon />
-				</Button>
-				<Elements>
-					<Element>
+				</ExperimentsAddButton>
+				<ExperimentsList>
+					<ExperimentsItem>
 						<h3>Experiment One</h3>
 						<Icons>
 							<Link to="/experiments/11">
@@ -31,8 +35,8 @@ export default function AdminExperiments() {
 								<DeleteIcon />
 							</Link>
 						</Icons>
-					</Element>
-					<Element>
+					</ExperimentsItem>
+					<ExperimentsItem>
 						<h3>Experiment Two</h3>
 						<Icons>
 							<Link to="/experiments/11">
@@ -42,8 +46,8 @@ export default function AdminExperiments() {
 								<DeleteIcon />
 							</Link>
 						</Icons>
-					</Element>
-					<Element>
+					</ExperimentsItem>
+					<ExperimentsItem>
 						<h3>Experiment Three</h3>
 						<Icons>
 							<Link to="/experiments/11">
@@ -53,14 +57,15 @@ export default function AdminExperiments() {
 								<DeleteIcon />
 							</Link>
 						</Icons>
-					</Element>
-				</Elements>
-			</Container>
+					</ExperimentsItem>
+				</ExperimentsList>
+				<BackButton to="/admin">Go back</BackButton>
+			</ExperimentsContainer>
 		</div>
 	);
 }
 
-const Container = styled.div`
+const ExperimentsContainer = styled.div`
 	background: ${lightBg};
 	height: 100vh;
 	display: flex;
@@ -83,24 +88,26 @@ const Container = styled.div`
 	}
 `;
 
-const Icon = styled(AiOutlinePlus)`
+const Icon = styled(AddIcon)`
 	color: ${turquoise};
 	width: 20px;
 	height: 20px;
 `;
 
-const Button = styled.button`
+const ExperimentsAddButton = styled(Link)`
 	display: flex;
 	justify-content: space-between;
 	background: transparent;
+	text-decoration: none;
 	border: 2px solid ${turquoise};
 	border-radius: 8px;
 	padding: 12px 20px;
 	margin-right: 0;
 	width: 100px;
 	color: white;
+	align-items: center;
 
-	> button {
+	> p {
 		outline: none;
 		background: none;
 		color: white;
@@ -109,7 +116,7 @@ const Button = styled.button`
 	}
 `;
 
-const Elements = styled.div`
+const ExperimentsList = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-top: 20px;
@@ -121,7 +128,7 @@ const Elements = styled.div`
 	}
 `;
 
-const Element = styled.div`
+const ExperimentsItem = styled.div`
 	width: 260px;
 	height: 40px;
 	margin: 7px auto;
@@ -153,14 +160,27 @@ const Icons = styled.div`
 	}
 `;
 
-const InfoIcon = styled(AiOutlineInfoCircle)`
+const InfoIcon = styled(InfoOutlinedIcon)`
 	color: white;
 	width: 20px;
 	height: 20px;
 `;
 
-const DeleteIcon = styled(AiOutlineDelete)`
+const DeleteIcon = styled(DeleteOutlinedIcon)`
 	color: #bf2424;
 	width: 20px;
 	height: 20px;
+`;
+
+const BackButton = styled(Link)`
+	background: transparent;
+	border: 2px solid ${turquoise};
+	border-radius: 8px;
+	font-size: ${fontP};
+	padding: 12px 20px;
+	width: 100px;
+	margin-top: 40px;
+	text-decoration: none;
+	color: white;
+	align-items: center;
 `;

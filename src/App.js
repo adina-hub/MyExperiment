@@ -8,6 +8,9 @@ import AdminHome from './components/Pages/Admin/Admin';
 import AdminExperiments from './components/Pages/Admin/AdminExperiments';
 import AdminEvents from './components/Pages/Admin/AdminEvents';
 import Events from './components/Pages/Events/Events';
+import NewExperiment from './components/Pages/Admin/NewExperiment';
+import NewEvent from './components/Pages/Admin/NewEvent';
+
 function App() {
 	return (
 		<Router>
@@ -22,6 +25,8 @@ function App() {
 				<Route path="/admin" component={AdminHome} />
 				<Route path="/experimentsList" component={AdminExperiments} />
 				<Route path="/eventsList" component={AdminEvents} />
+				<Route path="/newExperiment" component={NewExperiment} />
+				<Route path="/newEvent" component={NewEvent} />
 			</Switch>
 		</Router>
 	);

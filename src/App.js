@@ -6,6 +6,7 @@ import Home from './components/Pages/Home/Home';
 import Experiments from './components/Pages/Experiments/Experiments';
 import AdminHome from './components/Pages/Admin/Admin';
 import AdminExperiments from './components/Pages/Admin/AdminExperiments';
+import AdminEvents from './components/Pages/Admin/AdminEvents';
 import Events from './components/Pages/Events/Events';
 import Event from './components/Pages/Events/Event/Event';
 function App() {
@@ -21,6 +22,7 @@ function App() {
 				<Route path="/events/:id" component={Event} />
 				<Route path="/admin" component={AdminHome} />
 				<Route path="/experimentsList" component={AdminExperiments} />
+				<Route path="/eventsList" component={AdminEvents} />
 			</Switch>
 		</Router>
 	);

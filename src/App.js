@@ -11,6 +11,7 @@ import Events from './components/Pages/Events/Events';
 import NewExperiment from './components/Pages/Admin/NewExperiment';
 import NewEvent from './components/Pages/Admin/NewEvent';
 
+import Event from './components/Pages/Events/Event/Event';
 function App() {
 	return (
 		<Router>
@@ -21,7 +22,7 @@ function App() {
 				<Route path="/experiments" component={Experiments} exact />
 				<Route path="/experiments/:id" component={Experiments} />
 				<Route path="/events" component={Events} exact />
-				<Route path="/events/:id" component={Events} />
+				<Route path="/events/:id" component={Event} />
 				<Route path="/admin" component={AdminHome} />
 				<Route path="/experimentsList" component={AdminExperiments} />
 				<Route path="/eventsList" component={AdminEvents} />

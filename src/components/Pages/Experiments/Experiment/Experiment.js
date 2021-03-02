@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { fontH2, fontH3, green, lightBg } from '../../../../globalStyles';
+import { fontH3, green, PageAddBtn, PageContainer, PageSection, PageSubHR, PageSubtitle, PageTitle } from '../../../../globalStyles';
 import Navbar from '../../../Elements/Navbar/Navbar';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -17,49 +17,40 @@ function Experiment({ id }) {
     const [clicked, setClicked] = useState(false)
 
     return (
-        <ExperimentContainer>
+        <PageContainer>
             <Navbar></Navbar>
-            <ExperimentTitle>{experiment.title}</ExperimentTitle>
-            <ExperimentVideo src={experiment.src} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
-            <ExperimentInfo>
-                <h2>Activity overview</h2>
-                <hr />
-                <ExperimentTopics>
-                    <h3>Science Topics:</h3>
-                    {experiment.topics.map((topic, i) => (<p>{topic}{i !== experiment.topics.length - 1 ? "," : null}</p>))}
-                </ExperimentTopics>
-                <ExperimentDetails>
-                    <ul>Materials needed:
-                        {experiment.materials.map(material => (<li>{material}</li>))}
-                    </ul>
-                </ExperimentDetails>
-                <ExperimentDetails>
-                    <ol>Steps to follow:
-                        {experiment.steps.map(step => (<li>{step}</li>))}
-                    </ol>
-                </ExperimentDetails>
-            </ExperimentInfo>
-            <ExperimentButton onClick={() => setClicked(!clicked)}>
-                <p>Add to favourites</p>
-                {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-            </ExperimentButton>
-        </ExperimentContainer>
+            <PageSection>
+                <PageTitle white small>{experiment.title}</PageTitle>
+                <ExperimentVideo src={experiment.src} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+                <ExperimentInfo>
+                    <PageSubtitle>Activity overview</PageSubtitle>
+                    <PageSubHR />
+                    <ExperimentTopics>
+                        <PageSubtitle small>Science Topics:</PageSubtitle>
+                        {experiment.topics.map((topic, i) => (<p>{topic}{i !== experiment.topics.length - 1 ? "," : null}</p>))}
+                    </ExperimentTopics>
+                    <ExperimentDetails>
+                        <ul>
+                            <PageSubtitle small>Materials needed:</PageSubtitle>
+                            {experiment.materials.map(material => (<li>{material}</li>))}
+                        </ul>
+                    </ExperimentDetails>
+                    <ExperimentDetails>
+                        <ol>
+                            <PageSubtitle small>Steps to follow:</PageSubtitle>
+                            {experiment.steps.map(step => (<li>{step}</li>))}
+                        </ol>
+                    </ExperimentDetails>
+                </ExperimentInfo>
+                <PageAddBtn onClick={() => setClicked(!clicked)}>
+                    <p>Add to favourites</p>
+                    {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                </PageAddBtn>
+            </PageSection>
+
+        </PageContainer>
     );
 }
-
-const ExperimentContainer = styled.div`
-	background: ${lightBg};
-	display: flex;
-	flex-direction: column;
-	padding-bottom: 50px;
-`;
-
-const ExperimentTitle = styled.h2`
-	font-size: ${fontH2};
-	color: #fff;
-	text-align: center;
-	margin-top: 80px;
-`;
 
 const ExperimentVideo = styled.iframe`
 	width: 280px;
@@ -70,36 +61,15 @@ const ExperimentVideo = styled.iframe`
 
 const ExperimentInfo = styled.div`
 	margin-top: 30px;
-	padding: 0 30px;
-	h3,
-	h2,
-	ul,
-	ol {
-		color: ${green};
-	}
-
-	h3,
-	ul,
-	ol {
-		font-size: ${fontH3};
-	}
-
-	> hr {
-		margin-top: 5px;
-		opacity: 15%;
-		width: 85%;
-	}
+	padding: 0 15px;
+	h3,h2, ul,ol { color: ${green}; }
+	h3,ul,ol { font-size: ${fontH3}; }
 `;
 
 const ExperimentTopics = styled.div`
 	display: flex;
 	align-items: center;
 	margin-top: 20px;
-
-	> h3 {
-		font-weight: 400;
-	}
-
 	> p {
 		margin-left: 7.5px;
 		color: white;
@@ -113,35 +83,12 @@ const ExperimentDetails = styled.div`
 
 	li {
 		color: #fff;
+        text-align: left;
 		margin-top: 15px;
 		margin-left: 20px;
 	}
 `;
 
-const ExperimentButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: transparent;
-    margin: 50px auto 0 auto;
-    border: 2px solid ${green};
-    border-radius: 5px;
-    padding: 15px 25px;
 
-    :focus {
-        outline: none;
-    }
-
-    > p {
-        color: #fff;
-        margin-right: 10px;
-        font-size: ${fontH3};
-        letter-spacing: 1px;
-    }
-
-    > .MuiSvgIcon-root {
-        fill: ${green};
-    }
-`;
 
 export default Experiment;

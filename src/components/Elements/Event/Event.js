@@ -96,7 +96,7 @@ const EventDetail = styled.div`
 
 	> h5 {
 		margin-left: 5px;
-        color: #000;
+        color: ${purple};
 	}
 
 

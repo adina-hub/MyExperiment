@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import { fontH2, fontH3, green, lightBg, purple } from '../../../../globalStyles';
+import { fontH2, fontH3, fontP, green, PageAddBtn, PageContainer, PageSection, PageSubHR, PageSubtitle, PageTitle } from '../../../../globalStyles';
 import Navbar from '../../../Elements/Navbar/Navbar';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
@@ -24,77 +24,54 @@ function Event({ id }) {
     const [clicked, setClicked] = useState(false)
 
     return (
-        <EventContainer>
+        <PageContainer>
             <Navbar></Navbar>
-            <EventTitle>{event.title}</EventTitle>
-            <EventImage src={event.src}></EventImage>
-            <EventInfo>
-                <h2>Activity overview</h2>
-                <hr />
-                <EventDetails>
-                    <EventDetail>
-                        <LocationOnIcon />
-                        <h5>{event.location}</h5>
-                    </EventDetail>
-                    <EventDetail>
-                        <ScheduleIcon />
-                        <h5>{event.time}</h5>
-                    </EventDetail>
-                </EventDetails>
-                <EventTopics>
-                    <h3>Science Topics:</h3>
-                    {event.topics.map((topic, i) => (<p>{topic}{i !== event.topics.length - 1 ? "," : null}</p>))}
-                </EventTopics>
-                <h2>What are we going to do?</h2>
-                <hr />
-                <EventSteps>
-                    {event.steps.map(step => (<li>{step}</li>))}
-                </EventSteps>
-            </EventInfo>
-            <EventButton onClick={() => setClicked(!clicked)}>
-                <p>Book a place</p>
-                {clicked ? <PersonAddIcon /> : <PersonAddOutlinedIcon />}
-            </EventButton>
-        </EventContainer>
+            <PageSection>
+                <PageTitle white>{event.title}</PageTitle>
+                <EventImage src={event.src}></EventImage>
+                <EventInfo>
+                    <PageSubtitle>Activity overview</PageSubtitle>
+                    <PageSubHR />
+                    <EventDetails>
+                        <EventDetail>
+                            <LocationOnIcon />
+                            <h5>{event.location}</h5>
+                        </EventDetail>
+                        <EventDetail>
+                            <ScheduleIcon />
+                            <h5>{event.time}</h5>
+                        </EventDetail>
+                    </EventDetails>
+                    <EventTopics>
+                        <PageSubtitle small>Science Topics:</PageSubtitle>
+                        {event.topics.map((topic, i) => (<p>{topic}{i !== event.topics.length - 1 ? "," : null}</p>))}
+                    </EventTopics>
+                    <PageSubtitle>Event description</PageSubtitle>
+                    <PageSubHR />
+                    <EventSteps>
+                        {event.steps.map(step => (<li>{step}</li>))}
+                    </EventSteps>
+                </EventInfo>
+                <PageAddBtn onClick={() => setClicked(!clicked)}>
+                    <p>Book a place</p>
+                    {clicked ? <PersonAddIcon /> : <PersonAddOutlinedIcon />}
+                </PageAddBtn>
+            </PageSection>
+        </PageContainer>
     )
 }
-
-const EventContainer = styled.div`
-    background: ${lightBg};
-	display: flex;
-	flex-direction: column;
-	padding-bottom: 50px;
-`;
-
-const EventTitle = styled.h2`
-	font-size: ${fontH2};
-	color: #fff;
-	text-align: center;
-	margin-top: 80px;
-`;
 
 
 const EventImage = styled.img`
 	width: 280px;
 	height: 200px;
 	border-radius: 20px;
-	margin: 20px auto 0 auto;
+	margin: 20px auto 30px auto;
     object-fit: cover;
 `;
 
 const EventInfo = styled.div`
-	padding: 0 30px;
-	h3, h2, ol { color: ${green}; }
-	h3, ol { font-size: ${fontH3}; }
-	> hr {
-		margin-top: 5px;
-		opacity: 15%;
-		width: 85%;
-	}
-    h2{
-        margin-top: 30px;
-        font-size: ${fontH2};
-    }
+	padding: 0 15px;
 `;
 
 const EventSteps = styled.ol`
@@ -103,6 +80,7 @@ const EventSteps = styled.ol`
         margin-top: 15px;
 		margin-left: 20px;
         line-height: 25px;
+        text-align: left;
     }
 `;
 
@@ -138,42 +116,12 @@ const EventDetail = styled.div`
 const EventTopics = styled.div`
 	display: flex;
 	align-items: center;
-	margin-top: 20px;
-
-	> h3 {
-		font-weight: 400;
-	}
+	margin: 20px auto 30px auto;
 
 	> p {
 		margin-left: 7.5px;
 		color: white;
 	}
-`;
-
-const EventButton = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: transparent;
-    margin: 50px auto 0 auto;
-    border: 2px solid ${green};
-    border-radius: 5px;
-    padding: 15px 25px;
-
-    :focus {
-        outline: none;
-    }
-
-    > p {
-        color: #fff;
-        margin-right: 10px;
-        font-size: ${fontH3};
-        letter-spacing: 1px;
-    }
-
-    > .MuiSvgIcon-root {
-        fill: ${green};
-    }
 `;
 
 

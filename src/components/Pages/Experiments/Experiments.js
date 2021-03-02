@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-	darkBg,
-	fontH2,
-	fontP,
-	lightBg,
-	green,
 	turquoise,
-	purple
+	purple,
+	PageContainer,
+	PageTitle,
+	PageDescription,
+	PageHR,
+	PageSection,
+	PageSubtitle
 } from '../../../globalStyles';
 import Navbar from '../../Elements/Navbar/Navbar';
 import Experiment from './Experiment/Experiment';
@@ -20,21 +21,21 @@ function Experiments() {
 		return <Experiment id={id} />;
 	} else {
 		return (
-			<ExperimentsContainer>
+			<PageContainer>
 				<Navbar></Navbar>
-				<ExperimentsTop>
-					<h2>Experiments</h2>
-					<hr />
-					<p>Here you can find physics related experiments.</p>
-					<p>
+				<PageSection fullHeight>
+					<PageTitle>Experiments</PageTitle>
+					<PageHR />
+					<PageDescription>Here you can find physics related experiments.</PageDescription>
+					<PageDescription>
 						From mechanics to optics and fluids, all in one place, each of them
 						having a video with explications from our teachers.
-					</p>
-					<hr />
+					</PageDescription>
+					<PageHR />
 					<Dropdown />
-				</ExperimentsTop>
-				<ExperimentsBottom>
-					<h3>Category: All</h3>
+				</PageSection>
+				<PageSection dark fullHeight>
+					<PageSubtitle>Category: All</PageSubtitle>
 					<ExperimentsList>
 						<ExperimentsItem>
 							<img
@@ -58,60 +59,14 @@ function Experiments() {
 							<p>How to make a sandwich</p>
 						</ExperimentsItem>
 					</ExperimentsList>
-				</ExperimentsBottom>
-			</ExperimentsContainer>
+				</PageSection>
+			</PageContainer>
 		);
 	}
 }
 
 export default Experiments;
 
-const ExperimentsContainer = styled.div``;
-
-const ExperimentsTop = styled.div`
-	background: ${lightBg};
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	padding: 0px 12.5px;
-	text-align: center;
-
-	> h2 {
-		margin: 80px auto 0px auto;
-		font-size: ${fontH2};
-		letter-spacing: 1px;
-		color: ${green};
-	}
-
-	> hr {
-		width: 70%;
-		height: 3px;
-		background: #fff;
-		margin: 24px auto;
-	}
-
-	> p {
-		color: white;
-		font-size: ${fontP};
-		font-weight: normal;
-		line-height: 25px;
-	}
-`;
-
-const ExperimentsBottom = styled.div`
-	background: ${darkBg};
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	padding: 30px 20px;
-
-	> h3 {
-		font-size: ${fontH2};
-		letter-spacing: 1px;
-		text-align: left;
-		color: #fff;
-	}
-`;
 
 const ExperimentsList = styled.div`
 	display: flex;

@@ -1,66 +1,71 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-	AiOutlinePlus,
-	AiOutlineInfoCircle,
-	AiOutlineDelete
-} from 'react-icons/ai';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
-import { lightBg, fontH2, fontH3, turquoise } from '../../../globalStyles';
+import {
+	lightBg,
+	fontH2,
+	fontH3,
+	turquoise,
+	fontP
+} from '../../../globalStyles';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
 export default function AdminEvents() {
 	return (
 		<div>
 			<AdminNavbar />
-			<Container>
+			<EventsContainer>
 				<h2>Events</h2>
 				<hr />
-				<Button>
-					<button>Add</button>
+				<EventsAddButton to="/newEvent">
+					<p>Add</p>
 					<Icon />
-				</Button>
-				<Elements>
-					<Element>
+				</EventsAddButton>
+				<EventsList>
+					<EventsItem>
 						<h3>Event One</h3>
 						<Icons>
-							<Link to="/admin">
+							<Link to="/events/11">
 								<InfoIcon />
 							</Link>
 							<Link>
 								<DeleteIcon />
 							</Link>
 						</Icons>
-					</Element>
-					<Element>
+					</EventsItem>
+					<EventsItem>
 						<h3>Event Two</h3>
 						<Icons>
-							<Link to="/admin">
+							<Link to="/events/11">
 								<InfoIcon />
 							</Link>
 							<Link>
 								<DeleteIcon />
 							</Link>
 						</Icons>
-					</Element>
-					<Element>
+					</EventsItem>
+					<EventsItem>
 						<h3>Event Three</h3>
 						<Icons>
-							<Link to="/admin">
+							<Link to="/events/11">
 								<InfoIcon />
 							</Link>
 							<Link>
 								<DeleteIcon />
 							</Link>
 						</Icons>
-					</Element>
-				</Elements>
-			</Container>
+					</EventsItem>
+				</EventsList>
+				<BackButton to="/admin">Go back</BackButton>
+			</EventsContainer>
 		</div>
 	);
 }
 
-const Container = styled.div`
+const EventsContainer = styled.div`
 	background: ${lightBg};
 	height: 100vh;
 	display: flex;
@@ -83,24 +88,26 @@ const Container = styled.div`
 	}
 `;
 
-const Icon = styled(AiOutlinePlus)`
+const Icon = styled(AddIcon)`
 	color: ${turquoise};
 	width: 20px;
 	height: 20px;
 `;
 
-const Button = styled.button`
+const EventsAddButton = styled(Link)`
 	display: flex;
 	justify-content: space-between;
 	background: transparent;
+	text-decoration: none;
 	border: 2px solid ${turquoise};
 	border-radius: 8px;
 	padding: 12px 20px;
 	margin-right: 0;
 	width: 100px;
 	color: white;
+	align-items: center;
 
-	> button {
+	> p {
 		outline: none;
 		background: none;
 		color: white;
@@ -109,13 +116,19 @@ const Button = styled.button`
 	}
 `;
 
-const Elements = styled.div`
+const EventsList = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-top: 20px;
+
+	> button {
+		background: none;
+		outline: none;
+		border: none;
+	}
 `;
 
-const Element = styled.div`
+const EventsItem = styled.div`
 	width: 260px;
 	height: 40px;
 	margin: 7px auto;
@@ -137,16 +150,37 @@ const Icons = styled.div`
 	width: 50px;
 	display: flex;
 	justify-content: space-between;
+
+	> button {
+		outline: none;
+		background: none;
+		color: white;
+		border: none;
+		font-size: ${fontH3};
+	}
 `;
 
-const InfoIcon = styled(AiOutlineInfoCircle)`
+const InfoIcon = styled(InfoOutlinedIcon)`
 	color: white;
 	width: 20px;
 	height: 20px;
 `;
 
-const DeleteIcon = styled(AiOutlineDelete)`
+const DeleteIcon = styled(DeleteOutlinedIcon)`
 	color: #bf2424;
 	width: 20px;
 	height: 20px;
+`;
+
+const BackButton = styled(Link)`
+	background: transparent;
+	border: 2px solid ${turquoise};
+	border-radius: 8px;
+	font-size: ${fontP};
+	padding: 12px 20px;
+	width: 100px;
+	margin-top: 40px;
+	text-decoration: none;
+	color: white;
+	align-items: center;
 `;

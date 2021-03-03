@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { turquoise, fontH2, fontH3, fontH5 } from '../../../../globalStyles';
+import { turquoise, fontH2, fontH3, PageBtn } from '../../../../globalStyles';
 import { Form, Field, Formik } from 'formik';
 
 function Contact() {
@@ -28,7 +28,7 @@ function Contact() {
 					<label>Message</label>
 					<MessageField name="message" type="text" component="textarea" />
 
-					<button type="submit">Submit</button>
+					<PageBtn type="submit">Submit</PageBtn>
 				</ContactForm>
 			</Formik>
 		</ContactContainer>
@@ -67,18 +67,6 @@ const ContactForm = styled(Form)`
 		text-align: left;
 		color: white;
 		margin: 10px 0px;
-	}
-
-	> button {
-		width: 43%;
-		height: 30px;
-		font-size: ${fontH5};
-		background: #4d194d;
-		outline: none;
-		border-radius: 8px;
-		border: none;
-		color: white;
-		margin: auto;
 	}
 `;
 

@@ -117,7 +117,7 @@ const EventButtons = styled.div`
 	    font-size: 12px;
 	    height: 30px;
 	    outline: none;
-	    border-radius: 8px;
+	    border-radius: 5px;
         
     }
 

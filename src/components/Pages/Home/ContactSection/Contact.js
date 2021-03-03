@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { turquoise, fontH2, fontH3, PageBtn } from '../../../../globalStyles';
+import {
+	turquoise,
+	PageTitle,
+	PageSection,
+	PageDescription,
+	PageBtn
+} from '../../../../globalStyles';
 import { Form, Field, Formik } from 'formik';
 
 export default function Contact() {

@@ -128,8 +128,8 @@ const EventButtons = styled.div`
 	}
 
 	> .book {
-		background: ${purple};
+		background: ${green};
 		border: none;
-		color: white;
+		color: ${lightBg};
 	}
 `;

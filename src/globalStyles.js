@@ -15,6 +15,7 @@ export const fontH2 = '21px';
 export const fontH3 = '15px';
 export const fontP = '14px';
 export const fontH5 = '10px';
+
 //======CONTAINERS=========
 export const PageContainer = styled.div`
 	text-align: center;

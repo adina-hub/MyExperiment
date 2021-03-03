@@ -7,7 +7,7 @@ import {
 	PageForm,
 	PageInput
 } from '../../../../globalStyles';
-import { Form, Field, Formik } from 'formik';
+import { Formik } from 'formik';
 
 export default function Contact() {
 	return (
@@ -32,7 +32,7 @@ export default function Contact() {
 					<PageInput name="subject" type="text" />
 
 					<label>Message</label>
-					<PageInput textArea name="message" type="text" component="textarea" />
+					<PageInput textarea="true" name="message" type="text" component="textarea" />
 
 					<PageBtn marginTop type="submit">Submit</PageBtn>
 				</PageForm>

@@ -156,6 +156,6 @@ export const PageInput = styled(Field)`
 	outline: none;
 	border: 1px solid ${green};
 	border-radius: 5px;
-	height: ${(props) => (props.textArea ? '140px' : '30px')};
+	height: ${(props) => (props.textarea ? '140px' : '30px')};
 	color: white;
 `;

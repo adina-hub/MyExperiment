@@ -1,85 +1,69 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import {
-	turquoise,
-	fontP,
 	fontH3,
 	PageLinkBtn,
 	PageContainer,
 	PageSection,
 	PageTitle,
-	PageHR
+	PageHR,
+	green,
 } from '../../../globalStyles';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
 export default function AdminHome() {
 	return (
-		<div>
+		<PageContainer>
 			<AdminNavbar />
-			<PageContainer>
-				<PageSection fullHeight>
-					<AdminTitle>Welcome, admin</AdminTitle>
-					<PageHR />
-					<Field>
-						<h4>Name:</h4>
-						<h3>Admin User</h3>
-					</Field>
-					<Field>
-						<h4>Email:</h4>
-						<h3>adminUser@gmail.com</h3>
-					</Field>
-					<AdminBtnContainer>
-						<PageLinkBtn large to="/experimentsList">
-							See experiments
-						</PageLinkBtn>
-						<PageLinkBtn large to="/eventsList">
-							See events
-						</PageLinkBtn>
-					</AdminBtnContainer>
-				</PageSection>
-			</PageContainer>
-		</div>
+			<PageSection fullHeight>
+				<PageTitle>Welcome, admin</PageTitle>
+				<PageHR />
+				<AdminField>
+					<AdminFieldName>Name:</AdminFieldName>
+					<AdminFieldValue>Admin User</AdminFieldValue>
+				</AdminField>
+				<AdminField>
+					<AdminFieldName>Email:</AdminFieldName>
+					<AdminFieldValue>adminUser@gmail.com</AdminFieldValue>
+				</AdminField>
+				<AdminBtnContainer>
+					<PageLinkBtn large="true" to="/experimentsList">
+						See experiments
+					</PageLinkBtn>
+					<PageLinkBtn large="true" to="/eventsList">
+						See events
+					</PageLinkBtn>
+				</AdminBtnContainer>
+			</PageSection>
+		</PageContainer>
 	);
 }
 
-const AdminTitle = styled(PageTitle)`
-	color: ${turquoise};
-`;
+
 
 const AdminBtnContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	margin: 70px auto 0 auto;
-	height: 100px;
+	margin: 50px auto 0 auto;
+	height: 110px;
 `;
 
-const Field = styled.div`
-	padding: 0px 20px;
-	margin-top: 25px;
+const AdminField = styled.div`
+	max-width: 65%;
+	margin: 25px auto 0 auto;
 	display: flex;
 	color: white;
 	align-items: center;
-
-	> h4 {
-		font-size: ${fontP};
-		margin-right: 10px;
-		font-weight: normal;
-	}
-
-	> h3 {
-		font-size: ${fontH3};
-	}
 `;
 
-const Button = styled(Link)`
-	background: transparent;
-	border: 2px solid ${turquoise};
-	border-radius: 8px;
-	padding: 12px 20px;
-	width: 200px;
-	color: white;
-	text-decoration: none;
+const AdminFieldName = styled.h3`
+		margin-right: 10px;
+		font-size: ${fontH3};
+`;
+
+const AdminFieldValue = styled.h3`
+		color: ${green};
+		font-size: ${fontH3};
 `;

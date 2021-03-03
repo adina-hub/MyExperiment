@@ -60,7 +60,7 @@ export default function NewEvent() {
 
 						<label id="steps">Steps</label>
 						<PageInput
-							textArea
+							textarea="true"
 							name="steps"
 							type="text"
 							component="textarea"

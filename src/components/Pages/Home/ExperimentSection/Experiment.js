@@ -1,14 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import {
-	fontP,
 	PageSection,
 	PageTitle,
 	PageDescription,
-	green,
-	darkBg
+	PageBtn
 } from '../../../../globalStyles';
-import { AiOutlineArrowRight } from 'react-icons/ai';
 
 export default function Experiment() {
 	return (
@@ -19,30 +15,7 @@ export default function Experiment() {
 				and fluids, all in one place, each of them having a video with
 				explications from our teachers.
 			</PageDescription>
-			<Button>
-				Learn More
-				<Icon />
-			</Button>
+			<PageBtn>Learn More</PageBtn>
 		</PageSection>
 	);
 }
-
-const Button = styled.button`
-	width: 150px;
-	height: 30px;
-	border-radius: 5px;
-	border: none;
-	background: ${green};
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	margin: 50px auto 0px auto;
-	outline: none;
-	color: ${darkBg};
-	font-weight: normal;
-	font-size: ${fontP};
-`;
-
-const Icon = styled(AiOutlineArrowRight)`
-	color: ${darkBg};
-`;

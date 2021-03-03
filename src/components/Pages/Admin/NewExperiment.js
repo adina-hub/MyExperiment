@@ -2,16 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import { Form, Field, Formik } from 'formik';
-import { fontH2, fontH3, lightBg, turquoise } from '../../../globalStyles';
+import {
+	fontH2,
+	fontH3,
+	lightBg,
+	PageContainer,
+	PageTitle,
+	PageHR,
+	PageSection,
+	turquoise,
+	PageForm,
+	PageInput,
+	PageBtnContainer,
+	PageLinkBtn,
+	AdminAddBtn
+} from '../../../globalStyles';
 import { Link } from 'react-router-dom';
 
 export default function NewExperiment() {
 	return (
-		<div>
+		<PageContainer>
 			<AdminNavbar />
-			<NewExperimentContainer>
-				<h2>New Experiment</h2>
-				<hr />
+			<PageSection>
+				<PageTitle>New Experiment</PageTitle>
+				<PageHR />
 				<Formik
 					initialValues={{
 						title: '',
@@ -25,30 +39,36 @@ export default function NewExperiment() {
 						alert(JSON.stringify(values, null, 2));
 					}}
 				>
-					<NewExperimentForm>
+					<PageForm>
 						<label id="title">Title</label>
-						<Input name="title" type="text" required />
+						<PageInput name="title" type="text" required />
 
 						<label id="url">Url</label>
-						<Input name="url" type="text" required />
+						<PageInput name="url" type="text" required />
 
 						<label id="domains">Domains</label>
-						<Input name="domains" type="text" required />
+						<PageInput name="domains" type="text" required />
 
 						<label id="materials">Materials needed</label>
-						<Input name="materials" type="text" required />
+						<PageInput name="materials" type="text" required />
 
 						<label id="steps">Steps</label>
-						<Input component="textarea" name="steps" type="text" required />
+						<PageInput
+							textArea
+							component="textarea"
+							name="steps"
+							type="text"
+							required
+						/>
 
-						<div class="buttons">
-							<Button to="/experimentsList">Go back</Button>
-							<SubmitButton type="submit">ADD</SubmitButton>
-						</div>
-					</NewExperimentForm>
+						<PageBtnContainer>
+							<PageLinkBtn to="/experimentsList">Go back</PageLinkBtn>
+							<AdminAddBtn type="submit">ADD</AdminAddBtn>
+						</PageBtnContainer>
+					</PageForm>
 				</Formik>
-			</NewExperimentContainer>
-		</div>
+			</PageSection>
+		</PageContainer>
 	);
 }
 

@@ -1,4 +1,4 @@
-import { Field } from 'formik';
+import { Field, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -32,11 +32,11 @@ export const PageSection = styled.div`
 `;
 
 export const PageBtnContainer = styled.div`
-        display: flex;
-		height: 45px;
-		justify-content: space-evenly;
-		margin: 30px 0;
-`
+	display: flex;
+	height: 45px;
+	justify-content: space-evenly;
+	margin: 30px 0;
+`;
 
 //=======COMPONENTS========
 
@@ -89,7 +89,7 @@ export const PageBtn = styled.button`
 	background: ${green};
 	color: ${lightBg};
 	border-radius: 5px;
-    margin-top: ${props => props.marginTop ? '25px' : 'auto'}
+	margin-top: ${(props) => (props.marginTop ? '25px' : 'auto')};
 `;
 
 export const PageAddBtn = styled.button`
@@ -119,29 +119,28 @@ export const PageAddBtn = styled.button`
 `;
 
 export const PageLinkBtn = styled(Link)`
-    background: transparent;
+	background: transparent;
 	border: 2px solid ${green};
 	border-radius: 8px;
 	padding: 12px 20px;
-	width: ${(props) => props.large ? '200px' : '120px'};
+	width: ${(props) => (props.large ? '200px' : '120px')};
 	text-decoration: none;
 	color: white;
-`
+`;
 //Admin
 export const AdminAddBtn = styled.button`
-    background: ${green};
-    color: ${darkBg};
+	background: ${green};
+	color: ${darkBg};
 	border-radius: 8px;
 	padding: 12px 20px;
 	width: 120px;
 	outline: none;
 	border: none;
- `;
-
+`;
 
 //Form
-export const PageForm = styled.form`
-    display: flex;
+export const PageForm = styled(Form)`
+	display: flex;
 	flex-direction: column;
 
 	> label {
@@ -153,10 +152,10 @@ export const PageForm = styled.form`
 
 //Inputs
 export const PageInput = styled(Field)`
-    background: none;
+	background: none;
 	outline: none;
 	border: 1px solid ${green};
 	border-radius: 5px;
-	height: ${props => props.textArea ? '140px' : '30px'};
+	height: ${(props) => (props.textArea ? '140px' : '30px')};
 	color: white;
 `;

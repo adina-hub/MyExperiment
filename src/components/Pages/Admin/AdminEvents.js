@@ -9,17 +9,21 @@ import {
 	fontH2,
 	fontH3,
 	turquoise,
-	fontP
+	fontP,
+	PageContainer,
+	PageSection,
+	PageTitle,
+	PageHR
 } from '../../../globalStyles';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
 export default function AdminEvents() {
 	return (
-		<div>
+		<PageContainer>
 			<AdminNavbar />
-			<EventsContainer>
-				<h2>Events</h2>
-				<hr />
+			<PageSection fullHeight>
+				<PageTitle white>Events</PageTitle>
+				<PageHR />
 				<EventsAddButton to="/newEvent">
 					<p>Add</p>
 					<Icon />
@@ -60,8 +64,8 @@ export default function AdminEvents() {
 					</EventsItem>
 				</EventsList>
 				<BackButton to="/admin">Go back</BackButton>
-			</EventsContainer>
-		</div>
+			</PageSection>
+		</PageContainer>
 	);
 }
 

@@ -9,17 +9,21 @@ import {
 	fontH2,
 	fontH3,
 	turquoise,
-	fontP
+	fontP,
+	PageContainer,
+	PageSection,
+	PageHR,
+	PageTitle
 } from '../../../globalStyles';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
 export default function AdminExperiments() {
 	return (
-		<div>
+		<PageContainer>
 			<AdminNavbar />
-			<ExperimentsContainer>
-				<h2>Experiments</h2>
-				<hr />
+			<PageSection fullHeight>
+				<PageTitle white>Experiments</PageTitle>
+				<PageHR />
 				<ExperimentsAddButton to="/newExperiment">
 					<p>Add</p>
 					<Icon />
@@ -60,33 +64,10 @@ export default function AdminExperiments() {
 					</ExperimentsItem>
 				</ExperimentsList>
 				<BackButton to="/admin">Go back</BackButton>
-			</ExperimentsContainer>
-		</div>
+			</PageSection>
+		</PageContainer>
 	);
 }
-
-const ExperimentsContainer = styled.div`
-	background: ${lightBg};
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	padding: 10px 12.5px;
-	text-align: center;
-
-	> h2 {
-		margin: 80px auto 0px auto;
-		font-size: ${fontH2};
-		letter-spacing: 1px;
-		color: ${turquoise};
-	}
-
-	> hr {
-		width: 80%;
-		height: 3px;
-		background: #fff;
-		margin: 24px auto;
-	}
-`;
 
 const Icon = styled(AddIcon)`
 	color: ${turquoise};

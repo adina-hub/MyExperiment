@@ -1,7 +1,17 @@
 import React from 'react';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import { Formik } from 'formik';
-import { AdminAddBtn, green, PageBtnContainer, PageContainer, PageForm, PageHR, PageInput, PageLinkBtn, PageSection, PageTitle } from '../../../globalStyles';
+import {
+	AdminAddBtn,
+	PageBtnContainer,
+	PageContainer,
+	PageForm,
+	PageHR,
+	PageInput,
+	PageLinkBtn,
+	PageSection,
+	PageTitle
+} from '../../../globalStyles';
 
 export default function NewEvent() {
 	return (
@@ -13,6 +23,7 @@ export default function NewEvent() {
 				<Formik
 					initialValues={{
 						title: '',
+						url: '',
 						description: '',
 						location: '',
 						date: '',
@@ -28,6 +39,9 @@ export default function NewEvent() {
 					<PageForm>
 						<label id="title">Title</label>
 						<PageInput name="title" type="text" required />
+
+						<label id="url">Url</label>
+						<PageInput name="url" type="text" required />
 
 						<label id="description">Description</label>
 						<PageInput name="description" type="text" required />
@@ -45,7 +59,13 @@ export default function NewEvent() {
 						<PageInput name="placesAvb" type="text" required />
 
 						<label id="steps">Steps</label>
-						<PageInput textArea name="steps" type="text" component="textarea" required />
+						<PageInput
+							textArea
+							name="steps"
+							type="text"
+							component="textarea"
+							required
+						/>
 
 						<PageBtnContainer>
 							<PageLinkBtn to="/eventsList">Go back</PageLinkBtn>

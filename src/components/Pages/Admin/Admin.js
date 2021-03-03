@@ -2,11 +2,14 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import {
-	lightBg,
-	fontH2,
 	turquoise,
 	fontP,
-	fontH3
+	fontH3,
+	PageLinkBtn,
+	PageContainer,
+	PageSection,
+	PageTitle,
+	PageHR
 } from '../../../globalStyles';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
@@ -14,56 +17,43 @@ export default function AdminHome() {
 	return (
 		<div>
 			<AdminNavbar />
-			<HomeContainer>
-				<h2>Welcome, admin</h2>
-				<hr />
-				<Field>
-					<h4>Name:</h4>
-					<h3>Admin User</h3>
-				</Field>
-				<Field>
-					<h4>Email:</h4>
-					<h3>adminUser@gmail.com</h3>
-				</Field>
-				<div className="buttons">
-					<Button to="/experimentsList">See experiments</Button>
-					<Button to="/eventsList">See events</Button>
-				</div>
-			</HomeContainer>
+			<PageContainer>
+				<PageSection fullHeight>
+					<AdminTitle>Welcome, admin</AdminTitle>
+					<PageHR />
+					<Field>
+						<h4>Name:</h4>
+						<h3>Admin User</h3>
+					</Field>
+					<Field>
+						<h4>Email:</h4>
+						<h3>adminUser@gmail.com</h3>
+					</Field>
+					<AdminBtnContainer>
+						<PageLinkBtn large to="/experimentsList">
+							See experiments
+						</PageLinkBtn>
+						<PageLinkBtn large to="/eventsList">
+							See events
+						</PageLinkBtn>
+					</AdminBtnContainer>
+				</PageSection>
+			</PageContainer>
 		</div>
 	);
 }
 
-const HomeContainer = styled.div`
-	background: ${lightBg};
-	height: 100vh;
+const AdminTitle = styled(PageTitle)`
+	color: ${turquoise};
+`;
+
+const AdminBtnContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding: 10px 12.5px;
-	text-align: center;
-
-	> h2 {
-		margin: 80px auto 0px auto;
-		font-size: ${fontH2};
-		letter-spacing: 1px;
-		color: ${turquoise};
-	}
-
-	> hr {
-		width: 80%;
-		height: 3px;
-		background: #fff;
-		margin: 24px auto;
-	}
-
-	> .buttons {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-between;
-		margin: 70px auto 0 auto;
-		height: 100px;
-	}
+	align-items: center;
+	justify-content: space-between;
+	margin: 70px auto 0 auto;
+	height: 100px;
 `;
 
 const Field = styled.div`

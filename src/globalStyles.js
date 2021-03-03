@@ -15,8 +15,7 @@ export const fontH2 = '21px';
 export const fontH3 = '15px';
 export const fontP = '14px';
 export const fontH5 = '10px';
-
-// CONTAINERS
+//======CONTAINERS=========
 export const PageContainer = styled.div`
 	text-align: center;
 	display: flex;
@@ -28,8 +27,9 @@ export const PageSection = styled.div`
 	background: ${(props) => (props.dark ? darkBg : lightBg)};
 	height: ${(props) => (props.fullHeight ? '100vh' : 'auto')};
 `;
+//=======COMPONENTS========
 
-//COMPONENTS
+//Text
 export const PageTitle = styled.h1`
 	font-size: ${(props) => (props.small ? fontH2 : fontH1)};
 	text-align: center;
@@ -66,6 +66,20 @@ export const PageSubHR = styled.hr`
 	width: 85%;
 `;
 
+//Buttons
+export const PageBtn = styled.button`
+	outline: none;
+	border: none;
+	margin: auto;
+	font-weight: bold;
+	width: 60%;
+	padding: 10px 15px;
+	font-size: ${fontH3};
+	background: ${green};
+	color: ${lightBg};
+	border-radius: 5px;
+`;
+
 export const PageAddBtn = styled.button`
 	display: flex;
 	align-items: center;
@@ -91,3 +105,4 @@ export const PageAddBtn = styled.button`
 		fill: ${green};
 	}
 `;
+//Inputs

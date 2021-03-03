@@ -4,19 +4,18 @@ import Experiment from './ExperimentSection/Experiment';
 import Events from './EventSection/Event';
 import Contact from './ContactSection/Contact';
 import Navbar from '../../Elements/Navbar/Navbar';
+import { PageContainer } from '../../../globalStyles';
 
-function Home() {
+export default function Home() {
 	return (
 		<>
-			<div>
+			<PageContainer>
 				<Navbar></Navbar>
 				<Hero />
 				<Experiment />
 				<Events />
 				<Contact />
-			</div>
+			</PageContainer>
 		</>
 	);
 }
-
-export default Home;

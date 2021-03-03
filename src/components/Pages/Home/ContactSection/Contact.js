@@ -1,16 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import { turquoise, fontH2, fontH3, fontH5 } from '../../../../globalStyles';
+import {
+	turquoise,
+	fontH3,
+	PageSection,
+	PageTitle,
+	PageDescription,
+	green,
+	darkBg
+} from '../../../../globalStyles';
 import { Form, Field, Formik } from 'formik';
 
-function Contact() {
+export default function Contact() {
 	return (
-		<ContactContainer>
-			<h2>Contact Us</h2>
-			<h3>
+		<PageSection fullHeight>
+			<PageTitle margin>Contact Us</PageTitle>
+			<PageDescription margin>
 				If you have any questions related to our activity, please don’t
 				hesitate, write us a message.
-			</h3>
+			</PageDescription>
 			<Formik
 				initialValues={{ name: '', subject: '', message: '' }}
 				onSubmit={async (values) => {
@@ -31,32 +39,9 @@ function Contact() {
 					<button type="submit">Submit</button>
 				</ContactForm>
 			</Formik>
-		</ContactContainer>
+		</PageSection>
 	);
 }
-
-export default Contact;
-
-const ContactContainer = styled.div`
-	height: auto;
-	background: #31304c;
-	text-align: center;
-	padding: 0px 20px;
-
-	> h2 {
-		padding-top: 80px;
-		color: ${turquoise};
-		font-size: ${fontH2};
-	}
-
-	> h3 {
-		color: white;
-		font-size: ${fontH3};
-		font-weight: normal;
-		line-height: 23px;
-		margin: 30px 0;
-	}
-`;
 
 const ContactForm = styled(Form)`
 	display: flex;
@@ -72,12 +57,12 @@ const ContactForm = styled(Form)`
 	> button {
 		width: 43%;
 		height: 30px;
-		font-size: ${fontH5};
-		background: #4d194d;
+		font-size: ${fontH3};
+		background: ${green};
 		outline: none;
 		border-radius: 8px;
 		border: none;
-		color: white;
+		color: ${darkBg};
 		margin: auto;
 	}
 `;

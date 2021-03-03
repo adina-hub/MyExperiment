@@ -1,70 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-	fontH2,
-	fontH3,
 	fontP,
-	purple,
-	turquoise
+	PageSection,
+	PageTitle,
+	PageDescription,
+	green,
+	darkBg
 } from '../../../../globalStyles';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
-function Experiment() {
+export default function Experiment() {
 	return (
-		<ExperimentContainer>
-			<h2>What is Scientify?</h2>
-			<h3>
+		<PageSection fullHeight light>
+			<PageTitle>What is Scientify?</PageTitle>
+			<PageDescription margin>
 				Here you can find physics related experiments. From mechanics to optics
 				and fluids, all in one place, each of them having a video with
 				explications from our teachers.
-			</h3>
+			</PageDescription>
 			<Button>
 				Learn More
 				<Icon />
 			</Button>
-		</ExperimentContainer>
+		</PageSection>
 	);
 }
-
-export default Experiment;
-
-const ExperimentContainer = styled.div`
-	height: 85vh;
-	background: #31304c;
-	text-align: center;
-	padding: 0px 20px;
-
-	> h2 {
-		padding-top: 100px;
-		color: ${turquoise};
-		font-size: ${fontH2};
-	}
-
-	> h3 {
-		color: white;
-		font-size: ${fontH3};
-		font-weight: normal;
-		line-height: 23px;
-		margin-top: 60px;
-	}
-`;
 
 const Button = styled.button`
 	width: 150px;
 	height: 30px;
 	border-radius: 5px;
 	border: none;
-	background: ${purple};
+	background: ${green};
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
 	margin: 50px auto 0px auto;
 	outline: none;
-	color: white;
+	color: ${darkBg};
 	font-weight: normal;
 	font-size: ${fontP};
 `;
 
 const Icon = styled(AiOutlineArrowRight)`
-	color: white;
+	color: ${darkBg};
 `;

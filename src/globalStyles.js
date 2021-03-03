@@ -86,3 +86,5 @@ export const PageAddBtn = styled.button`
         fill: ${green};
     }
 `
+
+

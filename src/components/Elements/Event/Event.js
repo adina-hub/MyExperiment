@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { fontH5, purple, turquoise } from '../../../globalStyles';
+import { green, darkBg, lightBg, fontP } from '../../../globalStyles';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 
@@ -52,7 +52,7 @@ const EventImage = styled.img`
 `;
 
 const EventInfo = styled.div`
-    background: #51a3b9;
+    background: ${lightBg};
 	height: 200px;
 	border-radius: 0 0 5px 5px;
 	padding: 10px;
@@ -61,14 +61,14 @@ const EventInfo = styled.div`
 
 const EventTitle = styled.h4`
     margin-top: 5px;
-    color: ${purple};
+    color: ${green};
 `;
 
 const EventDescription = styled.h5`
     margin-top: 10px;
 	color: white;
 	font-weight: normal;
-	font-size: ${fontH5};
+	font-size: ${fontP};
 `;
 
 
@@ -87,7 +87,7 @@ const EventDetail = styled.div`
 	width: 100%;
 
     > .MuiSvgIcon-root{
-        fill: ${purple};
+        fill: ${green};
         width: 25px;
 	    height: 25px;
     }
@@ -96,7 +96,7 @@ const EventDetail = styled.div`
 
 	> h5 {
 		margin-left: 5px;
-        color: ${purple};
+        color: ${green};
 	}
 
 
@@ -123,17 +123,16 @@ const EventButtons = styled.div`
 
     > .info {
 	    margin-right: 18px;
-	    color: ${purple};
+	    color: ${green};
 	    font-weight: bold;
 	    background: none;
-        border: 1px solid ${purple};
-	    border-color: #4d194d;
+        border: 1px solid ${green};
     }
 
      > .book {
-	    background: ${purple};
+	    background: ${green};
 	    border: none;
-	    color: white;
+	    color: ${darkBg};
     }
 
 `;

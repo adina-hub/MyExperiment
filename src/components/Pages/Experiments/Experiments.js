@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-	turquoise,
-	purple,
 	PageContainer,
 	PageTitle,
 	PageDescription,
 	PageHR,
 	PageSection,
-	PageSubtitle
+	PageSubtitle,
+	lightBg,
+	green
 } from '../../../globalStyles';
 import Navbar from '../../Elements/Navbar/Navbar';
 import Experiment from './Experiment/Experiment';
@@ -76,8 +76,8 @@ const ExperimentsList = styled.div`
 
 const ExperimentsItem = styled.div`
 	display: flex;
-	background: ${turquoise};
-	color: ${purple};
+	background: ${lightBg};
+	color: ${green};
 	align-items: center;
 	border-radius: 5px;
 	margin-top: 20px;

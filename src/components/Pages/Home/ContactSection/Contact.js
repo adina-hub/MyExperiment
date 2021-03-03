@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import {
-	turquoise,
 	PageTitle,
 	PageSection,
 	PageDescription,
-	PageBtn
+	PageBtn,
+	PageForm,
+	PageInput
 } from '../../../../globalStyles';
 import { Form, Field, Formik } from 'formik';
 
@@ -24,49 +24,20 @@ export default function Contact() {
 					alert(JSON.stringify(values, null, 2));
 				}}
 			>
-				<ContactForm>
+				<PageForm>
 					<label>Name</label>
-					<ContactField name="name" type="text" />
+					<PageInput name="name" type="text" />
 
 					<label>Subject</label>
-					<ContactField name="subject" type="text" />
+					<PageInput name="subject" type="text" />
 
 					<label>Message</label>
-					<MessageField name="message" type="text" component="textarea" />
+					<PageInput textArea name="message" type="text" component="textarea" />
 
-					<PageBtn type="submit">Submit</PageBtn>
-				</ContactForm>
+					<PageBtn marginTop type="submit">Submit</PageBtn>
+				</PageForm>
 			</Formik>
 		</PageSection>
 	);
 }
 
-const ContactForm = styled(Form)`
-	display: flex;
-	flex-direction: column;
-	height: 60vh;
-
-	> label {
-		text-align: left;
-		color: white;
-		margin: 10px 0px;
-	}
-`;
-
-const ContactField = styled(Field)`
-	background: none;
-	outline: none;
-	border: 1px solid ${turquoise};
-	border-radius: 5px;
-	height: 30px;
-	color: white;
-`;
-
-const MessageField = styled(Field)`
-	background: none;
-	outline: none;
-	border: 1px solid ${turquoise};
-	border-radius: 5px;
-	height: 140px;
-	color: white;
-`;

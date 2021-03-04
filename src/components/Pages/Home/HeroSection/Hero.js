@@ -4,7 +4,7 @@ import {
 	PageDescription,
 	PageSection,
 	PageTitle
-} from '../../../../globalStyles';
+} from '../../../../styles/general';
 import backgroundImg from '../../../../images/background.jpg';
 
 function Hero() {

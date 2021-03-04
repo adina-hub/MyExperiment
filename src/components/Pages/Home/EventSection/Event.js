@@ -4,7 +4,7 @@ import {
 	PageDescription,
 	PageSection,
 	PageTitle
-} from '../../../../globalStyles';
+} from '../../../../styles/general';
 import Event from '../../../Elements/Event/Event';
 
 export default function Events() {

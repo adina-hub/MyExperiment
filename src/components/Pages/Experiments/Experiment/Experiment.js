@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { fontH3, green, PageAddBtn, PageContainer, PageSection, PageSubHR, PageSubtitle, PageTitle } from '../../../../globalStyles';
+import { fontH3, green, PageAddBtn, PageContainer, PageSection, PageSubHR, PageSubtitle, PageTitle } from '../../../../styles/general';
 import Navbar from '../../../Elements/Navbar/Navbar';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';

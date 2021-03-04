@@ -3,21 +3,21 @@ import styled from 'styled-components';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { Link } from 'react-router-dom';
-import { fontH3 } from '../../../globalStyles';
+import { fontH3 } from '../../../styles/general';
 function ListItem({ name, url }) {
-    return (
-        <ListItemContainer>
-            <ListItemTitle>{name}</ListItemTitle>
-            <ListItemIcons>
-                <Link to={url}>
-                    <InfoIcon />
-                </Link>
-                <Link>
-                    <DeleteIcon />
-                </Link>
-            </ListItemIcons>
-        </ListItemContainer>
-    )
+	return (
+		<ListItemContainer>
+			<ListItemTitle>{name}</ListItemTitle>
+			<ListItemIcons>
+				<Link to={url}>
+					<InfoIcon />
+				</Link>
+				<Link>
+					<DeleteIcon />
+				</Link>
+			</ListItemIcons>
+		</ListItemContainer>
+	)
 }
 
 

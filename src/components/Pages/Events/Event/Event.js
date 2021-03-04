@@ -8,7 +8,7 @@ import {
 	PageSubHR,
 	PageSubtitle,
 	PageTitle
-} from '../../../../globalStyles';
+} from '../../../../styles/general';
 import Navbar from '../../../Elements/Navbar/Navbar';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';

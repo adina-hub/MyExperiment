@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { green, darkBg, lightBg, fontP } from '../../../globalStyles';
+import { green, darkBg, lightBg, fontP } from '../../../styles/general';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 

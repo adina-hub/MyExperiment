@@ -11,7 +11,7 @@ import {
 	PageBtnContainer,
 	PageLinkBtn,
 	AdminAddBtn
-} from '../../../globalStyles';
+} from '../../../styles/general';
 
 export default function NewExperiment() {
 	return (

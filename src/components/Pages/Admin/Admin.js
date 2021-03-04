@@ -8,7 +8,7 @@ import {
 	PageTitle,
 	PageHR,
 	green,
-} from '../../../globalStyles';
+} from '../../../styles/general.js';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
 export default function AdminHome() {

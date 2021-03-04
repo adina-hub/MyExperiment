@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { darkBg, green } from '../../../globalStyles';
+import { darkBg, green } from '../../../styles/general';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 

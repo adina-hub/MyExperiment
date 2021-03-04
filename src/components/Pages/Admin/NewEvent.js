@@ -11,7 +11,7 @@ import {
 	PageLinkBtn,
 	PageSection,
 	PageTitle
-} from '../../../globalStyles';
+} from '../../../styles/general';
 
 export default function NewEvent() {
 	return (

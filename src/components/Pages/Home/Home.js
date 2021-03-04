@@ -4,7 +4,7 @@ import Experiment from './ExperimentSection/Experiment';
 import Events from './EventSection/Event';
 import Contact from './ContactSection/Contact';
 import Navbar from '../../Elements/Navbar/Navbar';
-import { PageContainer } from '../../../globalStyles';
+import { PageContainer } from '../../../styles/general';
 
 export default function Home() {
 	return (

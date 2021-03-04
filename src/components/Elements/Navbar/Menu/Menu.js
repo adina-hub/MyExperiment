@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Menu({ open }) {
+	const clickHandler = () => { window.scrollTo(0, 0); }
 	return (
 		<>
 			<StyledMenu open={open}>
-				<Link to="/">Home</Link>
-				<Link to="/experiments">Experiments</Link>
-				<Link to="/events">Events</Link>
-				<Link to="/signin">Log In</Link>
+				<Link to="/" onClick={clickHandler}>Home</Link>
+				<Link to="/experiments" onClick={clickHandler}>Experiments</Link>
+				<Link to="/events" onClick={clickHandler}>Events</Link>
+				<Link to="/signin" onClick={clickHandler}>Log In</Link>
 			</StyledMenu>
 		</>
 	);

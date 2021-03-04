@@ -9,7 +9,7 @@ import {
 	PageSubtitle,
 	lightBg,
 	green
-} from '../../../globalStyles';
+} from '../../../styles/general';
 import Navbar from '../../Elements/Navbar/Navbar';
 import Experiment from './Experiment/Experiment';
 import Dropdown from '../../Elements/Dropdown/Dropdown';

@@ -6,7 +6,7 @@ import {
 	PageBtn,
 	PageForm,
 	PageInput
-} from '../../../../globalStyles';
+} from '../../../../styles/general';
 import { Formik } from 'formik';
 
 export default function Contact() {

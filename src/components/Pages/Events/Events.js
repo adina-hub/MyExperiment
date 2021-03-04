@@ -6,7 +6,7 @@ import {
 	PageHR,
 	PageSection,
 	PageTitle
-} from '../../../globalStyles';
+} from '../../../styles/general';
 import Event from '../../Elements/Event/Event';
 import Navbar from '../../Elements/Navbar/Navbar';
 

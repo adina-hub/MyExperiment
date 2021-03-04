@@ -4,7 +4,7 @@ import {
 	PageTitle,
 	PageDescription,
 	PageBtn
-} from '../../../../globalStyles';
+} from '../../../../styles/general';
 
 export default function Experiment() {
 	return (

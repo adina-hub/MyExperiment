@@ -9,7 +9,7 @@ import {
 	green,
 	PageBtnContainer,
 	PageLinkBtn
-} from '../../../globalStyles';
+} from '../../../styles/general';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import ListItem from '../../Elements/ListItem/ListItem';
 

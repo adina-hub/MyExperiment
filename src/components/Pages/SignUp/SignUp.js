@@ -8,7 +8,7 @@ import {
 	fontH5,
 	fontP,
 	turquoise
-} from '../../../globalStyles';
+} from '../../../styles/general';
 import { Form, Field, Formik } from 'formik';
 import { BsPerson, BsLock } from 'react-icons/bs';
 import { Link as LinkR } from 'react-router-dom';

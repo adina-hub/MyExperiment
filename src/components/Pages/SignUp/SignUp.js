@@ -1,25 +1,31 @@
 import React from 'react';
 import logo from '../../../images/logo.svg';
-import styled from 'styled-components';
+import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
 import {
-	fontH3,
-	lightBg,
-	fontH2,
-	fontH5,
-	fontP,
-	turquoise
-} from '../../../styles/general';
-import { Form, Field, Formik } from 'formik';
-import { BsPerson, BsLock } from 'react-icons/bs';
-import { Link as LinkR } from 'react-router-dom';
+	AuthBtn,
+	AuthContainer,
+	AuthForm,
+	AuthFormContainer,
+	AuthHelper,
+	AuthInputContainer,
+	AuthInputField,
+	AuthLabel,
+	AuthLink,
+	AuthLogo,
+	AuthTitle,
+	MailIcon,
+	NameIcon,
+	PassIcon
+} from '../../../styles/auth';
 
 export default function SignUp() {
 	return (
 		<>
-			<PageContainer>
-				<img src={logo} alt="" />
-				<FormContainer>
-					<h3>Register</h3>
+			<AuthContainer>
+				<AuthLogo src={logo} alt="" />
+				<AuthFormContainer dark="true" padding margin>
+					<AuthTitle>Register</AuthTitle>
 					<Formik
 						initialValues={{ email: '', name: '', password: '', password2: '' }}
 						onSubmit={async (values) => {
@@ -27,250 +33,60 @@ export default function SignUp() {
 							alert(JSON.stringify(values, null, 2));
 						}}
 					>
-						<SignUpForm>
-							<label id="email">Email</label>
-							<InputField>
-								<UserIcon></UserIcon>
-								<Input
+						<AuthForm>
+							<AuthLabel>Email</AuthLabel>
+							<AuthInputContainer>
+								<MailIcon />
+								<AuthInputField
 									name="email"
 									type="email"
 									placeholder="Type your email"
 									required
 								/>
-							</InputField>
+							</AuthInputContainer>
 
-							<label id="name">Name</label>
-							<InputField>
-								<UserIcon></UserIcon>
-								<Input
+							<AuthLabel>Name</AuthLabel>
+							<AuthInputContainer>
+								<NameIcon />
+								<AuthInputField
 									name="name"
-									type="text"
+									type="name"
 									placeholder="Type your name"
 									required
 								/>
-							</InputField>
+							</AuthInputContainer>
 
-							<label id="password">Password</label>
-							<InputField>
-								<PassIcon></PassIcon>
-								<Input
+							<AuthLabel>Password</AuthLabel>
+							<AuthInputContainer>
+								<NameIcon />
+								<AuthInputField
 									name="password"
 									type="password"
 									placeholder="Type your password"
 									required
 								/>
-							</InputField>
+							</AuthInputContainer>
 
-							<label id="password">Password</label>
-							<InputField>
-								<PassIcon></PassIcon>
-								<Input
+							<AuthLabel>Password</AuthLabel>
+							<AuthInputContainer>
+								<PassIcon />
+								<AuthInputField
 									name="password2"
 									type="password"
 									placeholder="Re-type your password"
 									required
 								/>
-							</InputField>
+							</AuthInputContainer>
 
-							<a href="/">Forgot password?</a>
-							<button type="submit">REGISTER</button>
-							<Text>
-								Already have an account? <Link to="/signin">Sign In</Link>
-							</Text>
-						</SignUpForm>
+							<AuthLink>Forgot password?</AuthLink>
+							<AuthBtn type="submit">REGISTER</AuthBtn>
+						</AuthForm>
 					</Formik>
-				</FormContainer>
-			</PageContainer>
+					<AuthHelper>
+						Already have an account? <Link to="/signin">Sign In</Link>
+					</AuthHelper>
+				</AuthFormContainer>
+			</AuthContainer>
 		</>
 	);
 }
-
-const PageContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	background-color: ${lightBg};
-
-	> img {
-		width: 110px;
-		height: 110px;
-		margin-left: 8px;
-
-		@media screen and (min-width: 768px) {
-			width: 120px;
-			height: 120px;
-			margin-left: 17px;
-		}
-
-		@media screen and (min-width: 1024px) {
-			width: 140px;
-			height: 140px;
-			margin-left: 30px;
-		}
-	}
-`;
-
-const FormContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin: 35px auto;
-	height: 66vh;
-	width: 85vw;
-	border-radius: 8px;
-	padding: 22px;
-	background: ${turquoise};
-
-	@media screen and (min-width: 375px) {
-		width: 75vw;
-	}
-
-	@media screen and (min-width: 768px) {
-		width: 45vw;
-		height: 70vh;
-		margin: 20px auto;
-		padding: 18px;
-	}
-
-	@media screen and (min-width: 1024px) {
-		width: 35vw;
-		height: 71vh;
-		margin: 10px auto;
-	}
-
-	@media screen and (min-width: 1200px) {
-		width: 27vw;
-		height: 72vh;
-		margin: 5px auto;
-		padding: 23px;
-	}
-
-	> h3 {
-		font-size: ${fontH3};
-		color: ${lightBg};
-		font-weight: 700;
-		text-align: center;
-
-		@media screen and (min-width: 1200px) {
-			font-size: ${fontH2};
-		}
-	}
-`;
-
-const SignUpForm = styled(Form)`
-	display: flex;
-	flex-direction: column;
-
-	> label {
-		margin-top: 10px;
-		font-size: 12px;
-		font-weight: 400;
-		padding: 5px;
-		color: #333333;
-
-		@media screen and (min-width: 768px) {
-			font-size: ${fontH3};
-		}
-	}
-
-	> a {
-		margin-top: 10px;
-		margin-bottom: 18px;
-		opacity: 0.6;
-		font-size: ${fontH5};
-		color: white;
-		text-align: right;
-		cursor: pointer;
-		&:hover {
-			color: blue;
-			transition: 0.15s ease-in-out;
-		}
-
-		@media screen and (min-width: 768px) {
-			margin-top: 10px;
-			font-size: ${fontH3};
-		}
-
-		@media screen and (min-width: 1024px) {
-			margin-top: 17px;
-		}
-	}
-
-	> button {
-		padding: 10px;
-		border: none;
-		border-radius: 12px;
-		color: #fff;
-		background: ${lightBg};
-		font-size: ${fontP};
-		cursor: pointer;
-		text-decoration: none;
-		text-align: center;
-	}
-`;
-
-const InputField = styled.div`
-	display: flex;
-	border: none;
-	border-bottom: 1px solid #d9d9d9;
-	padding: 10px 5px;
-`;
-
-const UserIcon = styled(BsPerson)`
-	color: white;
-	margin-right: 10px;
-`;
-
-const Input = styled(Field)`
-	border: none;
-	background: none;
-	width: 100%;
-	cursor: pointer;
-	::placeholder {
-		color: white;
-		opacity: 0.6;
-	}
-
-	&:focus {
-		outline: none;
-		::placeholder {
-			color: ${turquoise};
-		}
-	}
-
-	@media screen and (min-width: 768px) {
-		font-size: ${fontP};
-	}
-
-	@media screen and (min-width: 1200px) {
-		font-size: ${fontH3};
-	}
-`;
-
-const PassIcon = styled(BsLock)`
-	color: white;
-	margin-right: 10px;
-`;
-
-const Text = styled.div`
-	display: flex;
-	font-size: ${fontH5};
-	margin-top: 10px;
-	justify-content: center;
-
-	@media screen and (min-width: 768px) {
-		margin-top: 10px;
-		font-size: ${fontP};
-	}
-`;
-
-const Link = styled(LinkR)`
-	margin-left: 7px;
-	color: ${lightBg};
-	cursor: pointer;
-	font-weight: bold;
-	text-decoration: none;
-	&:hover {
-		color: blue;
-		transition: 0.15s ease-in-out;
-	}
-`;

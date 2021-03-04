@@ -2,7 +2,21 @@ import React from 'react';
 import logo from '../../../images/logo.svg';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
-import { AuthBtn, AuthContainer, AuthForm, AuthFormContainer, AuthHelper, AuthInputContainer, AuthInputField, AuthLabel, AuthLink, AuthLogo, AuthTitle, MailIcon, PassIcon } from '../../../styles/auth';
+import {
+	AuthBtn,
+	AuthContainer,
+	AuthForm,
+	AuthFormContainer,
+	AuthHelper,
+	AuthInputContainer,
+	AuthInputField,
+	AuthLabel,
+	AuthLink,
+	AuthLogo,
+	AuthTitle,
+	MailIcon,
+	PassIcon
+} from '../../../styles/auth';
 export default function SignIn() {
 	return (
 		<AuthContainer>
@@ -24,7 +38,8 @@ export default function SignIn() {
 								name="email"
 								type="email"
 								placeholder="Type your email"
-								required />
+								required
+							/>
 						</AuthInputContainer>
 						<AuthLabel>Password</AuthLabel>
 						<AuthInputContainer>
@@ -33,16 +48,17 @@ export default function SignIn() {
 								name="password"
 								type="password"
 								placeholder="Type your password"
-								required />
+								required
+							/>
 						</AuthInputContainer>
 						<AuthLink>Forgot password?</AuthLink>
 						<AuthBtn type="submit">LOGIN</AuthBtn>
 					</AuthForm>
 				</Formik>
-				<AuthHelper>Need an account?{' '}<Link>Register now</Link></AuthHelper>
+				<AuthHelper>
+					Need an account? <Link to="/signup">Register now</Link>
+				</AuthHelper>
 			</AuthFormContainer>
 		</AuthContainer>
 	);
 }
-
-

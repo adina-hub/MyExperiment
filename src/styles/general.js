@@ -38,7 +38,6 @@ export const PageBtnContainer = styled.div`
 	margin: 30px 0;
 `;
 
-
 //=======COMPONENTS========
 
 //Text
@@ -137,6 +136,46 @@ export const AdminAddBtn = styled.button`
 	width: 120px;
 	outline: none;
 	border: none;
+`;
+
+//General User
+export const UserBtnContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin: 50px auto 0 auto;
+	height: 110px;
+`;
+
+export const UserField = styled.div`
+	max-width: 65%;
+	margin: 25px auto 0 auto;
+	display: flex;
+	color: white;
+	align-items: center;
+`;
+
+export const UserFieldName = styled.h3`
+	margin-right: 10px;
+	font-size: ${fontH3};
+`;
+
+export const UserFieldValue = styled.h3`
+	color: ${green};
+	font-size: ${fontH3};
+`;
+
+export const ExperimentsList = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+`;
+
+export const EventsList = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
 `;
 
 //Form

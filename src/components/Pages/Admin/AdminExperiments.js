@@ -8,7 +8,8 @@ import {
 	PageTitle,
 	green,
 	PageBtnContainer,
-	PageLinkBtn
+	PageLinkBtn,
+	ExperimentsList
 } from '../../../styles/general';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import ListItem from '../../Elements/ListItem/ListItem';
@@ -44,13 +45,7 @@ const ExperimentsAddIcon = styled(AddIcon)`
 `;
 
 const ExperimentsAddButton = styled(PageLinkBtn)`
-	 display: flex;
-	 align-items: center;
-	 justify-content: space-evenly;
-`;
-
-const ExperimentsList = styled.div`
 	display: flex;
-	flex-direction: column;
-	margin-top: 20px;
+	align-items: center;
+	justify-content: space-evenly;
 `;

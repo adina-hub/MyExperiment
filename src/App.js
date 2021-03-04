@@ -10,8 +10,11 @@ import AdminEvents from './components/Pages/Admin/AdminEvents';
 import Events from './components/Pages/Events/Events';
 import NewExperiment from './components/Pages/Admin/NewExperiment';
 import NewEvent from './components/Pages/Admin/NewEvent';
+import User from './components/Pages/User/User';
 
 import Event from './components/Pages/Events/Event/Event';
+import UserExperiments from './components/Pages/User/UserExperiments';
+import UserEvents from './components/Pages/User/UserEvents';
 function App() {
 	return (
 		<Router>
@@ -28,6 +31,9 @@ function App() {
 				<Route path="/eventsList" component={AdminEvents} />
 				<Route path="/newExperiment" component={NewExperiment} />
 				<Route path="/newEvent" component={NewEvent} />
+				<Route path="/user" component={User} />
+				<Route path="/userExpList" component={UserExperiments} />
+				<Route path="/userEvtList" component={UserEvents} />
 			</Switch>
 		</Router>
 	);

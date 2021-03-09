@@ -8,11 +8,32 @@ function Carousel() {
 
     const [counter, setCounter] = useState(0);
     const events = [
-        'https://images.unsplash.com/photo-1564325724739-bae0bd08762c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8c2NpZW5jZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        'https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8c2NpZW5jZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        'https://images.unsplash.com/photo-1576086213369-97a306d36557?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8c2NpZW5jZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        'https://images.unsplash.com/photo-1496065187959-7f07b8353c55?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNjaWVuY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-        'https://images.unsplash.com/photo-1534777410147-084a460870fc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTN8fHNjaWVuY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+
+        {
+            img: 'https://images.unsplash.com/photo-1564325724739-bae0bd08762c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8c2NpZW5jZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+            title: 'Optical Illusions',
+            description: "Best of the best illusions you've ever seen",
+        },
+        {
+            img: 'https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8N3x8c2NpZW5jZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+            title: 'Fantasy Chemicals',
+            description: "Try these chemicals at your own risk.",
+        },
+        {
+            img: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OHx8c2NpZW5jZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+            title: 'Plasma Balls',
+            description: "Come and see some magnificent plasma balls",
+        },
+        {
+            img: 'https://images.unsplash.com/photo-1496065187959-7f07b8353c55?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNjaWVuY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+            title: 'The ball of plasma',
+            description: "A huge ball of plasma displayed",
+        },
+        {
+            img: 'https://images.unsplash.com/photo-1534777410147-084a460870fc?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTN8fHNjaWVuY2V8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+            title: 'Mirrors Show',
+            description: "Illusions using mirrors and lights",
+        },
     ]
 
     const [carouselEvents, setCarouselEvents] = useState([]);
@@ -41,13 +62,13 @@ function Carousel() {
 
                     return (
                         <Event
-                            title="Optical Illusion"
-                            img={event}
-                            description="Join us in the anual event about the optical illusions! "
+                            title={event.title}
+                            img={event.img}
+                            description={event.description}
                             location="Illinois, SUA"
                             time="4 pm"
                             carousel
-                            key={event}
+                            key={event.img}
                             first={i === 0 ? true : false}
                             primary={i === carouselCounter ? true : false}
                             last={i === carouselEvents.length - 1 ? true : false}

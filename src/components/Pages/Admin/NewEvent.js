@@ -13,6 +13,7 @@ import {
 	PageTitle
 } from '../../../styles/general';
 import TagsInput from '../../Elements/TagInput/TagsInput';
+import StepsInput from '../../Elements/StepsInput/StepsInput';
 
 export default function NewEvent() {
 	return (
@@ -57,16 +58,10 @@ export default function NewEvent() {
 						<TagsInput name="domains" type="text" required />
 
 						<label id="placesAvb">Places available</label>
-						<PageInput name="placesAvb" type="text" required />
+						<PageInput name="placesAvb" type="number" required />
 
 						<label id="steps">Steps</label>
-						<PageInput
-							textarea="true"
-							name="steps"
-							type="text"
-							component="textarea"
-							required
-						/>
+						<StepsInput name="steps" id="steps" required />
 
 						<PageBtnContainer>
 							<PageLinkBtn to="/eventsList">Go back</PageLinkBtn>

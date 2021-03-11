@@ -12,11 +12,6 @@ function Step({ name, nr, remove, modified }) {
     const [edit, setEdit] = useState(false);
     const [stepName, setStepName] = useState(name);
 
-    useEffect(() => {
-        console.log(nr);
-        console.log("HERE");
-    }, [])
-
     const editKeyDownHandler = (e) => {
         if (e.key === "Enter" && e.target.value) {
             modified(e.target.value, nr - 1);

@@ -1,6 +1,5 @@
 import { Field } from 'formik'
 import React from 'react'
-import { PageInput } from '../../../styles/general'
 import Steps from './Steps/Steps'
 
 function StepsInput({ name, id }) {

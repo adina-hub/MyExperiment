@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import { darkBg, green, lightBg } from '../../../../styles/general';
+import { green } from '../../../../styles/general';
 import Step from './Step/Step';
 
 function Steps({ stepsCount }) {
@@ -9,7 +9,6 @@ function Steps({ stepsCount }) {
 
 
     useEffect(() => {
-        console.log(steps);
         return stepsCount(steps);
     }, [steps])
 
@@ -38,7 +37,7 @@ function Steps({ stepsCount }) {
 
     return (
         <StepsContainer>
-            { steps?.map((step, i) => (
+            { steps.map((step, i) => (
                 <Step key={i} nr={i + 1} name={step} remove={removeHandler} modified={modifiedHandler} />
             ))}
             <textarea

@@ -1,6 +1,8 @@
 import React from 'react';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import { Formik } from 'formik';
+import TagsInput from '../../Elements/TagInput/TagsInput';
+import StepsInput from '../../Elements/StepsInput/StepsInput';
 import {
 	PageContainer,
 	PageTitle,
@@ -12,8 +14,11 @@ import {
 	PageLinkBtn,
 	AdminAddBtn
 } from '../../../styles/general';
+import { useAuth } from '../../../context/AuthContext';
 
 export default function NewExperiment() {
+	const { addExperiment } = useAuth();
+
 	return (
 		<PageContainer>
 			<AdminNavbar />
@@ -23,37 +28,34 @@ export default function NewExperiment() {
 				<Formik
 					initialValues={{
 						title: '',
-						url: '',
-						domains: '',
+						videoUrl: '',
 						materials: '',
+						domains: [],
 						steps: ''
 					}}
-					onSubmit={async (values) => {
-						await new Promise((resolve) => setTimeout(resolve, 500));
-						alert(JSON.stringify(values, null, 2));
-					}}
+					onSubmit={values => addExperiment(
+						values.title,
+						values.videoUrl,
+						values.materials,
+						values.domains,
+						values.steps
+					)}
 				>
 					<PageForm>
 						<label id="title">Title</label>
 						<PageInput name="title" type="text" required />
 
-						<label id="url">Url</label>
-						<PageInput name="url" type="text" required />
+						<label id="videoUrl">Url</label>
+						<PageInput name="videoUrl" type="text" required />
 
 						<label id="domains">Domains</label>
-						<PageInput name="domains" type="text" required />
+						<TagsInput name="domains" type="text" required />
 
 						<label id="materials">Materials needed</label>
-						<PageInput name="materials" type="text" required />
+						<StepsInput name="materials" type="text" required />
 
 						<label id="steps">Steps</label>
-						<PageInput
-							textarea="true"
-							component="textarea"
-							name="steps"
-							type="text"
-							required
-						/>
+						<StepsInput name="steps" id="steps" required />
 
 						<PageBtnContainer>
 							<PageLinkBtn to="/experimentsList">Go back</PageLinkBtn>

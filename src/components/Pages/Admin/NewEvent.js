@@ -14,8 +14,10 @@ import {
 } from '../../../styles/general';
 import TagsInput from '../../Elements/TagInput/TagsInput';
 import StepsInput from '../../Elements/StepsInput/StepsInput';
+import { useAuth } from '../../../context/AuthContext';
 
 export default function NewEvent() {
+	const { addEvent } = useAuth();
 	return (
 		<PageContainer>
 			<AdminNavbar />
@@ -25,25 +27,31 @@ export default function NewEvent() {
 				<Formik
 					initialValues={{
 						title: '',
-						url: '',
+						imgUrl: '',
 						description: '',
 						location: '',
 						date: '',
 						domains: [],
-						placesAvb: '',
+						places: '',
 						steps: ''
 					}}
-					onSubmit={async (values) => {
-						await new Promise((resolve) => setTimeout(resolve, 500));
-						alert(JSON.stringify(values, null, 2));
-					}}
+					onSubmit={values => addEvent(
+						values.title,
+						values.imgUrl,
+						values.description,
+						values.location,
+						values.date,
+						values.domains,
+						values.places,
+						values.steps
+					)}
 				>
 					<PageForm>
 						<label id="title">Title</label>
 						<PageInput name="title" type="text" required />
 
-						<label id="url">Url</label>
-						<PageInput name="url" type="text" required />
+						<label id="imgUrl">Image URL</label>
+						<PageInput name="imgUrl" type="text" required />
 
 						<label id="description">Description</label>
 						<PageInput name="description" type="text" required />
@@ -57,8 +65,8 @@ export default function NewEvent() {
 						<label id="domains">Domains</label>
 						<TagsInput name="domains" type="text" required />
 
-						<label id="placesAvb">Places available</label>
-						<PageInput name="placesAvb" type="number" required />
+						<label id="places">Places available</label>
+						<PageInput name="places" type="number" required />
 
 						<label id="steps">Steps</label>
 						<StepsInput name="steps" id="steps" required />

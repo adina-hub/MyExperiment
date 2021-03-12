@@ -14,6 +14,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import PopUp from '../../../Elements/PopUp/PopUp';
 
 export default function Event({ id }) {
 	const [event, setExperiment] = useState({
@@ -28,10 +29,12 @@ export default function Event({ id }) {
 			'Ask the class to describe what they saw using only one word.'
 		],
 		location: 'Illinois, SUA',
-		time: '4 pm'
+		time: '4 pm',
+		date: '14/9/2021'
 	});
+	const [booked, setBooked] = useState(false);
 
-	const [clicked, setClicked] = useState(false);
+
 
 	return (
 		<PageContainer>
@@ -69,11 +72,12 @@ export default function Event({ id }) {
 						))}
 					</EventSteps>
 				</EventInfo>
-				<PageAddBtn onClick={() => setClicked(!clicked)}>
+				<PageAddBtn onClick={() => setBooked(true)}>
 					<p>Book a place</p>
-					{clicked ? <PersonAddIcon /> : <PersonAddOutlinedIcon />}
+					<PersonAddOutlinedIcon />
 				</PageAddBtn>
 			</PageSection>
+			{booked && <PopUp close={() => setBooked(false)} date={event.date} time={event.time} location={event.location} id={event.title} />}
 		</PageContainer>
 	);
 }

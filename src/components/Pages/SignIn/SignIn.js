@@ -17,7 +17,10 @@ import {
 	MailIcon,
 	PassIcon
 } from '../../../styles/auth';
+import { useAuth } from '../../../context/AuthContext';
+
 export default function SignIn() {
+	const { signIn } = useAuth();
 	return (
 		<AuthContainer>
 			<AuthLogo src={logo} alt="" />
@@ -25,10 +28,8 @@ export default function SignIn() {
 				<AuthTitle>Login</AuthTitle>
 				<Formik
 					initialValues={{ email: '', password: '' }}
-					onSubmit={async (values) => {
-						await new Promise((resolve) => setTimeout(resolve, 500));
-						alert(JSON.stringify(values, null, 2));
-					}}
+					onSubmit={values => signIn(values.email, values.password)
+					}
 				>
 					<AuthForm>
 						<AuthLabel>Email</AuthLabel>
@@ -59,6 +60,6 @@ export default function SignIn() {
 					Need an account? <Link to="/signup">Register now</Link>
 				</AuthHelper>
 			</AuthFormContainer>
-		</AuthContainer>
+		</AuthContainer >
 	);
 }

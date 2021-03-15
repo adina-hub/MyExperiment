@@ -12,6 +12,7 @@ import {
 	PageSection,
 	PageTitle
 } from '../../../styles/general';
+import TagsInput from '../../Elements/TagInput/TagsInput';
 
 export default function NewEvent() {
 	return (
@@ -27,7 +28,7 @@ export default function NewEvent() {
 						description: '',
 						location: '',
 						date: '',
-						domains: '',
+						domains: [],
 						placesAvb: '',
 						steps: ''
 					}}
@@ -53,7 +54,7 @@ export default function NewEvent() {
 						<PageInput name="date" type="text" required />
 
 						<label id="domains">Domains</label>
-						<PageInput name="domains" type="text" required />
+						<TagsInput name="domains" type="text" required />
 
 						<label id="placesAvb">Places available</label>
 						<PageInput name="placesAvb" type="text" required />

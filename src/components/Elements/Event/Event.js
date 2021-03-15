@@ -4,9 +4,12 @@ import { green, darkBg, lightBg, fontP } from '../../../styles/general';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 
-function Event({ title, description, location, time, img }) {
+function Event({ title, description, location, time, img, carousel = false, primary = false, last = false, first = false }) {
 	return (
-		<EventContainer>
+		<EventContainer carousel={carousel ? true : false}
+			first={first ? true : false}
+			primary={primary ? true : false}
+			last={last ? true : false}>
 			<EventImage src={img} alt="" />
 			<EventInfo>
 				<EventTitle>{title}</EventTitle>
@@ -37,10 +40,22 @@ const EventContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 50px auto;
-	width: 250px;
+    /* CAROUSEL width for 375px is 220px */
+	width: ${props => props.carousel ? '200px' : '250px'};
 	height: 260px;
 	background: grey;
 	border-radius: 5px;
+	/* =================== */
+    opacity: ${props => props.primary ? '1' : props.carousel ? '0.2' : null};
+    position: ${props => props.carousel ? 'absolute' : null};
+    left: ${props =>
+		props.primary && props.first ? '0'
+			: props.primary && props.last ? 'auto'
+				/* left for 375px is 15% */
+				: props.primary ? '12.5%'
+					: null};
+    right: ${props => props.last ? '0' : null};
+    z-index: ${props => props.primary ? '1' : '0'};
 `;
 
 const EventImage = styled.img`
@@ -48,7 +63,6 @@ const EventImage = styled.img`
 	height: 80px;
 	width: 100%;
 	object-fit: cover;
-	filter: saturate(0);
 `;
 
 const EventInfo = styled.div`

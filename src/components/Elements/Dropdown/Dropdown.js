@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { darkBg, green } from '../../../styles/general';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
-function Dropdown({ }) {
-	const [categories, setCategories] = useState(["Romance", "Fiction", "Geography", "Geometry", "Sci-Fi"])
+function Dropdown({ expCategories, expSetCategory }) {
+	const [categories, setCategories] = useState()
 	const [open, setOpen] = useState(false)
 	const [category, setCategory] = useState('Choose a category')
+
+	useEffect(() => {
+		console.log(expCategories);
+		let array = ["All"];
+		expCategories.map(category => category.domains.map(domain => array.push(domain)))
+		let set = [...new Set(array)];
+		setCategories(set);
+	}, [expCategories])
+
 
 	return (
 		<DropdownContainer>
@@ -22,6 +31,7 @@ function Dropdown({ }) {
 						<p onClick={() => {
 							setOpen(!open)
 							setCategory(category)
+							expSetCategory(category)
 						}}>{category}</p>
 					))}
 				</ExperimentsDropdownOpen>

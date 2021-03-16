@@ -16,6 +16,7 @@ import UserExperiments from './components/Pages/User/UserExperiments';
 import UserEvents from './components/Pages/User/UserEvents';
 import Test from './components/Pages/Test/Test';
 import { AuthProvider } from './context/AuthContext';
+import Experiment from './components/Pages/Experiments/Experiment/Experiment';
 function App() {
 	return (
 		<Router>
@@ -26,7 +27,7 @@ function App() {
 					<Route path="/signup" component={SignUp} />
 					<Route path="/" component={Home} exact />
 					<Route path="/experiments" component={Experiments} exact />
-					<Route path="/experiments/:id" component={Experiments} />
+					<Route path="/experiments/:id" component={Experiment} />
 					<Route path="/events" component={Events} exact />
 					<Route path="/events/:id" component={Event} />
 					<Route path="/admin" component={AdminHome} />

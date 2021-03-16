@@ -198,6 +198,9 @@ export const PageInput = styled(Field)`
 	border-radius: 5px;
 	height: ${(props) => (props.textarea ? '140px' : '30px')};
 	color: white;
-	padding: ${(props) => (props.textarea ? '10px' : '0')} 10px;
-	line-height:   ${(props) => (props.textarea ? '20px' : null)}
+	padding: 2px 6px;
+
+	&:focus {
+		background: none;
+	}
 `;

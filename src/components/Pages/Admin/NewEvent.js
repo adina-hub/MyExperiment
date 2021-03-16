@@ -31,20 +31,24 @@ export default function NewEvent() {
 						description: '',
 						location: '',
 						date: '',
+						time: '',
 						domains: [],
 						places: '',
 						steps: ''
 					}}
-					onSubmit={values => addEvent(
-						values.title,
-						values.imgUrl,
-						values.description,
-						values.location,
-						values.date,
-						values.domains,
-						values.places,
-						values.steps
-					)}
+					onSubmit={(values) =>
+						addEvent(
+							values.title,
+							values.imgUrl,
+							values.description,
+							values.location,
+							values.date,
+							values.time,
+							values.domains,
+							values.places,
+							values.steps
+						)
+					}
 				>
 					<PageForm>
 						<label id="title">Title</label>
@@ -59,8 +63,11 @@ export default function NewEvent() {
 						<label id="location">Location</label>
 						<PageInput name="location" type="text" required />
 
-						<label id="date">Date time</label>
+						<label id="date">Date</label>
 						<PageInput name="date" type="text" required />
+
+						<label id="time">Time</label>
+						<PageInput name="time" type="text" required />
 
 						<label id="domains">Domains</label>
 						<TagsInput name="domains" type="text" required />

@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
 	const [loading, setLoading] = useState(true);
 	const history = useHistory();
 	// GENERAL FUNCTIONALITIES
-	function signUp(email, password, name) {
+	const signUp = (email, password, name) => {
 		return auth
 			.createUserWithEmailAndPassword(email, password)
 			.then((userAuth) => {
@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
 			}).catch(err => alert(err));
 	}
 
-	function signIn(email, password) {
+	const signIn = (email, password) => {
 		return auth.signInWithEmailAndPassword(email, password).then((userAuth) => {
 			db.collection('users').where("uid", "==", userAuth.user.uid).get()
 				.then((querySnapshot) => {
@@ -47,17 +47,17 @@ export function AuthProvider({ children }) {
 		});
 	}
 
-	function resetPassword(email) {
+	const resetPassword = email => {
 		return auth.sendPasswordResetEmail(email);
 	}
 
-	function logout() {
+	const logout = () => {
 		return auth.signOut();
 	}
 
-	// ADMIN FUNCTIONALITIES
+	// ADMIN constALITIES
 
-	function addEvent(title, imgUrl, description, location, date, domains, places, steps) {
+	const addEvent = (title, imgUrl, description, location, date, domains, places, steps) => {
 		db.collection('events').add({
 			title: title,
 			imgUrl: imgUrl,
@@ -70,7 +70,7 @@ export function AuthProvider({ children }) {
 		}).then(() => console.log("ADDED EVENT!!!"));
 	}
 
-	function addExperiment(title, videoUrl, materials, domains, steps) {
+	const addExperiment = (title, videoUrl, materials, domains, steps) => {
 		db.collection('experiments').add({
 			title: title,
 			videoUrl: videoUrl,
@@ -79,6 +79,8 @@ export function AuthProvider({ children }) {
 			steps: steps
 		}).then(() => console.log("ADDED EXPERIMENT!!!"));
 	}
+
+
 
 
 	useEffect(() => {
@@ -99,7 +101,7 @@ export function AuthProvider({ children }) {
 		resetPassword,
 		logout,
 		addEvent,
-		addExperiment
+		addExperiment,
 	};
 
 	return (

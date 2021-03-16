@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { fontH3, green, PageAddBtn, PageContainer, PageSection, PageSubHR, PageSubtitle, PageTitle } from '../../../../styles/general';
 import Navbar from '../../../Elements/Navbar/Navbar';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-function Experiment({ id }) {
+import { db } from '../../../../firebase';
+import { useParams } from 'react-router';
+function Experiment() {
 
+    let { id } = useParams();
     const [experiment, setExperiment] = useState({
-        title: 'How to make a sandwich',
-        src: 'https://www.youtube.com/embed/S_1_ZSMxRfg',
-        topics: ['Mecanics', 'Optics'],
-        materials: ['Bread', 'Ham', 'Butter', 'Tomatoes'],
-        steps: ['Put the bread in the heated pan.', 'Put the bread in the heated pan.', 'Put the bread in the heated pan.', 'Put the bread in the heated pan.']
+        title: '',
+        videoUrl: '',
+        domains: [],
+        materials: [],
+        steps: []
     })
+
+
+    useEffect(() => {
+        db.collection("experiments").doc(id).get().then(doc => setExperiment(doc.data()));
+    }, [])
+
+
 
     const [clicked, setClicked] = useState(false)
 
@@ -21,13 +31,13 @@ function Experiment({ id }) {
             <Navbar></Navbar>
             <PageSection>
                 <PageTitle white small>{experiment.title}</PageTitle>
-                <ExperimentVideo src={experiment.src} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+                <ExperimentVideo src={experiment.videoUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
                 <ExperimentInfo>
                     <PageSubtitle>Activity overview</PageSubtitle>
                     <PageSubHR />
                     <ExperimentTopics>
                         <PageSubtitle small>Science Topics:</PageSubtitle>
-                        {experiment.topics.map((topic, i) => (<p>{topic}{i !== experiment.topics.length - 1 ? "," : null}</p>))}
+                        {experiment.domains.map((topic, i) => (<p>{topic}{i !== experiment.domains.length - 1 ? "," : null}</p>))}
                     </ExperimentTopics>
                     <ExperimentDetails>
                         <ul>

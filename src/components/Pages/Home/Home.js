@@ -7,15 +7,14 @@ import Navbar from '../../Elements/Navbar/Navbar';
 import { PageContainer } from '../../../styles/general';
 
 export default function Home() {
+
 	return (
-		<>
-			<PageContainer>
-				<Navbar></Navbar>
-				<Hero />
-				<Experiment />
-				<Events />
-				<Contact />
-			</PageContainer>
-		</>
+		<PageContainer>
+			<Navbar></Navbar>
+			<Hero />
+			<Experiment />
+			<Events />
+			<Contact />
+		</PageContainer>
 	);
 }

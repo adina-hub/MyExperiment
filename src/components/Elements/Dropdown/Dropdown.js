@@ -4,13 +4,13 @@ import { darkBg, green } from '../../../styles/general';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
-function Dropdown() {
+function Dropdown({ }) {
 	const [categories, setCategories] = useState(["Romance", "Fiction", "Geography", "Geometry", "Sci-Fi"])
 	const [open, setOpen] = useState(false)
 	const [category, setCategory] = useState('Choose a category')
 
 	return (
-		<Container>
+		<DropdownContainer>
 			<ExperimentsDropdownClose>
 				<p>{category}</p>
 				{!open && <ExpandMoreIcon onClick={() => setOpen(!open)} />}
@@ -26,14 +26,14 @@ function Dropdown() {
 					))}
 				</ExperimentsDropdownOpen>
 			)}
-		</Container>
+		</DropdownContainer>
 	)
 }
 
 export default Dropdown;
 
 
-const Container = styled.div`
+const DropdownContainer = styled.div`
     background: ${darkBg};
 	display: flex;
 	flex-direction: column;

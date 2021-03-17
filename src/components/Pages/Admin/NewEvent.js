@@ -34,9 +34,11 @@ export default function NewEvent() {
 						time: '',
 						domains: [],
 						places: '',
-						steps: ''
+						steps: '',
+						bookings: []
 					}}
 					onSubmit={(values) =>
+
 						addEvent(
 							values.title,
 							values.imgUrl,
@@ -46,7 +48,8 @@ export default function NewEvent() {
 							values.time,
 							values.domains,
 							values.places,
-							values.steps
+							values.steps,
+							values.bookings
 						)
 					}
 				>

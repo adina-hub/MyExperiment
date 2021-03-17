@@ -38,7 +38,7 @@ function Experiments() {
 	return (
 		<PageContainer>
 			<Navbar></Navbar>
-			<PageSection fullHeight>
+			<PageSection>
 				<PageTitle>Experiments</PageTitle>
 				<PageHR />
 				<PageDescription>Here you can find physics related experiments.</PageDescription>

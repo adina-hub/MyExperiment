@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
 	green,
@@ -13,35 +13,40 @@ import Navbar from '../../../Elements/Navbar/Navbar';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PopUp from '../../../Elements/PopUp/PopUp';
+import { useParams } from 'react-router';
+import { db } from '../../../../firebase';
+import { useAuth } from '../../../../context/AuthContext';
 
-export default function Event({ id }) {
-	const [event, setExperiment] = useState({
-		title: 'Optical Illusions',
-		src:
-			'https://images.unsplash.com/photo-1614456152857-6e4f94623245?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-		topics: ['Mecanics', 'Optics'],
-		materials: ['Bread', 'Ham', 'Butter', 'Tomatoes'],
-		steps: [
-			"You’re going to watch a short video. The aim isn't to find right answers, it's to explore ideas and find out what they know.",
-			"After you've watched the video, lead a discussion with your class",
-			'Ask the class to describe what they saw using only one word.'
-		],
-		location: 'Illinois, SUA',
-		time: '4 pm',
-		date: '14/9/2021'
+export default function Event() {
+
+
+
+	let { id } = useParams();
+	const [event, setEvent] = useState({
+		title: '',
+		imgUrl: '',
+		domains: [],
+		steps: [],
+		location: '',
+		time: '',
+		date: ''
 	});
 	const [booked, setBooked] = useState(false);
+	const { currentUser } = useAuth();
 
 
+	useEffect(() => {
+		console.log(currentUser);
+		db.collection("events").doc(id).get().then(doc => setEvent(doc.data()));
+	}, [])
 
 	return (
 		<PageContainer>
 			<Navbar></Navbar>
 			<PageSection>
 				<PageTitle white>{event.title}</PageTitle>
-				<EventImage src={event.src}></EventImage>
+				<EventImage src={event.imgUrl}></EventImage>
 				<EventInfo>
 					<PageSubtitle>Activity overview</PageSubtitle>
 					<PageSubHR />
@@ -57,10 +62,10 @@ export default function Event({ id }) {
 					</EventDetails>
 					<EventTopics>
 						<PageSubtitle small>Science Topics:</PageSubtitle>
-						{event.topics.map((topic, i) => (
+						{event.domains.map((topic, i) => (
 							<p>
 								{topic}
-								{i !== event.topics.length - 1 ? ',' : null}
+								{i !== event.domains.length - 1 ? ',' : null}
 							</p>
 						))}
 					</EventTopics>
@@ -77,7 +82,7 @@ export default function Event({ id }) {
 					<PersonAddOutlinedIcon />
 				</PageAddBtn>
 			</PageSection>
-			{booked && <PopUp close={() => setBooked(false)} date={event.date} time={event.time} location={event.location} id={event.title} />}
+			{booked && <PopUp close={() => setBooked(false)} date={event.date} id={id} time={event.time} location={event.location} uid={currentUser.uid} />}
 		</PageContainer>
 	);
 }

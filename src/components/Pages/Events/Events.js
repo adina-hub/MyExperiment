@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { db } from '../../../firebase';
 import {
 	PageContainer,
 	PageDescription,
@@ -11,6 +12,30 @@ import Event from '../../Elements/Event/Event';
 import Navbar from '../../Elements/Navbar/Navbar';
 
 function Events() {
+	const [events, setEvents] = useState([])
+	useEffect(() => {
+		db.collection("events").get().then(querySnapshot => {
+			let array = [];
+			querySnapshot.docs.map(doc => {
+				let id = doc.id;
+				let data = doc.data();
+				array.push({
+					id: id,
+					title: data.title,
+					description: data.description,
+					places: data.places,
+					time: data.time,
+					date: data.date,
+					location: data.location,
+					domains: data.domains,
+					steps: data.steps,
+					imgUrl: data.imgUrl,
+				})
+			});
+			setEvents(array);
+		});
+	}, []);
+
 	return (
 		<PageContainer>
 			<Navbar></Navbar>
@@ -25,27 +50,16 @@ function Events() {
 			</PageSection>
 			<PageSection dark>
 				<EventsList>
-					<Event
-						title="Optical Illusions"
-						img="https://images.unsplash.com/photo-1614483573015-fc4ceb584797?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-						description="Join us in the anual event about the optical illusions! "
-						location="Illinois, SUA"
-						time="4 pm"
-					/>
-					<Event
-						title="Optical Illusions"
-						img="https://images.unsplash.com/photo-1614483573015-fc4ceb584797?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-						description="Join us in the anual event about the optical illusions! "
-						location="Illinois, SUA"
-						time="4 pm"
-					/>
-					<Event
-						title="Optical Illusions"
-						img="https://images.unsplash.com/photo-1614483573015-fc4ceb584797?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-						description="Join us in the anual event about the optical illusions! "
-						location="Illinois, SUA"
-						time="4 pm"
-					/>
+					{events.map(event => (
+						<Event
+							id={event.id}
+							title={event.tile}
+							img={event.imgUrl}
+							description={event.description}
+							location={event.location}
+							time={event.time}
+						/>
+					))}
 				</EventsList>
 			</PageSection>
 		</PageContainer>

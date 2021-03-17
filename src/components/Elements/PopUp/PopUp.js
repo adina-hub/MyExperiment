@@ -1,8 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import { fontH1, fontH2, fontH3, green, lightBg, PageBtn, PageLinkBtn } from '../../../styles/general';
 import CloseIcon from '@material-ui/icons/Close';
-function PopUp({ date, time, location, id, close }) {
+import { db } from '../../../firebase';
+import firebase from 'firebase';
+function PopUp({ id, date, time, location, uid, close }) {
+
+
+    const acceptHandler = async () => {
+        let docId = "";
+        let userName = "";
+        await db.collection('users').where("uid", "==", uid).get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    console.log(doc.id);
+                    docId = doc.id;
+                    userName = doc.data().name;
+                });
+            });
+        console.log(docId);
+        await db.collection('users').doc(docId).update({
+            events: firebase.firestore.FieldValue.arrayUnion(
+                id)
+        });;
+
+        await db.collection('events').doc(id).update({
+            bookings: firebase.firestore.FieldValue.arrayUnion({
+                userId: id,
+                userName: userName
+            }),
+            places: firebase.firestore.FieldValue.increment(-1)
+        });;
+    }
+
+
     return (
         <PopUpContainer>
             <PopUpCard>
@@ -14,7 +45,7 @@ function PopUp({ date, time, location, id, close }) {
                 <PopUpItem>Booking ID: <span>{id}</span> </PopUpItem>
                 <PopUpBtns>
                     <PopUpLinkBtn onClick={close}>Go back</PopUpLinkBtn>
-                    <PopUpBtn>Accept</PopUpBtn>
+                    <PopUpBtn onClick={acceptHandler}>Accept</PopUpBtn>
                 </PopUpBtns>
             </PopUpCard>
         </PopUpContainer>

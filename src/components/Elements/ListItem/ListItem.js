@@ -4,7 +4,19 @@ import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { Link } from 'react-router-dom';
 import { fontH3 } from '../../../styles/general';
-function ListItem({ name, url }) {
+import { db } from '../../../firebase';
+function ListItem({ type, id, name, url }) {
+
+	const deleteHandler = async () => {
+
+		if (type === "event") {
+			await db.collection("events").doc(id).delete().then(() => console.log("DELETED EVENT"))
+		} else {
+			await db.collection("experiments").doc(id).delete().then(() => console.log("DELETED EXPERIMENT"))
+		}
+		window.location.reload();
+	}
+
 	return (
 		<ListItemContainer>
 			<ListItemTitle>{name}</ListItemTitle>
@@ -13,7 +25,7 @@ function ListItem({ name, url }) {
 					<InfoIcon />
 				</Link>
 				<Link>
-					<DeleteIcon />
+					<DeleteIcon onClick={deleteHandler} />
 				</Link>
 			</ListItemIcons>
 		</ListItemContainer>

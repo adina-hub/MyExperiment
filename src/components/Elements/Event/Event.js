@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { green, darkBg, lightBg, fontP } from '../../../styles/general';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
+import { Link } from 'react-router-dom';
 
-function Event({ title, description, location, time, img, carousel = false, primary = false, last = false, first = false }) {
+function Event({ id, title, description, location, time, img, carousel = false, primary = false, last = false, first = false }) {
 	return (
 		<EventContainer carousel={carousel ? true : false}
 			first={first ? true : false}
@@ -25,7 +26,7 @@ function Event({ title, description, location, time, img, carousel = false, prim
 					</EventDetail>
 				</EventDetails>
 				<EventButtons>
-					<button className="info">More info</button>
+					<button className="info" ><Link to={`/events/${id}`}>More info</Link></button>
 					<button className="book">Book a place</button>
 				</EventButtons>
 			</EventInfo>
@@ -129,10 +130,13 @@ const EventButtons = styled.div`
 
 	> .info {
 		margin-right: 18px;
-		color: ${green};
 		font-weight: bold;
 		background: none;
 		border: 1px solid ${green};
+		a {
+		color: ${green};
+		text-decoration: none;
+		}
 	}
 
 	> .book {

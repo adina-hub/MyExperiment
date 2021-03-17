@@ -9,7 +9,14 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-	const [currentUser, setCurrentUser] = useState(null);
+	const [currentUser, setCurrentUser] = useState(
+		{
+			email: "",
+			name: "",
+			uid: "",
+			admin: "",
+		}
+	);
 	const [loading, setLoading] = useState(true);
 	const history = useHistory();
 	// GENERAL FUNCTIONALITIES
@@ -42,6 +49,8 @@ export function AuthProvider({ children }) {
 							uid: data.uid,
 							admin: data.admin,
 						})
+						console.log(currentUser);
+						history.push('/admin');
 					})
 				})
 		});
@@ -57,16 +66,18 @@ export function AuthProvider({ children }) {
 
 	// ADMIN constALITIES
 
-	const addEvent = (title, imgUrl, description, location, date, domains, places, steps) => {
+	const addEvent = (title, imgUrl, description, location, date, time, domains, places, steps, bookings) => {
 		db.collection('events').add({
 			title: title,
 			imgUrl: imgUrl,
 			description: description,
 			location: location,
 			date: date,
+			time: time,
 			domains: domains,
 			places: places,
-			steps: steps
+			steps: steps,
+			bookings: bookings
 		}).then(() => console.log("ADDED EVENT!!!"));
 	}
 
@@ -87,6 +98,8 @@ export function AuthProvider({ children }) {
 		const unsubscribe = auth.onAuthStateChanged((userAuth) => {
 			if (!userAuth) {
 				setCurrentUser(null);
+			} else {
+
 			}
 			setLoading(false);
 		});

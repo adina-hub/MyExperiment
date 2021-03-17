@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AddIcon from '@material-ui/icons/Add';
 import {
@@ -13,8 +13,26 @@ import {
 } from '../../../styles/general';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import ListItem from '../../Elements/ListItem/ListItem';
+import { db } from '../../../firebase';
 
 export default function AdminEvents() {
+	const [events, setEvents] = useState([])
+	useEffect(() => {
+		db.collection("events").get().then(querySnapshot => {
+			let array = [];
+			querySnapshot.docs.map(doc => {
+				let id = doc.id;
+				let data = doc.data();
+				array.push({
+					id: id,
+					title: data.title,
+				})
+			});
+			setEvents(array);
+		});
+	}, []);
+
+
 	return (
 		<PageContainer>
 			<AdminNavbar />
@@ -22,9 +40,9 @@ export default function AdminEvents() {
 				<PageTitle>Events</PageTitle>
 				<PageHR />
 				<EventsList>
-					<ListItem name="Event One" url="/events/dadasd" />
-					<ListItem name="Event Two" url="/events/dadasd" />
-					<ListItem name="Event Three" url="/events/dadasd" />
+					{events.map(event => (
+						<ListItem name={event.title} id={event.id} type="event" url={`/events/${event.id}`} />
+					))}
 				</EventsList>
 				<PageBtnContainer>
 					<PageLinkBtn to="/admin">Go back</PageLinkBtn>

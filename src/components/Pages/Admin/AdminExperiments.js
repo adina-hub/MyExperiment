@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AddIcon from '@material-ui/icons/Add';
 import {
@@ -13,8 +13,27 @@ import {
 } from '../../../styles/general';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import ListItem from '../../Elements/ListItem/ListItem';
+import { db } from '../../../firebase';
 
 export default function AdminExperiments() {
+	const [experiments, setExperiments] = useState([])
+	useEffect(() => {
+		db.collection("experiments").get().then(querySnapshot => {
+			let array = [];
+			querySnapshot.docs.map(doc => {
+				let id = doc.id;
+				let data = doc.data();
+				array.push({
+					id: id,
+					title: data.title,
+				})
+			});
+			setExperiments(array);
+		});
+	}, []);
+
+
+
 	return (
 		<PageContainer>
 			<AdminNavbar />
@@ -22,9 +41,9 @@ export default function AdminExperiments() {
 				<PageTitle>Experiments</PageTitle>
 				<PageHR />
 				<ExperimentsList>
-					<ListItem name="Experiment One" url="/experiments/dadasd" />
-					<ListItem name="Experiment Two" url="/experiments/dadasd" />
-					<ListItem name="Experiment Three" url="/experiments/dadasd" />
+					{experiments.map(experiment => (
+						<ListItem name={experiment.title} id={experiment.id} type="experiment" url={`/experiments/${experiment.id}`} />
+					))}
 				</ExperimentsList>
 				<PageBtnContainer>
 					<PageLinkBtn to="/admin">Go back</PageLinkBtn>

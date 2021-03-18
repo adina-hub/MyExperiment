@@ -4,8 +4,10 @@ import { fontH1, fontH2, fontH3, green, lightBg, PageBtn, PageLinkBtn } from '..
 import CloseIcon from '@material-ui/icons/Close';
 import { db } from '../../../firebase';
 import firebase from 'firebase';
+import { useHistory } from 'react-router';
 function PopUp({ id, date, time, location, uid, close }) {
 
+    const history = useHistory();
 
     const acceptHandler = async () => {
         let docId = "";
@@ -31,6 +33,7 @@ function PopUp({ id, date, time, location, uid, close }) {
             }),
             places: firebase.firestore.FieldValue.increment(-1)
         });;
+        history.push('/events');
     }
 
 

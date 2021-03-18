@@ -50,7 +50,7 @@ export function AuthProvider({ children }) {
 							admin: data.admin,
 						})
 						console.log(currentUser);
-						history.push('/admin');
+						history.push('/user');
 					})
 				})
 		});
@@ -91,7 +91,21 @@ export function AuthProvider({ children }) {
 		}).then(() => console.log("ADDED EXPERIMENT!!!"));
 	}
 
-
+	const getUser = async (userAuth) => {
+		await db.collection('users').where("uid", "==", userAuth.uid).get()
+			.then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					let data = doc.data()
+					setCurrentUser({
+						email: data.email,
+						name: data.name,
+						uid: data.uid,
+						admin: data.admin,
+					})
+				})
+			})
+		setLoading(false);
+	}
 
 
 	useEffect(() => {
@@ -99,9 +113,8 @@ export function AuthProvider({ children }) {
 			if (!userAuth) {
 				setCurrentUser(null);
 			} else {
-
+				getUser(userAuth);
 			}
-			setLoading(false);
 		});
 
 		return unsubscribe;

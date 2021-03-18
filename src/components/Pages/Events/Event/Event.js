@@ -37,7 +37,6 @@ export default function Event() {
 
 
 	useEffect(() => {
-		console.log(currentUser);
 		db.collection("events").doc(id).get().then(doc => setEvent(doc.data()));
 	}, [])
 

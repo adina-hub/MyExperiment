@@ -6,9 +6,14 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { db } from '../../../../firebase';
 import { useParams } from 'react-router';
+import { useAuth } from '../../../../context/AuthContext';
+import firebase from 'firebase';
+
 function Experiment() {
 
     let { id } = useParams();
+    const { currentUser } = useAuth();
+
     const [experiment, setExperiment] = useState({
         title: '',
         videoUrl: '',
@@ -18,13 +23,50 @@ function Experiment() {
     })
 
 
-    useEffect(() => {
-        db.collection("experiments").doc(id).get().then(doc => setExperiment(doc.data()));
-    }, [])
+
 
 
 
     const [clicked, setClicked] = useState(false)
+
+    const favoriteHandler = async () => {
+        setClicked(!clicked);
+        let docId = "";
+        await db.collection('users').where("uid", "==", currentUser.uid).get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    docId = doc.id;
+                });
+            });
+        if (!clicked) {
+            await db.collection('users').doc(docId).update({
+                favorites: firebase.firestore.FieldValue.arrayUnion(id)
+            });;
+        } else {
+            await db.collection('users').doc(docId).update({
+                favorites: firebase.firestore.FieldValue.arrayRemove(id)
+            });;
+        }
+
+    }
+
+    useEffect(() => {
+        const initialise = async () => {
+            await db.collection("experiments").doc(id).get().then(doc => setExperiment(doc.data()));
+            await db.collection('users').where("uid", "==", currentUser.uid).get()
+                .then(querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        console.log(doc.data().favorites)
+                        doc.data().favorites.forEach(favorite => {
+                            if (favorite === id) {
+                                setClicked(true)
+                            }
+                        });
+                    });
+                });
+        }
+        initialise()
+    }, [])
 
     return (
         <PageContainer>
@@ -52,7 +94,7 @@ function Experiment() {
                         </ol>
                     </ExperimentDetails>
                 </ExperimentInfo>
-                <PageAddBtn onClick={() => setClicked(!clicked)}>
+                <PageAddBtn onClick={favoriteHandler}>
                     <p>Add to favourites</p>
                     {clicked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 </PageAddBtn>

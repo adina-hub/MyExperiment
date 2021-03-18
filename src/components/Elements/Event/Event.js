@@ -27,7 +27,7 @@ function Event({ id, title, description, location, time, img, carousel = false, 
 				</EventDetails>
 				<EventButtons>
 					<button className="info" ><Link to={`/events/${id}`}>More info</Link></button>
-					<button className="book">Book a place</button>
+					<button className="book"><Link to={`/events/${id}`}>Book a place</Link></button>
 				</EventButtons>
 			</EventInfo>
 		</EventContainer>
@@ -143,6 +143,10 @@ const EventButtons = styled.div`
 		background: ${green};
 		border: none;
 		color: ${darkBg};
+		a {
+		color: ${darkBg};
+		text-decoration: none;
+		}
 	}
 
 	> .book {

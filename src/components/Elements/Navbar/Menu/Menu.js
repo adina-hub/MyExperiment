@@ -1,19 +1,17 @@
 import React from 'react';
 import { bool } from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Menu({ open }) {
 	const clickHandler = () => { window.scrollTo(0, 0); }
 	return (
-		<>
-			<StyledMenu open={open}>
-				<Link to="/" onClick={clickHandler}>Home</Link>
-				<Link to="/experiments" onClick={clickHandler}>Experiments</Link>
-				<Link to="/events" onClick={clickHandler}>Events</Link>
-				<Link to="/signin" onClick={clickHandler}>Log In</Link>
-			</StyledMenu>
-		</>
+		<StyledMenu open={open}>
+			<NavLink to="/" activeClassName="selected" onClick={clickHandler} exact>Home</NavLink >
+			<NavLink to="/experiments" activeClassName="selected" onClick={clickHandler} exact>Experiments</NavLink >
+			<NavLink to="/events" activeClassName="selected" onClick={clickHandler} exact>Events</NavLink >
+			<NavLink to="/signin" activeClassName="selected" onClick={clickHandler}>Log In</NavLink >
+		</StyledMenu>
 	);
 }
 
@@ -31,7 +29,6 @@ const StyledMenu = styled.nav`
 	height: 100vh;
 	width: 100vw;
 	text-align: center;
-	padding: 2rem;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -44,5 +41,10 @@ const StyledMenu = styled.nav`
 		color: white;
 		text-decoration: none;
 		transition: color 0.3s linear;
+	}
+
+	.selected{
+		background: #007999;
+		padding: 1.25rem;
 	}
 `;

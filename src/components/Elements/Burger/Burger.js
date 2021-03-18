@@ -33,8 +33,8 @@ const StyledBurger = styled.button`
 	border: none;
 	cursor: pointer;
 	padding: 0;
-	z-index: 10;
-
+	z-index: 101;
+	
 	&:focus {
 		outline: none;
 	}
@@ -55,7 +55,7 @@ const StyledBurger = styled.button`
 		:nth-child(2) {
 			opacity: ${({ open }) => (open ? '0' : '1')};
 			transform: ${({ open }) =>
-				open ? 'translateX(20px)' : 'translateX(0px)'};
+		open ? 'translateX(20px)' : 'translateX(0px)'};
 		}
 
 		:nth-child(3) {

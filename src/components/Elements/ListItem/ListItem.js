@@ -3,16 +3,31 @@ import styled from 'styled-components';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import { Link } from 'react-router-dom';
-import { fontH3 } from '../../../styles/general';
+import { darkBg, fontH3, green } from '../../../styles/general';
 import { db } from '../../../firebase';
-function ListItem({ type, id, name, url }) {
+import firebase from 'firebase';
+
+function ListItem({ type, id, name, url, userType, uid = null }) {
 
 	const deleteHandler = async () => {
-
-		if (type === "event") {
-			await db.collection("events").doc(id).delete().then(() => console.log("DELETED EVENT"))
+		if (userType === "admin") {
+			if (type === "event") {
+				await db.collection("events").doc(id).delete().then(() => console.log("DELETED EVENT"))
+			} else {
+				await db.collection("experiments").doc(id).delete().then(() => console.log("DELETED EXPERIMENT"))
+			}
 		} else {
-			await db.collection("experiments").doc(id).delete().then(() => console.log("DELETED EXPERIMENT"))
+			if (type === "event") {
+				await db.collection("users").doc(uid).update({
+					events: firebase.firestore.FieldValue.arrayRemove(id)
+				}).then(() => console.log("DELETED FROM EVENTS"))
+					.catch(err => console.log(err))
+			} else {
+				await db.collection("users").doc(uid).update({
+					favorites: firebase.firestore.FieldValue.arrayRemove(id)
+				}).then(() => console.log("DELETED FROM FAVORITES"))
+					.catch(err => console.log(err))
+			}
 		}
 		window.location.reload();
 	}
@@ -38,7 +53,7 @@ const ListItemContainer = styled.div`
 	height: 40px;
 	margin: 7px auto;
 	padding: 0px 10px;
-	background: grey;
+	background: ${darkBg};
 	border-radius: 5px;
 	display: flex;
 	align-items: center;
@@ -49,7 +64,7 @@ const ListItemContainer = styled.div`
 
 const ListItemTitle = styled.div`
         font-size: ${fontH3};
-		color: white;
+		color: ${green};
 		font-weight: normal;
 `;
 

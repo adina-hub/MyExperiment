@@ -17,7 +17,7 @@ export default function UserExperiments() {
 
 	const [experiments, setExperiments] = useState([])
 	const { currentUser } = useAuth();
-
+	const [userId, setUserId] = useState('');
 
 
 	useEffect(() => {
@@ -25,6 +25,7 @@ export default function UserExperiments() {
 			await db.collection('users').where("uid", "==", currentUser.uid).get()
 				.then(querySnapshot => {
 					querySnapshot.forEach(async (doc) => {
+						setUserId(doc.id);
 						let experimentsCopy = [];
 						for (const favorite of doc.data().favorites) {
 							const result = await db.collection("experiments").doc(favorite).get().then(doc => ({
@@ -48,7 +49,7 @@ export default function UserExperiments() {
 				<PageHR />
 				<ExperimentsList>
 					{experiments.map((experiment, i) => (
-						<ListItem key={i} name={experiment.name} url={`/experiments/${experiment.id}`} />
+						<ListItem id={experiments[i].id} uid={userId} userType="user" key={i} name={experiment.name} url={`/experiments/${experiment.id}`} />
 					))}
 				</ExperimentsList>
 				<PageBtnContainer>

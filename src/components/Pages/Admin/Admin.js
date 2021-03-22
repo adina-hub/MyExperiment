@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth } from '../../../context/AuthContext.js';
 import {
 	PageLinkBtn,
 	PageContainer,
@@ -13,6 +14,7 @@ import {
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 
 export default function AdminHome() {
+	const { currentUser } = useAuth();
 	return (
 		<PageContainer>
 			<AdminNavbar />
@@ -21,17 +23,17 @@ export default function AdminHome() {
 				<PageHR />
 				<UserField>
 					<UserFieldName>Name:</UserFieldName>
-					<UserFieldValue>Admin User</UserFieldValue>
+					<UserFieldValue>{currentUser.name}</UserFieldValue>
 				</UserField>
 				<UserField>
 					<UserFieldName>Email:</UserFieldName>
-					<UserFieldValue>adminUser@gmail.com</UserFieldValue>
+					<UserFieldValue>{currentUser.email}</UserFieldValue>
 				</UserField>
 				<UserBtnContainer>
-					<PageLinkBtn large="true" to="/experimentsList">
+					<PageLinkBtn large="true" to="/admin/experiments">
 						See experiments
 					</PageLinkBtn>
-					<PageLinkBtn large="true" to="/eventsList">
+					<PageLinkBtn large="true" to="/admin/events">
 						See events
 					</PageLinkBtn>
 				</UserBtnContainer>

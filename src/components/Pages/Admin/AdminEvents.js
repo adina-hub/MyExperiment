@@ -41,12 +41,12 @@ export default function AdminEvents() {
 				<PageHR />
 				<EventsList>
 					{events.map(event => (
-						<ListItem name={event.title} id={event.id} type="event" url={`/events/${event.id}`} />
+						<ListItem name={event.title} id={event.id} type="event" url={`/admin/events/${event.id}`} />
 					))}
 				</EventsList>
 				<PageBtnContainer>
 					<PageLinkBtn to="/admin">Go back</PageLinkBtn>
-					<EventsAddButton to="/newEvent">
+					<EventsAddButton to="/admin/events/new">
 						<p>Add</p>
 						<EventsAddIcon />
 					</EventsAddButton>

@@ -42,12 +42,12 @@ export default function AdminExperiments() {
 				<PageHR />
 				<ExperimentsList>
 					{experiments.map(experiment => (
-						<ListItem name={experiment.title} id={experiment.id} type="experiment" url={`/experiments/${experiment.id}`} />
+						<ListItem userType="admin" name={experiment.title} id={experiment.id} type="experiment" url={`/admin/experiments/${experiment.id}`} />
 					))}
 				</ExperimentsList>
 				<PageBtnContainer>
 					<PageLinkBtn to="/admin">Go back</PageLinkBtn>
-					<ExperimentsAddButton to="/newExperiment">
+					<ExperimentsAddButton to="/admin/experiments/new">
 						<p>Add</p>
 						<ExperimentsAddIcon />
 					</ExperimentsAddButton>

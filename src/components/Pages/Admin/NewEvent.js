@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import { Form, Formik } from 'formik';
 import {
@@ -15,9 +15,32 @@ import {
 import TagsInput from '../../Elements/TagInput/TagsInput';
 import StepsInput from '../../Elements/StepsInput/StepsInput';
 import { useAuth } from '../../../context/AuthContext';
+import { useParams } from 'react-router';
+import { db } from '../../../firebase';
 
 export default function NewEvent() {
-	const { addEvent } = useAuth();
+	const { addEvent, editEvent } = useAuth();
+	const id = useParams().id;
+	const [event, setEvent] = useState({
+		title: '',
+		imgUrl: '',
+		description: '',
+		location: '',
+		date: '',
+		time: '',
+		domains: [],
+		places: '',
+		steps: [],
+		bookings: []
+	})
+	useEffect(() => {
+		if (id) {
+			const getEvent = async () => {
+				await db.collection("events").doc(id).get().then(doc => setEvent(doc.data()));
+			}
+			getEvent();
+		}
+	}, []);
 	return (
 		<PageContainer>
 			<AdminNavbar />
@@ -25,33 +48,49 @@ export default function NewEvent() {
 				<PageTitle>New Event</PageTitle>
 				<PageHR />
 				<Formik
+					enableReinitialize
 					initialValues={{
-						title: '',
-						imgUrl: '',
-						description: '',
-						location: '',
-						date: '',
-						time: '',
-						domains: [],
-						places: '',
-						steps: '',
-						bookings: []
+						title: event.title,
+						imgUrl: event.imgUrl,
+						description: event.description,
+						location: event.location,
+						date: event.date,
+						time: event.time,
+						domains: event.domains,
+						places: event.places,
+						steps: event.steps,
+						bookings: event.bookings
 					}}
-					onSubmit={(values) =>
-
-						addEvent(
-							values.title,
-							values.imgUrl,
-							values.description,
-							values.location,
-							values.date,
-							values.time,
-							values.domains,
-							values.places,
-							values.steps,
-							values.bookings
-						)
-					}
+					onSubmit={(values) => {
+						if (id) {
+							editEvent(
+								id,
+								values.title,
+								values.imgUrl,
+								values.description,
+								values.location,
+								values.date,
+								values.time,
+								values.domains,
+								values.places,
+								values.steps,
+								values.bookings
+							)
+						} else {
+							addEvent(
+								values.title,
+								values.imgUrl,
+								values.description,
+								values.location,
+								values.date,
+								values.time,
+								values.domains,
+								values.places,
+								values.steps,
+								values.bookings
+							)
+						}
+					}}
 				>
 					<PageForm>
 						<label id="title">Title</label>
@@ -82,8 +121,9 @@ export default function NewEvent() {
 						<StepsInput name="steps" id="steps" required />
 
 						<PageBtnContainer>
-							<PageLinkBtn to="/eventsList">Go back</PageLinkBtn>
-							<AdminAddBtn type="submit">ADD</AdminAddBtn>
+							<PageLinkBtn to="/admin/events">Go back</PageLinkBtn>
+							{!id && <AdminAddBtn type="submit">ADD</AdminAddBtn>}
+							{id && <AdminAddBtn type="submit">EDIT</AdminAddBtn>}
 						</PageBtnContainer>
 					</PageForm>
 				</Formik>

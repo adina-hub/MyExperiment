@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
 import { Formik } from 'formik';
 import TagsInput from '../../Elements/TagInput/TagsInput';
@@ -15,9 +15,28 @@ import {
 	AdminAddBtn
 } from '../../../styles/general';
 import { useAuth } from '../../../context/AuthContext';
+import { useParams } from 'react-router';
+import { db } from '../../../firebase';
 
 export default function NewExperiment() {
-	const { addExperiment } = useAuth();
+	const { addExperiment, editExperiment } = useAuth();
+	const id = useParams().id;
+	const [experiment, setExperiment] = useState({
+		domains: [],
+		materials: [],
+		steps: [],
+		title: "",
+		videoUrl: ""
+	})
+	useEffect(() => {
+		if (id) {
+			const getExperiment = async () => {
+				await db.collection("experiments").doc(id).get().then(doc => setExperiment(doc.data()));
+			}
+			getExperiment();
+		}
+	}, []);
+
 
 	return (
 		<PageContainer>
@@ -26,22 +45,38 @@ export default function NewExperiment() {
 				<PageTitle>New Experiment</PageTitle>
 				<PageHR />
 				<Formik
-					initialValues={{
-						title: '',
-						videoUrl: '',
-						materials: '',
-						domains: [],
-						steps: ''
-					}}
-					onSubmit={values => addExperiment(
-						values.title,
-						values.videoUrl,
-						values.materials,
-						values.domains,
-						values.steps
-					)}
+					enableReinitialize
+					initialValues={
+						{
+							title: experiment.title,
+							videoUrl: experiment.videoUrl,
+							domains: experiment.domains,
+							materials: experiment.materials,
+							steps: experiment.steps,
+						}}
+					onSubmit={values => {
+						if (id) {
+							editExperiment(
+								id,
+								values.title,
+								values.videoUrl,
+								values.materials,
+								values.domains,
+								values.steps
+							)
+						} else {
+							addExperiment(
+								values.title,
+								values.videoUrl,
+								values.materials,
+								values.domains,
+								values.steps
+							)
+						}
+					}
+					}
 				>
-					<PageForm>
+					<PageForm >
 						<label id="title">Title</label>
 						<PageInput name="title" type="text" required />
 
@@ -58,8 +93,9 @@ export default function NewExperiment() {
 						<StepsInput name="steps" id="steps" required />
 
 						<PageBtnContainer>
-							<PageLinkBtn to="/experimentsList">Go back</PageLinkBtn>
-							<AdminAddBtn type="submit">ADD</AdminAddBtn>
+							<PageLinkBtn to="/admin/experiments">Go back</PageLinkBtn>
+							{!id && <AdminAddBtn type="submit">ADD</AdminAddBtn>}
+							{id && <AdminAddBtn type="submit">EDIT</AdminAddBtn>}
 						</PageBtnContainer>
 					</PageForm>
 				</Formik>

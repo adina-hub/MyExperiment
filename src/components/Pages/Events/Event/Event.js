@@ -14,7 +14,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
 import PopUp from '../../../Elements/PopUp/PopUp';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { db } from '../../../../firebase';
 import { useAuth } from '../../../../context/AuthContext';
 
@@ -34,7 +34,15 @@ export default function Event() {
 	});
 	const [booked, setBooked] = useState(false);
 	const { currentUser } = useAuth();
+	const history = useHistory();
 
+	const addHandler = () => {
+		if (currentUser) {
+			setBooked(true);
+		} else {
+			history.push("/signIn");
+		}
+	}
 
 	useEffect(() => {
 		db.collection("events").doc(id).get().then(doc => setEvent(doc.data()));
@@ -76,7 +84,7 @@ export default function Event() {
 						))}
 					</EventSteps>
 				</EventInfo>
-				<PageAddBtn onClick={() => setBooked(true)}>
+				<PageAddBtn onClick={addHandler}>
 					<p>Book a place</p>
 					<PersonAddOutlinedIcon />
 				</PageAddBtn>

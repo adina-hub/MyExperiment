@@ -3,14 +3,19 @@ import styled from 'styled-components';
 import { green } from '../../../../styles/general';
 import Step from './Step/Step';
 
-function Steps({ stepsCount }) {
+function Steps({ stepsCount, stepsValue = [] }) {
 
-    const [steps, setSteps] = useState([]);
-
+    const [steps, setSteps] = useState(stepsValue);
+    const [modified, setModified] = useState(false);
 
     useEffect(() => {
         return stepsCount(steps);
-    }, [steps])
+    }, [modified])
+
+
+    useEffect(() => {
+        setSteps(stepsValue);
+    }, [stepsValue])
 
     const addHandler = (e) => {
         if (e.key === "Enter" && e.target.value) {
@@ -18,6 +23,7 @@ function Steps({ stepsCount }) {
             e.target.value = null;
             e.preventDefault();
         }
+        setModified(!modified);
 
     }
 
@@ -25,12 +31,14 @@ function Steps({ stepsCount }) {
         let stepsCopy = [...steps];
         stepsCopy[index] = step;
         setSteps(stepsCopy);
+        setModified(!modified);
     }
 
     const removeHandler = (index) => {
         setSteps([...steps].filter((el, i) => {
             return (i !== index);
         }))
+        setModified(!modified);
     }
 
 

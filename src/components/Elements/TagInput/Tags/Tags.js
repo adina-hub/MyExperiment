@@ -3,14 +3,19 @@ import styled from 'styled-components';
 import { darkBg, fontP, green, lightBg } from '../../../../styles/general';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
-function Tags({ tagsCount }) {
+function Tags({ tagsCount, tagsValue = [] }) {
 
-    const [tags, setTags] = useState([])
+    const [tags, setTags] = useState(tagsValue)
+    const [modified, setModified] = useState(false);
 
     useEffect(() => {
+        setTags(tagsValue);
+    }, [tagsValue])
 
+    useEffect(() => {
         return tagsCount(tags);
-    }, [tags])
+    }, [modified])
+
 
     const addHandler = (e) => {
         if (e.key === "Enter" && e.target.value) {
@@ -18,7 +23,7 @@ function Tags({ tagsCount }) {
             e.target.value = null;
             e.preventDefault();
         }
-
+        setModified(!modified);
     }
 
     const removeHandler = (index) => {
@@ -26,6 +31,7 @@ function Tags({ tagsCount }) {
             console.log(i);
             return (i !== index);
         }))
+        setModified(!modified);
     }
 
 

@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
 					uid: userAuth.user.uid,
 					name: name,
 					admin: false,
-					favourites: [],
+					favorites: [],
 					events: []
 				}).then(() => {
 					history.push("/signin");
@@ -49,8 +49,11 @@ export function AuthProvider({ children }) {
 							uid: data.uid,
 							admin: data.admin,
 						})
-						console.log(currentUser);
-						history.push('/user');
+						if (data.admin) {
+							history.push('/admin');
+						} else {
+							history.push('/user');
+						}
 					})
 				})
 		});
@@ -60,7 +63,7 @@ export function AuthProvider({ children }) {
 		return auth.sendPasswordResetEmail(email);
 	}
 
-	const logout = () => {
+	const signOut = () => {
 		return auth.signOut();
 	}
 
@@ -78,7 +81,23 @@ export function AuthProvider({ children }) {
 			places: places,
 			steps: steps,
 			bookings: bookings
-		}).then(() => console.log("ADDED EVENT!!!"));
+		}).then(() => history.push("/admin/events"));
+	}
+
+	const editEvent = (id, title, imgUrl, description, location, date, time, domains, places, steps, bookings) => {
+		console.log(domains);
+		db.collection('events').doc(id).update({
+			title: title,
+			imgUrl: imgUrl,
+			description: description,
+			location: location,
+			date: date,
+			time: time,
+			domains: domains,
+			places: places,
+			steps: steps,
+			bookings: bookings
+		}).then(() => history.push("/admin/events"));
 	}
 
 	const addExperiment = (title, videoUrl, materials, domains, steps) => {
@@ -88,7 +107,17 @@ export function AuthProvider({ children }) {
 			materials: materials,
 			domains: domains,
 			steps: steps
-		}).then(() => console.log("ADDED EXPERIMENT!!!"));
+		}).then(() => history.push("/admin/experiments"));
+	}
+
+	const editExperiment = (id, title, videoUrl, materials, domains, steps) => {
+		db.collection('experiments').doc(id).update({
+			title: title,
+			videoUrl: videoUrl,
+			materials: materials,
+			domains: domains,
+			steps: steps
+		}).then(() => history.push("/admin/experiments"));
 	}
 
 	const getUser = async (userAuth) => {
@@ -112,6 +141,7 @@ export function AuthProvider({ children }) {
 		const unsubscribe = auth.onAuthStateChanged((userAuth) => {
 			if (!userAuth) {
 				setCurrentUser(null);
+				setLoading(false);
 			} else {
 				getUser(userAuth);
 			}
@@ -125,9 +155,11 @@ export function AuthProvider({ children }) {
 		signUp,
 		signIn,
 		resetPassword,
-		logout,
+		signOut,
 		addEvent,
 		addExperiment,
+		editEvent,
+		editExperiment
 	};
 
 	return (

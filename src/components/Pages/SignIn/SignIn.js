@@ -23,7 +23,7 @@ export default function SignIn() {
 	const { signIn } = useAuth();
 	return (
 		<AuthContainer>
-			<AuthLogo src={logo} alt="" />
+			<Link to="/"><AuthLogo src={logo} alt="" /></Link>
 			<AuthFormContainer dark="true">
 				<AuthTitle>Login</AuthTitle>
 				<Formik

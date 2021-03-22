@@ -24,7 +24,7 @@ export default function SignUp() {
 	const { signUp } = useAuth();
 	return (
 		<AuthContainer>
-			<AuthLogo src={logo} alt="" />
+			<Link to="/"><AuthLogo src={logo} alt="" /></Link>
 			<AuthFormContainer dark="true" padding margin>
 				<AuthTitle>Register</AuthTitle>
 				<Formik

@@ -1,16 +1,18 @@
 import React from 'react';
 import { bool } from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { useAuth } from '../../../../context/AuthContext';
 
 function AdminMenu({ open }) {
+	const { signOut } = useAuth();
 	return (
 		<>
 			<StyledMenu open={open}>
-				<Link to="/admin">Home</Link>
-				<Link to="/experimentsList">Experiments</Link>
-				<Link to="/eventsList">Events</Link>
-				<Link to="/signin">Log Out</Link>
+				<NavLink activeClassName="selected" to="/admin" exact>Home</NavLink>
+				<NavLink activeClassName="selected" to="/admin/experiments">Experiments</NavLink>
+				<NavLink activeClassName="selected" to="/admin/events">Events</NavLink>
+				<Link onClick={() => signOut()} to="/signin">Log Out</Link>
 			</StyledMenu>
 		</>
 	);
@@ -30,7 +32,6 @@ const StyledMenu = styled.nav`
 	height: 100vh;
 	width: 100vw;
 	text-align: center;
-	padding: 2rem;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -43,5 +44,9 @@ const StyledMenu = styled.nav`
 		color: white;
 		text-decoration: none;
 		transition: color 0.3s linear;
+	}
+	.selected{
+		background: #007999;
+		padding: 1.25rem;
 	}
 `;

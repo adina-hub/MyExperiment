@@ -1,16 +1,21 @@
 import React from 'react';
 import { bool } from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { useAuth } from '../../../../context/AuthContext';
 
 function Menu({ open }) {
 	const clickHandler = () => { window.scrollTo(0, 0); }
+	const { signOut } = useAuth();
+	const { currentUser } = useAuth();
 	return (
 		<StyledMenu open={open}>
 			<NavLink to="/" activeClassName="selected" onClick={clickHandler} exact>Home</NavLink >
 			<NavLink to="/experiments" activeClassName="selected" onClick={clickHandler} exact>Experiments</NavLink >
 			<NavLink to="/events" activeClassName="selected" onClick={clickHandler} exact>Events</NavLink >
-			<NavLink to="/signin" activeClassName="selected" onClick={clickHandler}>Log In</NavLink >
+			{currentUser && <NavLink to="/user" activeClassName="selected">My Account</NavLink>}
+			{!currentUser && <NavLink to="/signin" activeClassName="selected" onClick={clickHandler}>Log In</NavLink>}
+			{currentUser && <Link to="/signin" onClick={() => signOut()} to="/signin">Logout</Link>}
 		</StyledMenu>
 	);
 }

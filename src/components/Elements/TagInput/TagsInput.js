@@ -7,7 +7,6 @@ function TagsInput({ name }) {
     return (
         <Field name={fieldName} id={fieldName} type="text">
             {({ field: { value }, form: { setFieldValue } }) => {
-                console.log(value);
                 return (<Tags
                     tagsValue={value}
                     tagsCount={tag => setFieldValue(name, tag)}

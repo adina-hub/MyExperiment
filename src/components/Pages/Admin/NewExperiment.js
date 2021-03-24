@@ -29,7 +29,8 @@ export default function NewExperiment() {
 		videoUrl: ""
 	})
 	useEffect(() => {
-		if (id) {
+		console.log(id);
+		if (id && id !== "new") {
 			const getExperiment = async () => {
 				await db.collection("experiments").doc(id).get().then(doc => setExperiment(doc.data()));
 			}
@@ -53,7 +54,8 @@ export default function NewExperiment() {
 							domains: experiment.domains,
 							materials: experiment.materials,
 							steps: experiment.steps,
-						}}
+						}
+					}
 					onSubmit={values => {
 						if (id) {
 							editExperiment(

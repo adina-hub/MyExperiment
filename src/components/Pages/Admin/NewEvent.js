@@ -34,7 +34,7 @@ export default function NewEvent() {
 		bookings: []
 	})
 	useEffect(() => {
-		if (id) {
+		if (id && id !== "new") {
 			const getEvent = async () => {
 				await db.collection("events").doc(id).get().then(doc => setEvent(doc.data()));
 			}

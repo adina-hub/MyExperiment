@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
+	fontH1,
+	fontH3,
+	fontP,
 	green,
 	PageAddBtn,
 	PageContainer,
@@ -19,9 +22,6 @@ import { db } from '../../../../firebase';
 import { useAuth } from '../../../../context/AuthContext';
 
 export default function Event() {
-
-
-
 	let { id } = useParams();
 	const [event, setEvent] = useState({
 		title: '',
@@ -30,23 +30,28 @@ export default function Event() {
 		steps: [],
 		location: '',
 		time: '',
-		date: ''
+		date: '',
+		places: ''
 	});
 	const [booked, setBooked] = useState(false);
 	const { currentUser } = useAuth();
 	const history = useHistory();
+	window.scrollTo(0, 0);
 
 	const addHandler = () => {
 		if (currentUser) {
 			setBooked(true);
 		} else {
-			history.push("/signIn");
+			history.push('/signIn');
 		}
-	}
+	};
 
 	useEffect(() => {
-		db.collection("events").doc(id).get().then(doc => setEvent(doc.data()));
-	}, [])
+		db.collection('events')
+			.doc(id)
+			.get()
+			.then((doc) => setEvent(doc.data()));
+	}, []);
 
 	return (
 		<PageContainer>
@@ -76,6 +81,10 @@ export default function Event() {
 							</p>
 						))}
 					</EventTopics>
+					<EventTopics>
+						<PageSubtitle small>Places Available:</PageSubtitle>
+						<p>{event.places}</p>
+					</EventTopics>
 					<PageSubtitle>Event description</PageSubtitle>
 					<PageSubHR />
 					<EventSteps>
@@ -89,7 +98,16 @@ export default function Event() {
 					<PersonAddOutlinedIcon />
 				</PageAddBtn>
 			</PageSection>
-			{booked && <PopUp close={() => setBooked(false)} date={event.date} id={id} time={event.time} location={event.location} uid={currentUser.uid} />}
+			{booked && (
+				<PopUp
+					close={() => setBooked(false)}
+					date={event.date}
+					id={id}
+					time={event.time}
+					location={event.location}
+					uid={currentUser.uid}
+				/>
+			)}
 		</PageContainer>
 	);
 }
@@ -100,6 +118,12 @@ const EventImage = styled.img`
 	border-radius: 20px;
 	margin: 20px auto 30px auto;
 	object-fit: cover;
+
+	@media screen and (min-width: 768px) {
+		width: 400px;
+		height: 300px;
+		margin: 30px auto;
+	}
 `;
 
 const EventInfo = styled.div`
@@ -134,11 +158,20 @@ const EventDetail = styled.div`
 		fill: ${green};
 		width: 25px;
 		height: 25px;
+
+		@media screen and (min-width: 768px) {
+			width: 35px;
+			height: 35px;
+		}
 	}
 
 	> h5 {
 		margin-left: 5px;
 		color: #fff;
+
+		@media screen and (min-width: 768px) {
+			font-size: ${fontP};
+		}
 	}
 `;
 

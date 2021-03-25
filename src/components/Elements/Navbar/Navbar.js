@@ -34,5 +34,10 @@ const Container = styled.div`
 	> img {
 		width: 110px;
 		height: 110px;
+
+		@media screen and (min-width: 425px) {
+			width: 130px;
+			height: 120px;
+		}
 	}
 `;

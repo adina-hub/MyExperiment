@@ -34,7 +34,7 @@ const StyledBurger = styled.button`
 	cursor: pointer;
 	padding: 0;
 	z-index: 101;
-	
+
 	&:focus {
 		outline: none;
 	}
@@ -55,11 +55,20 @@ const StyledBurger = styled.button`
 		:nth-child(2) {
 			opacity: ${({ open }) => (open ? '0' : '1')};
 			transform: ${({ open }) =>
-		open ? 'translateX(20px)' : 'translateX(0px)'};
+				open ? 'translateX(20px)' : 'translateX(0px)'};
 		}
 
 		:nth-child(3) {
 			transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0deg)')};
 		}
+
+		@media screen and (min-width: 425px) {
+			width: 1.8rem;
+		}
+	}
+
+	@media screen and (min-width: 425px) {
+		width: 2rem;
+		height: 1.8rem;
 	}
 `;

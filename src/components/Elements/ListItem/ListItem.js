@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
@@ -8,29 +8,44 @@ import { db } from '../../../firebase';
 import firebase from 'firebase';
 
 function ListItem({ type, id, name, url, userType, uid = null }) {
-
 	const deleteHandler = async () => {
-		if (userType === "admin") {
-			if (type === "event") {
-				await db.collection("events").doc(id).delete().then(() => console.log("DELETED EVENT"))
+		if (userType === 'admin') {
+			if (type === 'event') {
+				await db
+					.collection('events')
+					.doc(id)
+					.delete()
+					.then(() => console.log('DELETED EVENT'));
 			} else {
-				await db.collection("experiments").doc(id).delete().then(() => console.log("DELETED EXPERIMENT"))
+				await db
+					.collection('experiments')
+					.doc(id)
+					.delete()
+					.then(() => console.log('DELETED EXPERIMENT'));
 			}
 		} else {
-			if (type === "event") {
-				await db.collection("users").doc(uid).update({
-					events: firebase.firestore.FieldValue.arrayRemove(id)
-				}).then(() => console.log("DELETED FROM EVENTS"))
-					.catch(err => console.log(err))
+			if (type === 'event') {
+				await db
+					.collection('users')
+					.doc(uid)
+					.update({
+						events: firebase.firestore.FieldValue.arrayRemove(id)
+					})
+					.then(() => console.log('DELETED FROM EVENTS'))
+					.catch((err) => console.log(err));
 			} else {
-				await db.collection("users").doc(uid).update({
-					favorites: firebase.firestore.FieldValue.arrayRemove(id)
-				}).then(() => console.log("DELETED FROM FAVORITES"))
-					.catch(err => console.log(err))
+				await db
+					.collection('users')
+					.doc(uid)
+					.update({
+						favorites: firebase.firestore.FieldValue.arrayRemove(id)
+					})
+					.then(() => console.log('DELETED FROM FAVORITES'))
+					.catch((err) => console.log(err));
 			}
 		}
 		window.location.reload();
-	}
+	};
 
 	return (
 		<ListItemContainer>
@@ -44,13 +59,12 @@ function ListItem({ type, id, name, url, userType, uid = null }) {
 				</Link>
 			</ListItemIcons>
 		</ListItemContainer>
-	)
+	);
 }
 
-
 const ListItemContainer = styled.div`
-    width: 260px;
-	height: 40px;
+	width: 260px;
+	height: 43px;
 	margin: 7px auto;
 	padding: 0px 10px;
 	background: ${darkBg};
@@ -58,18 +72,17 @@ const ListItemContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-
 `;
 
-
 const ListItemTitle = styled.div`
-        font-size: ${fontH3};
-		color: ${green};
-		font-weight: normal;
+	font-size: ${fontH3};
+	color: ${green};
+	font-weight: normal;
+	text-align: left;
 `;
 
 const ListItemIcons = styled.div`
-    width: 50px;
+	width: 50px;
 	display: flex;
 	justify-content: space-between;
 
@@ -81,7 +94,6 @@ const ListItemIcons = styled.div`
 		font-size: ${fontH3};
 	}
 `;
-
 
 const InfoIcon = styled(InfoOutlinedIcon)`
 	color: white;
@@ -95,5 +107,4 @@ const DeleteIcon = styled(DeleteOutlinedIcon)`
 	height: 20px;
 `;
 
-
-export default ListItem
+export default ListItem;

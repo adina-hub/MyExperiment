@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
-	fontH1,
-	fontH3,
-	fontP,
-	green,
+	EventDetail,
+	EventDetails,
 	PageAddBtn,
 	PageContainer,
 	PageSection,
@@ -137,41 +135,6 @@ const EventSteps = styled.ol`
 		margin-left: 20px;
 		line-height: 25px;
 		text-align: left;
-	}
-`;
-
-const EventDetails = styled.div`
-	display: flex;
-	margin-top: 20px;
-	div:last-child {
-		margin-left: 15px;
-	}
-`;
-
-const EventDetail = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: left;
-	width: 100%;
-
-	> .MuiSvgIcon-root {
-		fill: ${green};
-		width: 25px;
-		height: 25px;
-
-		@media screen and (min-width: 768px) {
-			width: 35px;
-			height: 35px;
-		}
-	}
-
-	> h5 {
-		margin-left: 5px;
-		color: #fff;
-
-		@media screen and (min-width: 768px) {
-			font-size: ${fontP};
-		}
 	}
 `;
 

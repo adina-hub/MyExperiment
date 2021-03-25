@@ -6,7 +6,9 @@ import {
 	lightBg,
 	fontH1,
 	fontH3,
-	fontH2
+	fontH2,
+	EventDetails,
+	EventDetail
 } from '../../../styles/general';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
@@ -143,51 +145,10 @@ const EventDescription = styled.h5`
 	color: white;
 	font-weight: normal;
 	font-size: 12px;
+	height: 30px;
 
 	@media screen and (min-width: 768px) {
 		height: 30px;
-	}
-`;
-
-const EventDetails = styled.div`
-	display: flex;
-	margin-top: 20px;
-
-	div:last-child {
-		margin-left: 15px;
-
-		@media screen and (min-width: 768px) {
-			margin-left: 10px;
-		}
-	}
-
-	@media screen and (min-width: 768px) {
-		height: 45px;
-		margin-bottom: 20px;
-	}
-`;
-
-const EventDetail = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: left;
-	width: 100%;
-
-	> .MuiSvgIcon-root {
-		fill: ${green};
-		width: 25px;
-		height: 25px;
-	}
-
-	> h5 {
-		margin-left: 5px;
-		color: ${green};
-		width: 100px;
-
-		@media screen and (min-width: 768px) {
-			font-size: ${fontH3};
-			width: 130px;
-		}
 	}
 `;
 
@@ -196,6 +157,7 @@ const EventButtons = styled.div`
 	justify-content: left;
 	margin-top: 30px;
 	width: 100%;
+	height: 40px;
 	padding-bottom: 5px;
 
 	> .info,
@@ -236,5 +198,6 @@ const EventButtons = styled.div`
 
 	@media screen and (min-width: 768px) {
 		margin-top: 20px;
+		height: 50px;
 	}
 `;

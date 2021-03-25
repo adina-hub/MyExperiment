@@ -212,6 +212,50 @@ export const ExperimentsList = styled.div`
 	}
 `;
 
+export const EventDetails = styled.div`
+	display: flex;
+	margin-top: 20px;
+	width: 100%;
+	height: 35px;
+
+	div:last-child {
+		margin-left: 15px;
+
+		@media screen and (min-width: 768px) {
+			margin-left: 10px;
+		}
+	}
+
+	@media screen and (min-width: 768px) {
+		height: 45px;
+		margin-bottom: 20px;
+	}
+`;
+
+export const EventDetail = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: left;
+
+	> .MuiSvgIcon-root {
+		fill: ${green};
+		width: 25px;
+		height: 25px;
+	}
+
+	> h5 {
+		margin-left: 5px;
+		color: ${green};
+		font-size: 12px;
+		max-width: 70px;
+
+		@media screen and (min-width: 768px) {
+			font-size: ${fontH3};
+			max-width: 130px;
+		}
+	}
+`;
+
 export const EventsList = styled.div`
 	display: flex;
 	flex-direction: column;

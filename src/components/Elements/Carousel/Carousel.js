@@ -22,6 +22,8 @@ function Carousel() {
 						id: doc.id,
 						title: data.title,
 						description: data.description,
+						location: data.location,
+						time: data.time,
 						imgUrl: data.imgUrl
 					});
 				});
@@ -53,8 +55,8 @@ function Carousel() {
 							title={event.title}
 							img={event.imgUrl}
 							description={event.description}
-							location="Illinois, SUA"
-							time="4 pm"
+							location={event.location}
+							time={event.time}
 							id={event.id}
 							carousel
 							key={event.img}
@@ -76,6 +78,10 @@ const CarouselContainer = styled.div`
 	display: flex;
 	position: relative;
 	height: 360px;
+
+	@media screen and (min-width: 768px) {
+		margin: 0 40px;
+	}
 `;
 
 const CarouselEvents = styled.div`
@@ -84,6 +90,14 @@ const CarouselEvents = styled.div`
 	width: 310px;
 	overflow: hidden;
 	margin: 0 5%;
+
+	@media screen and (min-width: 425px) {
+		margin: 0 auto;
+	}
+
+	@media screen and (min-width: 768px) {
+		width: 450px;
+	}
 `;
 
 const PreviousBtn = styled(ArrowBackIosIcon)`
@@ -91,6 +105,10 @@ const PreviousBtn = styled(ArrowBackIosIcon)`
 	position: absolute;
 	top: 50%;
 	z-index: 2;
+
+	@media screen and (min-width: 768px) {
+		font-size: 2.5rem !important;
+	}
 `;
 
 const NextBtn = styled(ArrowForwardIosIcon)`
@@ -99,6 +117,10 @@ const NextBtn = styled(ArrowForwardIosIcon)`
 	right: 0;
 	top: 50%;
 	z-index: 2;
+
+	@media screen and (min-width: 768px) {
+		font-size: 2.5rem !important;
+	}
 `;
 
 export default Carousel;

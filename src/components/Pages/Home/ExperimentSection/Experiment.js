@@ -5,6 +5,7 @@ import {
 	PageDescription,
 	PageBtn
 } from '../../../../styles/general';
+import { Link } from 'react-router-dom';
 
 export default function Experiment() {
 	return (
@@ -15,7 +16,9 @@ export default function Experiment() {
 				and fluids, all in one place, each of them having a video with
 				explications from our teachers.
 			</PageDescription>
-			<PageBtn>Learn More</PageBtn>
+			<Link to="/experiments">
+				<PageBtn marginTop>Learn More</PageBtn>
+			</Link>
 		</PageSection>
 	);
 }

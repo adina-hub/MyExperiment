@@ -12,6 +12,8 @@ export const lightBg = '#31304c';
 export const darkBg = '#272640';
 
 // FONTS
+export const xlarge = '35px';
+export const large = '30px';
 export const fontH1 = '25px';
 export const fontH2 = '21px';
 export const fontH3 = '15px';
@@ -29,6 +31,14 @@ export const PageSection = styled.div`
 	padding: 20px 12.5px;
 	background: ${(props) => (props.dark ? darkBg : lightBg)};
 	height: ${(props) => (props.fullHeight ? '100vh' : 'auto')};
+
+	@media screen and (min-width: 425px) {
+		padding: 20px;
+	}
+
+	@media screen and (min-width: 768px) {
+		padding: 50px;
+	}
 `;
 
 export const PageBtnContainer = styled.div`
@@ -47,13 +57,25 @@ export const PageTitle = styled.h1`
 	margin-top: ${(props) => (props.margin ? '50px' : '80px')};
 	color: ${(props) => (props.white ? '#fff' : green)};
 	letter-spacing: 1px;
+
+	@media screen and (min-width: 425px) {
+		font-size: ${(props) => (props.small ? fontH1 : large)};
+	}
+
+	@media screen and (min-width: 768px) {
+		font-size: ${(props) => (props.small ? large : xlarge)};
+	}
 `;
 
 export const PageSubtitle = styled.h2`
 	font-size: ${(props) => (props.small ? fontH3 : fontH2)};
-	letter-spacing: 1px;
+	/* letter-spacing: 1px; */
 	text-align: left;
 	color: ${green};
+
+	@media screen and (min-width: 768px) {
+		font-size: ${(props) => (props.small ? fontH2 : fontH1)};
+	}
 `;
 
 export const PageDescription = styled.p`
@@ -62,6 +84,15 @@ export const PageDescription = styled.p`
 	font-weight: normal;
 	line-height: 25px;
 	margin: ${(props) => (props.margin ? '40px' : '0px')} 0px;
+
+	@media screen and (min-width: 425px) {
+		font-size: ${fontH3};
+	}
+
+	@media screen and (min-width: 768px) {
+		font-size: 18px;
+		margin: ${(props) => (props.margin ? '35px' : '0px')} 20px;
+	}
 `;
 
 export const PageHR = styled.hr`
@@ -90,6 +121,11 @@ export const PageBtn = styled.button`
 	color: ${lightBg};
 	border-radius: 5px;
 	margin-top: ${(props) => (props.marginTop ? '25px' : 'auto')};
+
+	@media screen and (min-width: 768px) {
+		margin-top: ${(props) => (props.marginTop ? '30px' : 'auto')};
+		width: 50%;
+	}
 `;
 
 export const PageAddBtn = styled.button`
@@ -170,6 +206,10 @@ export const ExperimentsList = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-top: 20px;
+
+	@media screen and (min-width: 768px) {
+		width: 90%;
+	}
 `;
 
 export const EventsList = styled.div`
@@ -187,6 +227,10 @@ export const PageForm = styled(Form)`
 		text-align: left;
 		color: white;
 		margin: 10px 0px;
+	}
+
+	@media screen and (min-width: 768px) {
+		padding: 0 15px;
 	}
 `;
 

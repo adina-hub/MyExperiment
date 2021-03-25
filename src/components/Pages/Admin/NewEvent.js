@@ -34,7 +34,11 @@ export default function NewEvent() {
 		bookings: []
 	});
 	useEffect(() => {
+<<<<<<< HEAD
 		if (id && id !== 'new') {
+=======
+		if (id && id !== "new") {
+>>>>>>> a20b9673291d079d350244587b2a87ce74a661a4
 			const getEvent = async () => {
 				await db
 					.collection('events')

@@ -153,8 +153,8 @@ const ExperimentVideo = styled.iframe`
 	margin: 20px auto 0 auto;
 
 	@media screen and (min-width: 768px) {
-		width: 400px;
-		height: 300px;
+		width: 530px;
+		height: 330px;
 		margin: 25px auto;
 	}
 `;

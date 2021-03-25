@@ -5,18 +5,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 function Dropdown({ expCategories, expSetCategory }) {
-	const [categories, setCategories] = useState()
-	const [open, setOpen] = useState(false)
-	const [category, setCategory] = useState('Choose a category')
+	const [categories, setCategories] = useState();
+	const [open, setOpen] = useState(false);
+	const [category, setCategory] = useState('Choose a category');
 
 	useEffect(() => {
 		console.log(expCategories);
-		let array = ["All"];
-		expCategories.map(category => category.domains.map(domain => array.push(domain)))
+		let array = ['All'];
+		expCategories.map((category) =>
+			category.domains.map((domain) => array.push(domain))
+		);
 		let set = [...new Set(array)];
 		setCategories(set);
-	}, [expCategories])
-
+	}, [expCategories]);
 
 	return (
 		<DropdownContainer>
@@ -27,27 +28,35 @@ function Dropdown({ expCategories, expSetCategory }) {
 			</ExperimentsDropdownClose>
 			{open && (
 				<ExperimentsDropdownOpen>
-					{categories.map(category => (
-						<p onClick={() => {
-							setOpen(!open)
-							setCategory(category)
-							expSetCategory(category)
-						}}>{category}</p>
+					{categories.map((category) => (
+						<p
+							onClick={() => {
+								setOpen(!open);
+								setCategory(category);
+								expSetCategory(category);
+							}}
+						>
+							{category}
+						</p>
 					))}
 				</ExperimentsDropdownOpen>
 			)}
 		</DropdownContainer>
-	)
+	);
 }
 
 export default Dropdown;
 
-
 const DropdownContainer = styled.div`
-    background: ${darkBg};
+	background: ${darkBg};
 	display: flex;
 	flex-direction: column;
 	margin-top: 35px;
+
+	@media screen and (min-width: 768px) {
+		width: 70%;
+		margin: 35px auto;
+	}
 `;
 
 const ExperimentsDropdownClose = styled.div`
@@ -57,7 +66,8 @@ const ExperimentsDropdownClose = styled.div`
 	padding: 5px 0 5px 15px;
 	justify-content: space-between;
 	align-items: center;
-	> p{
+
+	> p {
 		background: transparent;
 		flex: 0.8;
 		font-size: 1rem;
@@ -65,14 +75,13 @@ const ExperimentsDropdownClose = styled.div`
 		text-align: left;
 	}
 
-	> .MuiSvgIcon-root{
+	> .MuiSvgIcon-root {
 		flex: 0.2;
 		border-left: 2px solid ${green};
 		font-size: 2rem;
 		fill: ${green};
 	}
 `;
-
 
 const ExperimentsDropdownOpen = styled.div`
 	border: 2px solid ${green};

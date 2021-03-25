@@ -29,12 +29,8 @@ export default function NewExperiment() {
 		videoUrl: ''
 	});
 	useEffect(() => {
-<<<<<<< HEAD
-		if (id && id !== 'new') {
-=======
 		console.log(id);
-		if (id && id !== "new") {
->>>>>>> a20b9673291d079d350244587b2a87ce74a661a4
+		if (id && id !== 'new') {
 			const getExperiment = async () => {
 				await db
 					.collection('experiments')
@@ -56,7 +52,6 @@ export default function NewExperiment() {
 				<PageHR />
 				<Formik
 					enableReinitialize
-<<<<<<< HEAD
 					initialValues={{
 						title: experiment.title,
 						videoUrl: experiment.videoUrl,
@@ -65,18 +60,6 @@ export default function NewExperiment() {
 						steps: experiment.steps
 					}}
 					onSubmit={(values) => {
-=======
-					initialValues={
-						{
-							title: experiment.title,
-							videoUrl: experiment.videoUrl,
-							domains: experiment.domains,
-							materials: experiment.materials,
-							steps: experiment.steps,
-						}
-					}
-					onSubmit={values => {
->>>>>>> a20b9673291d079d350244587b2a87ce74a661a4
 						if (id) {
 							editExperiment(
 								id,

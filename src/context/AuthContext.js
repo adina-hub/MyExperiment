@@ -9,14 +9,12 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-	const [currentUser, setCurrentUser] = useState(
-		{
-			email: "",
-			name: "",
-			uid: "",
-			admin: "",
-		}
-	);
+	const [currentUser, setCurrentUser] = useState({
+		email: '',
+		name: '',
+		uid: '',
+		admin: ''
+	});
 	const [loading, setLoading] = useState(true);
 	const history = useHistory();
 	// GENERAL FUNCTIONALITIES
@@ -24,118 +22,168 @@ export function AuthProvider({ children }) {
 		return auth
 			.createUserWithEmailAndPassword(email, password)
 			.then((userAuth) => {
-				db.collection('users').add({
-					email: email,
-					uid: userAuth.user.uid,
-					name: name,
-					admin: false,
-					favorites: [],
-					events: []
-				}).then(() => {
-					history.push("/signin");
-				}).catch(err => alert(err))
-			}).catch(err => alert(err));
-	}
+				db.collection('users')
+					.add({
+						email: email,
+						uid: userAuth.user.uid,
+						name: name,
+						admin: false,
+						favorites: [],
+						events: []
+					})
+					.then(() => {
+						history.push('/signin');
+					})
+					.catch((err) => alert(err));
+			})
+			.catch((err) => alert(err));
+	};
 
 	const signIn = (email, password) => {
 		return auth.signInWithEmailAndPassword(email, password).then((userAuth) => {
-			db.collection('users').where("uid", "==", userAuth.user.uid).get()
+			db.collection('users')
+				.where('uid', '==', userAuth.user.uid)
+				.get()
 				.then((querySnapshot) => {
 					querySnapshot.forEach((doc) => {
-						let data = doc.data()
+						let data = doc.data();
 						setCurrentUser({
 							email: data.email,
 							name: data.name,
 							uid: data.uid,
-							admin: data.admin,
-						})
+							admin: data.admin
+						});
 						if (data.admin) {
 							history.push('/admin');
 						} else {
 							history.push('/user');
 						}
-					})
-				})
+					});
+				});
 		});
-	}
+	};
 
-	const resetPassword = email => {
+	const resetPassword = (email) => {
 		return auth.sendPasswordResetEmail(email);
-	}
+	};
 
 	const signOut = () => {
 		return auth.signOut();
-	}
+	};
 
 	// ADMIN constALITIES
 
-	const addEvent = (title, imgUrl, description, location, date, time, domains, places, steps, bookings) => {
-		db.collection('events').add({
-			title: title,
-			imgUrl: imgUrl,
-			description: description,
-			location: location,
-			date: date,
-			time: time,
-			domains: domains,
-			places: places,
-			steps: steps,
-			bookings: bookings
-		}).then(() => history.push("/admin/events"));
-	}
+	const addEvent = (
+		title,
+		imgUrl,
+		description,
+		location,
+		date,
+		time,
+		domains,
+		places,
+		steps,
+		bookings
+	) => {
+		db.collection('events')
+			.add({
+				title: title,
+				imgUrl: imgUrl,
+				description: description,
+				location: location,
+				date: date,
+				time: time,
+				domains: domains,
+				places: places,
+				steps: steps,
+				bookings: bookings
+			})
+			.then(() => history.push('/admin/events'));
+	};
 
-	const editEvent = (id, title, imgUrl, description, location, date, time, domains, places, steps, bookings) => {
+	const editEvent = (
+		id,
+		title,
+		imgUrl,
+		description,
+		location,
+		date,
+		time,
+		domains,
+		places,
+		steps,
+		bookings
+	) => {
 		console.log(domains);
-		db.collection('events').doc(id).update({
-			title: title,
-			imgUrl: imgUrl,
-			description: description,
-			location: location,
-			date: date,
-			time: time,
-			domains: domains,
-			places: places,
-			steps: steps,
-			bookings: bookings
-		}).then(() => history.push("/admin/events"));
-	}
+		db.collection('events')
+			.doc(id)
+			.update({
+				title: title,
+				imgUrl: imgUrl,
+				description: description,
+				location: location,
+				date: date,
+				time: time,
+				domains: domains,
+				places: places,
+				steps: steps,
+				bookings: bookings
+			})
+			.then(() => history.push('/admin/events'));
+	};
 
 	const addExperiment = (title, videoUrl, materials, domains, steps) => {
-		db.collection('experiments').add({
-			title: title,
-			videoUrl: videoUrl,
-			materials: materials,
-			domains: domains,
-			steps: steps
-		}).then(() => history.push("/admin/experiments"));
-	}
+		db.collection('experiments')
+			.add({
+				title: title,
+				videoUrl: videoUrl,
+				materials: materials,
+				domains: domains,
+				steps: steps
+			})
+			.then(() => history.push('/admin/experiments'));
+	};
 
 	const editExperiment = (id, title, videoUrl, materials, domains, steps) => {
-		db.collection('experiments').doc(id).update({
-			title: title,
-			videoUrl: videoUrl,
-			materials: materials,
-			domains: domains,
-			steps: steps
-		}).then(() => history.push("/admin/experiments"));
-	}
+		db.collection('experiments')
+			.doc(id)
+			.update({
+				title: title,
+				videoUrl: videoUrl,
+				materials: materials,
+				domains: domains,
+				steps: steps
+			})
+			.then(() => history.push('/admin/experiments'));
+	};
+
+	const sendMessage = (name, email, subject, message) => {
+		db.collection('messages').add({
+			name: name,
+			email: email,
+			subject: subject,
+			message: message
+		});
+	};
 
 	const getUser = async (userAuth) => {
-		await db.collection('users').where("uid", "==", userAuth.uid).get()
+		await db
+			.collection('users')
+			.where('uid', '==', userAuth.uid)
+			.get()
 			.then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
-					let data = doc.data()
+					let data = doc.data();
 					setCurrentUser({
 						email: data.email,
 						name: data.name,
 						uid: data.uid,
-						admin: data.admin,
-					})
-				})
-			})
+						admin: data.admin
+					});
+				});
+			});
 		setLoading(false);
-	}
-
+	};
 
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -159,7 +207,8 @@ export function AuthProvider({ children }) {
 		addEvent,
 		addExperiment,
 		editEvent,
-		editExperiment
+		editExperiment,
+		sendMessage
 	};
 
 	return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AdminNavbar from '../../Elements/AdminNavbar/AdminNavbar';
-import { Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import {
 	AdminAddBtn,
 	PageBtnContainer,
@@ -32,12 +32,16 @@ export default function NewEvent() {
 		places: '',
 		steps: [],
 		bookings: []
-	})
+	});
 	useEffect(() => {
-		if (id) {
+		if (id && id !== 'new') {
 			const getEvent = async () => {
-				await db.collection("events").doc(id).get().then(doc => setEvent(doc.data()));
-			}
+				await db
+					.collection('events')
+					.doc(id)
+					.get()
+					.then((doc) => setEvent(doc.data()));
+			};
 			getEvent();
 		}
 	}, []);
@@ -62,7 +66,7 @@ export default function NewEvent() {
 						bookings: event.bookings
 					}}
 					onSubmit={(values) => {
-						if (id) {
+						if (id !== 'new') {
 							editEvent(
 								id,
 								values.title,
@@ -75,7 +79,7 @@ export default function NewEvent() {
 								values.places,
 								values.steps,
 								values.bookings
-							)
+							);
 						} else {
 							addEvent(
 								values.title,
@@ -88,7 +92,7 @@ export default function NewEvent() {
 								values.places,
 								values.steps,
 								values.bookings
-							)
+							);
 						}
 					}}
 				>
@@ -122,8 +126,8 @@ export default function NewEvent() {
 
 						<PageBtnContainer>
 							<PageLinkBtn to="/admin/events">Go back</PageLinkBtn>
-							{!id && <AdminAddBtn type="submit">ADD</AdminAddBtn>}
-							{id && <AdminAddBtn type="submit">EDIT</AdminAddBtn>}
+							{id === 'new' && <AdminAddBtn type="submit">ADD</AdminAddBtn>}
+							{id !== 'new' && <AdminAddBtn type="submit">EDIT</AdminAddBtn>}
 						</PageBtnContainer>
 					</PageForm>
 				</Formik>

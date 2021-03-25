@@ -25,18 +25,23 @@ export default function NewExperiment() {
 		domains: [],
 		materials: [],
 		steps: [],
-		title: "",
-		videoUrl: ""
-	})
+		title: '',
+		videoUrl: ''
+	});
 	useEffect(() => {
-		if (id) {
+		if (id && id !== 'new') {
 			const getExperiment = async () => {
-				await db.collection("experiments").doc(id).get().then(doc => setExperiment(doc.data()));
-			}
+				await db
+					.collection('experiments')
+					.doc(id)
+					.get()
+					.then((doc) => setExperiment(doc.data()));
+			};
 			getExperiment();
 		}
-	}, []);
 
+		console.log(experiment);
+	}, []);
 
 	return (
 		<PageContainer>
@@ -46,15 +51,14 @@ export default function NewExperiment() {
 				<PageHR />
 				<Formik
 					enableReinitialize
-					initialValues={
-						{
-							title: experiment.title,
-							videoUrl: experiment.videoUrl,
-							domains: experiment.domains,
-							materials: experiment.materials,
-							steps: experiment.steps,
-						}}
-					onSubmit={values => {
+					initialValues={{
+						title: experiment.title,
+						videoUrl: experiment.videoUrl,
+						domains: experiment.domains,
+						materials: experiment.materials,
+						steps: experiment.steps
+					}}
+					onSubmit={(values) => {
 						if (id) {
 							editExperiment(
 								id,
@@ -63,7 +67,7 @@ export default function NewExperiment() {
 								values.materials,
 								values.domains,
 								values.steps
-							)
+							);
 						} else {
 							addExperiment(
 								values.title,
@@ -71,12 +75,11 @@ export default function NewExperiment() {
 								values.materials,
 								values.domains,
 								values.steps
-							)
+							);
 						}
-					}
-					}
+					}}
 				>
-					<PageForm >
+					<PageForm>
 						<label id="title">Title</label>
 						<PageInput name="title" type="text" required />
 
@@ -94,8 +97,8 @@ export default function NewExperiment() {
 
 						<PageBtnContainer>
 							<PageLinkBtn to="/admin/experiments">Go back</PageLinkBtn>
-							{!id && <AdminAddBtn type="submit">ADD</AdminAddBtn>}
-							{id && <AdminAddBtn type="submit">EDIT</AdminAddBtn>}
+							{id === 'new' && <AdminAddBtn type="submit">ADD</AdminAddBtn>}
+							{id !== 'new' && <AdminAddBtn type="submit">EDIT</AdminAddBtn>}
 						</PageBtnContainer>
 					</PageForm>
 				</Formik>
@@ -103,4 +106,3 @@ export default function NewExperiment() {
 		</PageContainer>
 	);
 }
-

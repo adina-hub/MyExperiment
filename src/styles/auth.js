@@ -11,6 +11,10 @@ export const AuthContainer = styled.div`
 	flex-direction: column;
 	background: ${darkBg};
 	height: 100vh;
+
+	@media screen and (min-width: 768px) {
+		height: 110vh;
+	}
 `;
 
 export const AuthFormContainer = styled.div`
@@ -19,6 +23,15 @@ export const AuthFormContainer = styled.div`
 	padding: ${(props) => (props.padding ? '15px' : '30px')} 20px;
 	margin: ${(props) => (props.margin ? '0px' : '30px')} auto;
 	border-radius: 15px;
+
+	@media screen and (min-width: 425px) {
+		width: 75%;
+	}
+
+	@media screen and (min-width: 768px) {
+		width: 50%;
+		padding: ${(props) => (props.padding ? '20px' : '35px')} 20px;
+	}
 `;
 
 export const AuthInputContainer = styled.div`
@@ -67,12 +80,12 @@ export const AuthInputField = styled(Field)`
 
 export const AuthLogo = styled.img`
 	width: 130px;
-	height: 130px;
+	height: 110px;
 	margin-left: 8px;
 
 	@media screen and (min-width: 768px) {
 		width: 150px;
-		height: 150px;
+		height: 120px;
 		margin-left: 17px;
 	}
 
@@ -125,6 +138,7 @@ export const AuthBtn = styled.button`
 	background: transparent;
 	font-size: ${fontH3};
 	text-align: center;
+	margin-top: ${(props) => (props.marginTop ? '30px' : '0')};
 `;
 
 export const AuthHelper = styled.p`
@@ -136,5 +150,9 @@ export const AuthHelper = styled.p`
 	> a {
 		text-decoration: none;
 		color: ${green};
+	}
+
+	@media screen and (min-width: 768px) {
+		font-size: ${fontP};
 	}
 `;

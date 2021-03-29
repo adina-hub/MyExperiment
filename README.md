@@ -1,4 +1,4 @@
-# Scientify: Web Platform For Managing Experiments/Events
+# Scientify: Web Platform For Managing Experiments
 <p> An ongoing project co-developed and built with <strong> React.js .</strong></p>
 <p>For this project the following technologies were used:</p>
 <ul>

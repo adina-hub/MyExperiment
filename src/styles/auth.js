@@ -12,9 +12,6 @@ export const AuthContainer = styled.div`
 	background: ${darkBg};
 	height: 100vh;
 
-	@media screen and (min-width: 768px) {
-		height: 110vh;
-	}
 `;
 
 export const AuthFormContainer = styled.div`
@@ -30,6 +27,11 @@ export const AuthFormContainer = styled.div`
 
 	@media screen and (min-width: 768px) {
 		width: 50%;
+		padding: ${(props) => (props.padding ? '20px' : '35px')} 20px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		width: 40%;
 		padding: ${(props) => (props.padding ? '20px' : '35px')} 20px;
 	}
 `;
@@ -90,8 +92,7 @@ export const AuthLogo = styled.img`
 	}
 
 	@media screen and (min-width: 1024px) {
-		width: 180px;
-		height: 180px;
+		height: 130px;
 		margin-left: 30px;
 	}
 `;

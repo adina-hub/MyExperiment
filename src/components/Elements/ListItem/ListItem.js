@@ -72,6 +72,11 @@ const ListItemContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	@media screen and (min-width: 768px) {
+		width: 480px;
+		height: 50px;
+	}
 `;
 
 const ListItemTitle = styled.div`
@@ -79,6 +84,11 @@ const ListItemTitle = styled.div`
 	color: ${green};
 	font-weight: normal;
 	text-align: left;
+
+	@media screen and (min-width: 768px) {
+		font-size: 18px;
+		padding: 5px 10px;
+	}
 `;
 
 const ListItemIcons = styled.div`

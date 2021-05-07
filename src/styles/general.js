@@ -93,6 +93,10 @@ export const PageDescription = styled.p`
 		font-size: 18px;
 		margin: ${(props) => (props.margin ? '35px' : '0px')} 20px;
 	}
+
+	@media screen and (min-width: 768px) {
+		margin: ${(props) => (props.margin ? '40px' : '0px')} 40px;
+	}
 `;
 
 export const PageHR = styled.hr`
@@ -100,6 +104,10 @@ export const PageHR = styled.hr`
 	height: 3px;
 	background: #fff;
 	margin: 24px auto;
+
+	@media screen and (min-width: 1024px) {
+		width: 60%;
+	}
 `;
 
 export const PageSubHR = styled.hr`
@@ -126,6 +134,11 @@ export const PageBtn = styled.button`
 		margin-top: ${(props) => (props.marginTop ? '30px' : 'auto')};
 		width: 50%;
 	}
+
+	@media screen and (min-width: 1024px) {
+		margin-top: ${(props) => (props.marginTop ? '30px' : 'auto')};
+		width: 40%;
+	}
 `;
 
 export const PageAddBtn = styled.button`
@@ -147,10 +160,23 @@ export const PageAddBtn = styled.button`
 		margin-right: 10px;
 		font-size: ${fontH3};
 		letter-spacing: 1px;
+
+		@media screen and (min-width: 1024px) {
+			font-size: 18px;
+		}
 	}
 
 	> .MuiSvgIcon-root {
 		fill: ${green};
+		@media screen and (min-width: 1024px) {
+			width: 30px;
+			height: 30px;
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		margin: 40px auto 0 auto;
+		width: 250px;
 	}
 `;
 
@@ -162,6 +188,15 @@ export const PageLinkBtn = styled(Link)`
 	width: ${(props) => (props.large ? '200px' : '120px')};
 	text-decoration: none;
 	color: white;
+
+	
+	@media screen and (min-width: 768px) {
+		width: ${(props) => (props.large ? '270px' : '140px')};
+	}
+
+	@media screen and (min-width: 1024px) {
+		width: ${(props) => (props.large ? '250px' : '140px')};
+	}
 `;
 //Admin
 export const AdminAddBtn = styled.button`
@@ -181,7 +216,9 @@ export const UserBtnContainer = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	margin: 50px auto 0 auto;
-	height: 110px;
+	height: 120px;
+	/* height: auto; */
+
 `;
 
 export const UserField = styled.div`
@@ -195,11 +232,27 @@ export const UserField = styled.div`
 export const UserFieldName = styled.h3`
 	margin-right: 10px;
 	font-size: ${fontH3};
+
+	@media screen and (min-width: 768px) {
+		font-size: 18px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		font-size: ${fontH2};
+	}
 `;
 
 export const UserFieldValue = styled.h3`
 	color: ${green};
 	font-size: ${fontH3};
+
+	@media screen and (min-width: 768px) {
+		font-size: 18px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		font-size: ${fontH2};
+	}
 `;
 
 export const ExperimentsList = styled.div`
@@ -209,6 +262,7 @@ export const ExperimentsList = styled.div`
 
 	@media screen and (min-width: 768px) {
 		width: 90%;
+		margin: 20px auto 0 auto; 
 	}
 `;
 
@@ -276,6 +330,10 @@ export const PageForm = styled(Form)`
 	@media screen and (min-width: 768px) {
 		padding: 0 15px;
 	}
+
+	@media screen and (min-width: 1024px) {
+		padding: 0 40px;
+	}
 `;
 
 //Inputs
@@ -290,5 +348,9 @@ export const PageInput = styled(Field)`
 
 	&:focus {
 		background: none;
+	}
+
+	@media screen and (min-width: 1024px) {
+		height: ${(props) => (props.textarea ? '160px' : '35px')};
 	}
 `;

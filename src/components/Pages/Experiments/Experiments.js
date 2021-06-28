@@ -55,7 +55,7 @@ function Experiments() {
 				<PageHR />
 				<Dropdown expCategories={experiments} expSetCategory={setCategory} />
 			</PageSection>
-			<PageSection dark fullHeight>
+			<PageSection dark >
 				<PageSubtitle>Category: {category}</PageSubtitle>
 				<ExperimentsList>
 					{experiments.map((experiment) => {
@@ -90,5 +90,11 @@ const ExperimentsList = styled.div`
 
 	@media screen and (min-width: 1024px) {
 		font-size: ${fontH2};
+	}
+
+	@media screen and (min-width: 1440px) {
+		font-size: 22px;
+		padding-left: 70px;
+		width: 65vw;
 	}
 `;

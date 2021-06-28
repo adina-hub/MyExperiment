@@ -128,6 +128,11 @@ const EventImage = styled.img`
 		height: 350px;
 		margin: 35px auto;
 	}
+
+	@media screen and (min-width: 1440px) {
+		width: 800px;
+		height: 400px;
+	}
 `;
 
 const EventInfo = styled.div`
@@ -135,6 +140,10 @@ const EventInfo = styled.div`
 
 	@media screen and (min-width: 1024px) {
 		padding: 0 30px;
+	}
+
+	@media screen and (min-width: 1440px){
+		padding: 0 150px;
 	}
 `;
 

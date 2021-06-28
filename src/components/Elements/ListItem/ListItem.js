@@ -15,6 +15,7 @@ function ListItem({ type, id, name, url, userType, uid = null }) {
 					.collection('events')
 					.doc(id)
 					.delete()
+					.update({places: firebase.firestore.FieldValue.increment(1)})
 					.then(() => console.log('DELETED EVENT'));
 			} else {
 				await db
@@ -77,6 +78,11 @@ const ListItemContainer = styled.div`
 		width: 480px;
 		height: 50px;
 	}
+
+	@media screen and (min-width: 1440px){
+		width: 510px;
+		height: 55px;
+	}
 `;
 
 const ListItemTitle = styled.div`
@@ -103,12 +109,17 @@ const ListItemIcons = styled.div`
 		border: none;
 		font-size: ${fontH3};
 	}
+
+	@media screen and (min-width: 1440px){
+		width: 60px;
+	}
 `;
 
 const InfoIcon = styled(InfoOutlinedIcon)`
 	color: white;
 	width: 20px;
 	height: 20px;
+
 `;
 
 const DeleteIcon = styled(DeleteOutlinedIcon)`

@@ -11,7 +11,7 @@ function Hero() {
 	return (
 		<HeroSection fullHeight>
 			<HeroTitle white>Welcome to Scientify!</HeroTitle>
-			<HeroDescription>
+			<HeroDescription margin>
 				A collection of experiments that demonstrate a wide range of physical
 				concepts and processes. Try out these experiments and you’ll feel like a
 				real scientist!
@@ -34,5 +34,5 @@ const HeroTitle = styled(PageTitle)`
 
 const HeroDescription = styled(PageDescription)`
 	line-height: 23px;
-	margin-top: 60px;
+	
 `;

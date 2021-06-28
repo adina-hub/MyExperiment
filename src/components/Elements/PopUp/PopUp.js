@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import styled from 'styled-components';
-import { fontH1, fontH2, fontH3, green, lightBg, PageBtn, PageLinkBtn } from '../../../styles/general';
+import { fontH2, fontH3, green, lightBg, PageBtn, PageLinkBtn } from '../../../styles/general';
 import CloseIcon from '@material-ui/icons/Close';
 import { db } from '../../../firebase';
 import firebase from 'firebase';
@@ -22,8 +22,7 @@ function PopUp({ id, date, time, location, uid, close }) {
             });
         console.log(docId);
         await db.collection('users').doc(docId).update({
-            events: firebase.firestore.FieldValue.arrayUnion(
-                id)
+            events: firebase.firestore.FieldValue.arrayUnion(id)
         });;
 
         await db.collection('events').doc(id).update({
@@ -133,7 +132,6 @@ const PopUpLinkBtn = styled(PageLinkBtn)`
     padding: 12px 20px;
     width: auto;
 `
-
 
 const PopUpBtn = styled(PageBtn)`
     padding: 15px 25px;

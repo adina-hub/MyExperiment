@@ -95,8 +95,13 @@ export const PageDescription = styled.p`
 		margin: ${(props) => (props.margin ? '35px' : '0px')} 20px;
 	}
 
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 1024px) {
 		margin: ${(props) => (props.margin ? '40px' : '0px')} 40px;
+	}
+
+	@media screen and (min-width: 1440px){
+		font-size: ${fontH2};
+		padding: 20px 120px;
 	}
 `;
 
@@ -139,6 +144,11 @@ export const PageBtn = styled.button`
 	@media screen and (min-width: 1024px) {
 		margin-top: ${(props) => (props.marginTop ? '30px' : 'auto')};
 		width: 40%;
+	}
+
+	@media screen and (min-width: 1440px) {
+		margin-top: ${(props) => (props.marginTop ? '30px' : 'auto')};
+		width: 30%;
 	}
 `;
 
@@ -343,6 +353,10 @@ export const PageForm = styled(Form)`
 
 	@media screen and (min-width: 1024px) {
 		padding: 0 40px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		padding: 0 100px;
 	}
 `;
 

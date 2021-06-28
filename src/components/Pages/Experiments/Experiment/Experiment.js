@@ -162,6 +162,11 @@ const ExperimentVideo = styled.iframe`
 		height: 350px;
 		margin: 35px auto;
 	}
+
+	@media screen and (min-width: 1440px) {
+		width: 800px;
+		height: 400px;
+	}
 `;
 
 const ExperimentInfo = styled.div`
@@ -181,6 +186,10 @@ const ExperimentInfo = styled.div`
 
 	@media screen and (min-width: 1024px) {
 		padding: 0 30px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		padding: 0 120px;
 	}
 `;
 

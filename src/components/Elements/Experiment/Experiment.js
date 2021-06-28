@@ -31,9 +31,16 @@ const ExperimentContainer = styled.div`
         color: white !important;
         flex: 0.1;
 
-        @media screen and (min-width: 1024px) {
-		 
-	    }
+        .MuiSvgIcon-root{
+            @media screen and (min-width: 1024px) {
+                width: 3em;
+                height: 1.2em;
+	        }
+
+            @media screen and (min-width: 1440px) {
+             height: 1.3em;
+	        }
+        }
     }
 
 	> p {

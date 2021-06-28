@@ -4,9 +4,6 @@ import {
 	green,
 	darkBg,
 	lightBg,
-	fontH1,
-	fontH3,
-	fontH2,
 	EventDetails,
 	EventDetail,
 	fontP
@@ -68,7 +65,6 @@ const EventContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 50px auto;
-	/* CAROUSEL width for 375px is 220px */
 	width: ${(props) => (props.carousel ? '200px' : '250px')};
 	height: 260px;
 	background: grey;
@@ -81,8 +77,7 @@ const EventContainer = styled.div`
 			? '0'
 			: props.primary && props.last
 			? 'auto'
-			: /* left for 375px is 15% */
-			props.primary
+			: props.primary
 			? '12.5%'
 			: null};
 	right: ${(props) => (props.last ? '0' : null)};
@@ -172,6 +167,11 @@ const EventButtons = styled.div`
 		height: 30px;
 		outline: none;
 		border-radius: 5px;
+
+		@media screen and (min-width: 1440px){
+			width: 47%;
+			height: 33px;
+		}
 	}
 
 	> .info {

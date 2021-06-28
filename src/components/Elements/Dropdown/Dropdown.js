@@ -58,7 +58,10 @@ const DropdownContainer = styled.div`
 		margin: 35px auto;
 	}
 
-	
+	@media screen and (min-width: 1440px) {
+		width: 55%;
+		margin: 35px auto;
+	}
 `;
 
 const ExperimentsDropdownClose = styled.div`

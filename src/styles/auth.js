@@ -34,6 +34,11 @@ export const AuthFormContainer = styled.div`
 		width: 40%;
 		padding: ${(props) => (props.padding ? '20px' : '35px')} 20px;
 	}
+
+	@media screen and (min-width: 1440px) {
+		width: 35%;
+		padding: ${(props) => (props.padding ? '20px' : '35px')} 20px;
+	}
 `;
 
 export const AuthInputContainer = styled.div`

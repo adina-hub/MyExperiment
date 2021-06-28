@@ -12,17 +12,15 @@ import {
 	AuthInputContainer,
 	AuthInputField,
 	AuthLabel,
-	AuthLink,
 	AuthLogo,
 	AuthTitle,
 	MailIcon,
-	PassIcon
 } from '../../../styles/auth';
 import { useAuth } from '../../../context/AuthContext';
-import { green, purple } from '../../../styles/general';
+import { green, purple, fontH3 } from '../../../styles/general';
 
-export default function SignIn() {
-	const { signIn, currentUser } = useAuth();
+export default function ForgotPassword() {
+	const { resetPassword, currentUser } = useAuth();
 	const [error, setError] = useState(''); 
 
 	return (
@@ -32,16 +30,17 @@ export default function SignIn() {
 				<AuthLogo src={logo} alt="" />
 			</Link>
 			<AuthFormContainer dark="true">
-				<AuthTitle>Login</AuthTitle>
+				<AuthTitle>Reset Password</AuthTitle>
 				{error && <Alert>{error}</Alert>}
 				<Formik
-					initialValues={{ email: '', password: '' }}
+					initialValues={{ email: ''}}
 					onSubmit={async (values, { resetForm }) => {
 						try {
-							setError('');
-							await signIn(values.email, values.password);
+							setError('An email has been sent.');
+							await resetPassword(values.email);
+                            
 						} catch {
-							setError('Incorrect username or password. Try again!');
+							setError('Incorrect email. Try again!');
 							setTimeout(resetForm, 2000);
 							setTimeout(setError, 2000);
 						}
@@ -58,22 +57,11 @@ export default function SignIn() {
 								required
 							/>
 						</AuthInputContainer>
-						<AuthLabel>Password</AuthLabel>
-						<AuthInputContainer>
-							<PassIcon />
-							<AuthInputField
-								name="password"
-								type="password"
-								placeholder="Type your password"
-								required
-							/>
-						</AuthInputContainer>
-						<AuthLink to="/forgotPassword">Forgot password?</AuthLink>
-						<AuthBtn type="submit">LOGIN</AuthBtn>
+						<AuthBtn type="submit" marginTop>RESET</AuthBtn>
 					</AuthForm>
 				</Formik>
 				<AuthHelper>
-					Need an account? <Link to="/signup">Register now</Link>
+					Already have an account? <Link to="/signin">Log In</Link>
 				</AuthHelper>
 			</AuthFormContainer>
 		</AuthContainer>
@@ -85,6 +73,6 @@ export const Alert = styled.div`
 	background-color: ${green};
 	color: ${purple};
 	margin: 10px 0;
-	height: 45px;
+	height: 50px;
 	border-radius: 4px;
 `;

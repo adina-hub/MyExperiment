@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignIn from './components/Pages/SignIn/SignIn';
+import ForgotPassword from './components/Pages/ForgotPassword/ForgotPassword';
 import SignUp from './components/Pages/SignUp/SignUp';
 import Home from './components/Pages/Home/Home';
 import Experiments from './components/Pages/Experiments/Experiments';
@@ -24,6 +25,7 @@ function App() {
 			<AuthProvider>
 				<Switch>
 					<Route path="/signIn" component={SignIn} />
+					<Route path="/forgotPassword" component={ForgotPassword}/>
 					<Route path="/signUp" component={SignUp} />
 					<Route path="/" component={Home} exact />
 					<Route path="/experiments" component={Experiments} exact />

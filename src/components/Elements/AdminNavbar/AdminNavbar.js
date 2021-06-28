@@ -15,7 +15,7 @@ function AdminNavbar() {
 					<Burger open={open} setOpen={setOpen} />
 					<AdminMenu open={open} setOpen={setOpen} />
 				</div>
-			</Container>
+			</Container> 
 		</>
 	);
 }
@@ -35,5 +35,14 @@ const Container = styled.div`
 	> img {
 		width: 110px;
 		height: 110px;
+
+		@media screen and (min-width: 1024px) {
+			width: 170px;
+			height: 150px;
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		height: 65px;
 	}
 `;

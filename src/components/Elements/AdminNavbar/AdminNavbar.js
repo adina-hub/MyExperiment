@@ -3,13 +3,25 @@ import logo from '../../../images/logo.svg';
 import Burger from '../Burger/Burger';
 import AdminMenu from './AdminMenu/AdminMenu';
 import styled from 'styled-components';
+import '../Navbar/Navbar.css'
 
 function AdminNavbar() {
 	const [open, setOpen] = useState(false);
+	const [navbar, setNavbar] = useState(false);
+
+	const changeBackground = () => {
+		if(window.scrollY >= 100){
+			setNavbar(true)
+		} else {
+			setNavbar(false)
+		}
+	}
+
+	window.addEventListener('scroll', changeBackground)
 
 	return (
 		<>
-			<Container>
+			<Container className={navbar ? 'navbar colorChange' :  'navbar'}>
 				<img src={logo} alt="" />
 				<div>
 					<Burger open={open} setOpen={setOpen} />
@@ -23,7 +35,6 @@ function AdminNavbar() {
 export default AdminNavbar;
 
 const Container = styled.div`
-	background: rgba(0, 0, 0, 0.4);
 	height: 55px;
 	width: 100vw;
 	display: flex;

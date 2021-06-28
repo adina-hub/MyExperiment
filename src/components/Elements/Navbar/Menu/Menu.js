@@ -25,7 +25,7 @@ Menu.propTypes = {
 	open: bool.isRequired
 };
 
-export default Menu;
+export default Menu; 
 
 const StyledMenu = styled.nav`
 	display: flex;
@@ -64,13 +64,23 @@ const StyledMenu = styled.nav`
 
 		a {
 			padding: 1.5rem 0;
-			font-size: 1.3rem;
+			font-size: 1.4rem;
 		}
 
 		.selected{
 			background: none;
 			padding: 1.5rem 0;
 			color: ${green};
+			font-weight: 600;
+		}
+	}
+
+	@media screen and (min-width: 1440px) {
+		width: 600px;
+
+		a {
+			padding: 1.55rem 0;
+			font-size: 1.5rem;
 		}
 	}
 `;

@@ -122,10 +122,20 @@ const EventImage = styled.img`
 		height: 300px;
 		margin: 30px auto;
 	}
+
+	@media screen and (min-width: 1024px) {
+		width: 650px;
+		height: 350px;
+		margin: 35px auto;
+	}
 `;
 
 const EventInfo = styled.div`
 	padding: 0 15px;
+
+	@media screen and (min-width: 1024px) {
+		padding: 0 30px;
+	}
 `;
 
 const EventSteps = styled.ol`

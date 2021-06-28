@@ -7,7 +7,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 function Dropdown({ expCategories, expSetCategory }) {
 	const [categories, setCategories] = useState();
 	const [open, setOpen] = useState(false);
-	const [category, setCategory] = useState('Choose a category');
+	const [category, setCategory] = useState('Choose a category'); 
 
 	useEffect(() => {
 		console.log(expCategories);
@@ -57,6 +57,8 @@ const DropdownContainer = styled.div`
 		width: 70%;
 		margin: 35px auto;
 	}
+
+	
 `;
 
 const ExperimentsDropdownClose = styled.div`

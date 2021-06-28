@@ -39,5 +39,14 @@ const Container = styled.div`
 			width: 130px;
 			height: 120px;
 		}
+
+		@media screen and (min-width: 1024px) {
+			width: 170px;
+			height: 150px;
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		height: 65px;
 	}
 `;

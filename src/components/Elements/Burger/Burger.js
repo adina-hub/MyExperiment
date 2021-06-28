@@ -71,4 +71,8 @@ const StyledBurger = styled.button`
 		width: 2rem;
 		height: 1.8rem;
 	}
+
+	@media screen and (min-width: 1024px) {
+		display: none;
+	}
 `;

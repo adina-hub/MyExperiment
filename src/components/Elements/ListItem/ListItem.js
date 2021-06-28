@@ -15,7 +15,6 @@ function ListItem({ type, id, name, url, userType, uid = null }) {
 					.collection('events')
 					.doc(id)
 					.delete()
-					.update({places: firebase.firestore.FieldValue.increment(1)})
 					.then(() => console.log('DELETED EVENT'));
 			} else {
 				await db
@@ -34,6 +33,9 @@ function ListItem({ type, id, name, url, userType, uid = null }) {
 					})
 					.then(() => console.log('DELETED FROM EVENTS'))
 					.catch((err) => console.log(err));
+				await db.collection('events').doc(id).update({
+					places: firebase.firestore.FieldValue.increment(1)
+				});;
 			} else {
 				await db
 					.collection('users')

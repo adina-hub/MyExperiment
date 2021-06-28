@@ -30,14 +30,14 @@ export default function AdminHome() {
 					<UserFieldValue>{currentUser.email}</UserFieldValue>
 				</UserField>
 				<UserBtnContainer>
-					<PageLinkBtn large="true" to="/admin/experiments">
+					<PageLinkBtn large to="/admin/experiments">
 						See experiments
 					</PageLinkBtn>
-					<PageLinkBtn large="true" to="/admin/events">
+					<PageLinkBtn large to="/admin/events">
 						See events
 					</PageLinkBtn>
 				</UserBtnContainer>
-			</PageSection>
+			</PageSection> 
 		</PageContainer>
 	);
 }

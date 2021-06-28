@@ -36,7 +36,7 @@ export default function AdminEvents() {
 	return (
 		<PageContainer>
 			<AdminNavbar />
-			<PageSection fullHeight>
+			<PageSection >
 				<PageTitle>Events</PageTitle>
 				<PageHR />
 				<EventsList>

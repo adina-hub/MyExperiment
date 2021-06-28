@@ -3,6 +3,8 @@ import { bool } from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAuth } from '../../../../context/AuthContext';
+import { green } from '../../../../styles/general';
+
 
 function AdminMenu({ open }) {
 	const { signOut } = useAuth();
@@ -48,5 +50,25 @@ const StyledMenu = styled.nav`
 	.selected{
 		background: #007999;
 		padding: 1.25rem;
+	}
+
+	@media screen and (min-width: 1024px) {
+		flex-direction: row;
+		justify-content: space-between;
+		height: 50px;
+		width: 490px;
+		left: 0;
+		background: none;
+
+		a {
+			padding: 1.5rem 0;
+			font-size: 1.3rem;
+		}
+
+		.selected{
+			background: none;
+			padding: 1.5rem 0;
+			color: ${green};
+		}
 	}
 `;

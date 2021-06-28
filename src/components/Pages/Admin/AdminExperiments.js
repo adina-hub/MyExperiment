@@ -37,7 +37,7 @@ export default function AdminExperiments() {
 	return (
 		<PageContainer>
 			<AdminNavbar />
-			<PageSection fullHeight>
+			<PageSection >
 				<PageTitle>Experiments</PageTitle>
 				<PageHR />
 				<ExperimentsList>
@@ -50,7 +50,7 @@ export default function AdminExperiments() {
 					<ExperimentsAddButton to="/admin/experiments/new">
 						<p>Add</p>
 						<ExperimentsAddIcon />
-					</ExperimentsAddButton>
+					</ExperimentsAddButton> 
 				</PageBtnContainer>
 			</PageSection>
 		</PageContainer>

@@ -8,7 +8,8 @@ import {
 	fontH3,
 	fontH2,
 	EventDetails,
-	EventDetail
+	EventDetail,
+	fontP
 } from '../../../styles/general';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import ScheduleIcon from '@material-ui/icons/Schedule';
@@ -149,6 +150,10 @@ const EventDescription = styled.h5`
 
 	@media screen and (min-width: 768px) {
 		height: 30px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		font-size: ${fontP};	
 	}
 `;
 

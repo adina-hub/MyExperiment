@@ -3,7 +3,7 @@ import {
 	PageSection,
 	PageTitle,
 	PageDescription,
-	PageBtn
+	PageBtn 
 } from '../../../../styles/general';
 import { Link } from 'react-router-dom';
 

@@ -30,10 +30,18 @@ const ExperimentContainer = styled.div`
     > a{
         color: white !important;
         flex: 0.1;
+
+        @media screen and (min-width: 1024px) {
+		 
+	    }
     }
 
 	> p {
         text-align: left;
 		flex: 0.9;
+	}
+
+    @media screen and (min-width: 1024px) {
+		padding: 13px;
 	}
 `;

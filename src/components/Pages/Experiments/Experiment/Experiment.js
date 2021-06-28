@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
 	fontH3,
-	fontH2,
 	green,
 	PageAddBtn,
 	PageContainer,
@@ -157,6 +156,12 @@ const ExperimentVideo = styled.iframe`
 		height: 330px;
 		margin: 25px auto;
 	}
+
+	@media screen and (min-width: 1024px) {
+		width: 650px;
+		height: 350px;
+		margin: 35px auto;
+	}
 `;
 
 const ExperimentInfo = styled.div`
@@ -172,6 +177,10 @@ const ExperimentInfo = styled.div`
 	ul,
 	ol {
 		font-size: ${fontH3};
+	}
+
+	@media screen and (min-width: 1024px) {
+		padding: 0 30px;
 	}
 `;
 

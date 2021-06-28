@@ -10,7 +10,8 @@ import {
 	UserField,
 	UserFieldName,
 	UserFieldValue,
-	green
+	green,
+	fontH2
 } from '../../../styles/general.js';
 import Navbar from '../../Elements/Navbar/Navbar.js';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -36,7 +37,7 @@ export default function User() {
 				</UserField>
 				<UserBtnContainer>
 					<UserBtn large="true" to="/user/experiments">
-						<FavoriteIcon />
+						<FavoriteIcon /> 
 						Experiments
 					</UserBtn>
 					<UserBtn large="true" to="/user/events">
@@ -54,9 +55,26 @@ const UserBtn = styled(PageLinkBtn)`
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 20px;
+
 	> .MuiSvgIcon-root{
 		fill: ${green} !important;
 		margin-right: 5px;
+
+		@media screen and (min-width: 1024px) {
+			margin-right: 10px;
+		}
+
+	}
+
+	@media screen and (min-width: 768px) {
+		width: 270px;
+		height: 55px;
+		font-size: 18px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		width: 300px;
+		font-size: ${fontH2};
 	}
 	
 `

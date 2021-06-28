@@ -6,7 +6,8 @@ import {
 	PageDescription,
 	PageHR,
 	PageSection,
-	PageSubtitle
+	PageSubtitle,
+	fontH2
 } from '../../../styles/general';
 import Navbar from '../../Elements/Navbar/Navbar';
 import Dropdown from '../../Elements/Dropdown/Dropdown';
@@ -85,5 +86,9 @@ const ExperimentsList = styled.div`
 		font-size: 18px;
 		width: 90%;
 		padding-left: 40px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		font-size: ${fontH2};
 	}
 `;

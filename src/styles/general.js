@@ -65,6 +65,7 @@ export const PageTitle = styled.h1`
 	@media screen and (min-width: 768px) {
 		font-size: ${(props) => (props.small ? large : xlarge)};
 	}
+
 `;
 
 export const PageSubtitle = styled.h2`
@@ -162,7 +163,7 @@ export const PageAddBtn = styled.button`
 		letter-spacing: 1px;
 
 		@media screen and (min-width: 1024px) {
-			font-size: 18px;
+			font-size: 17px;
 		}
 	}
 
@@ -176,7 +177,7 @@ export const PageAddBtn = styled.button`
 
 	@media screen and (min-width: 1024px) {
 		margin: 40px auto 0 auto;
-		width: 250px;
+		width: 230px;
 	}
 `;
 

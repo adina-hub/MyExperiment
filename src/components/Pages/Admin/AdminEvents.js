@@ -36,7 +36,7 @@ export default function AdminEvents() {
 	return (
 		<PageContainer>
 			<AdminNavbar />
-			<PageSection >
+			<PageSection fullHeight>
 				<PageTitle>Events</PageTitle>
 				<PageHR />
 				<EventsList>
@@ -66,4 +66,10 @@ const EventsAddButton = styled(PageLinkBtn)`
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
+	margin-left: 20px;
+
+	@media screen and (min-width: 768px){
+		margin-left: 50px;
+	}
+
 `;

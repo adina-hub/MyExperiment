@@ -56,7 +56,7 @@ function Events() {
 					{events.map((event) => (
 						<Event
 							id={event.id}
-							title={event.tile}
+							title={event.title}
 							img={event.imgUrl}
 							description={event.description}
 							location={event.location}

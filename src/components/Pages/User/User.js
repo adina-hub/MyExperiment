@@ -58,7 +58,7 @@ const UserBtn = styled(PageLinkBtn)`
 
 	> .MuiSvgIcon-root{
 		fill: ${green} !important;
-		margin-right: 5px;
+		margin-right: 5px; 
 
 		@media screen and (min-width: 1024px) {
 			margin-right: 10px;

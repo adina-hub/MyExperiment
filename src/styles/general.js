@@ -44,7 +44,7 @@ export const PageSection = styled.div`
 export const PageBtnContainer = styled.div`
 	display: flex;
 	height: 45px;
-	justify-content: space-evenly;
+	justify-content: center;
 	margin: 30px 0;
 `;
 
@@ -208,6 +208,11 @@ export const AdminAddBtn = styled.button`
 	width: 120px;
 	outline: none;
 	border: none;
+	margin-left: 20px;
+
+	@media screen and (min-width: 768px){
+		margin-left: 50px;
+	}
 `;
 
 //General User
@@ -228,6 +233,10 @@ export const UserField = styled.div`
 	display: flex;
 	color: white;
 	align-items: center;
+
+	@media screen and (min-width: 1024px) {
+		margin: 35px auto 0 auto;
+	}
 `;
 
 export const UserFieldName = styled.h3`

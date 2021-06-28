@@ -68,12 +68,21 @@ const PopUpContainer = styled.div`
 
 const PopUpCard = styled.div`
     position: relative;
-    height: 42vh;
+    height: 45vh;
     background: ${lightBg};
     padding: 30px 20px 0 20px;
     border-radius: 15px;
     width: 85%;
-    `
+
+    @media screen and (min-width: 768px) {
+		width: 55%;
+	}
+
+    @media screen and (min-width: 1024px) {
+        height: 45vh;
+		width: 45%;
+	}
+`;
 
 const PopUpClose = styled(CloseIcon)`
     position: absolute;
@@ -87,6 +96,10 @@ const PopUpTitle = styled.h2`
     font-size: ${fontH2};
     color: ${green};
     margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 25px;
+	}
 `
 
 const PopUpItem = styled.div`
@@ -94,10 +107,20 @@ const PopUpItem = styled.div`
     color: #fff;
     text-align: left;
     margin-bottom: 10px;
+
     span{
         color: ${green};
         margin-left: 10px;
     }
+
+    @media screen and (min-width: 768px) {
+        margin-left: 15px;
+	}
+
+    @media screen and (min-width: 1024px) {
+        margin-bottom: 15px;
+        margin-left: 20px;
+	}
 `
 
 const PopUpBtns = styled.div`
